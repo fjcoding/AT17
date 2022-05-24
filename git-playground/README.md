@@ -16,3 +16,14 @@ Example of BAD commit message
 ```
 Add changes to README
 ```
+
+# Assignment
+
+## Practice 1
+1. Create local repository "Movies"
+2. Create file Comedy.txt, add to staging area and commit with message "Add Comedy.txt file"
+3. Create file Action.txt, add to staging area and commit with message "Add Action.txt file"
+4. Create file Horror.txt, add to staging area and commit with message "Add Horror.txt file"
+5. Edit Comedy.txt file, add 5 comedy movie names (one per line), add to staging area and commit with message "Add comedy movies to Comedy.txt file"
+6. Edit Action.txt file, add 5 action movie names (one per line), add to staging area and commit with message "Add action movies to Action.txt file"
+7. Edit Horror.txt file, add 5 horror movie names (one per line), add to staging area and commit with message "Add horror movies to Horror.txt file"
