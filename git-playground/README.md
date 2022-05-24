@@ -27,3 +27,17 @@ Add changes to README
 5. Edit Comedy.txt file, add 5 comedy movie names (one per line), add to staging area and commit with message "Add comedy movies to Comedy.txt file"
 6. Edit Action.txt file, add 5 action movie names (one per line), add to staging area and commit with message "Add action movies to Action.txt file"
 7. Edit Horror.txt file, add 5 horror movie names (one per line), add to staging area and commit with message "Add horror movies to Horror.txt file"
+
+## Practice 2
+1. Create a branch \<your name\>/userinfo and switch to created branch
+2. Under this folder (git-playground), create a folder using your first name, all lowercase
+3. Under git-playground/\<your name\> folder, add a file "userinfo"
+4. Edit userinfo file and add your full name
+5. Commit changes (apply Commit Best Practices)
+6. Edit userinfo file and add you birth date in a new line
+7. Commit changes (apply Commit Best Practices)
+8. Edit userinfo file and add you carer name in a new line
+9. Commit changes (apply Commit Best Practices)
+10. Edit userinfo file and add you residence city in a new line
+11. Commit changes (apply Commit Best Practices)
+12. Push your branch \<your name\>/userinfo to remote repo
