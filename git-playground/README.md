@@ -41,3 +41,51 @@ Add changes to README
 10. Edit userinfo file and add you residence city in a new line
 11. Commit changes (apply Commit Best Practices)
 12. Push your branch \<your name\>/userinfo to remote repo
+
+# Cheatsheet
+
+List configurations
+```
+git config --list
+```
+
+Configure username and email
+```
+git config user.name <your name>
+git config user.email <your email>
+```
+
+List local branches
+```
+git branch
+```
+
+Create local branch
+```
+git branch <branch name>
+```
+
+Switch to local branch
+```
+git checkout <branch name>
+```
+
+Check repo status
+```
+git status
+```
+
+Add changes to staging area
+```
+git add <filename>
+```
+
+Commit changes
+```
+git commit -m <commit message>
+```
+
+Create remote branch
+```
+git push -u origin <local branch name>
+```
