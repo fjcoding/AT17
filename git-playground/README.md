@@ -42,6 +42,43 @@ Add changes to README
 11. Commit changes (apply Commit Best Practices)
 12. Push your branch \<your name\>/userinfo to remote repo
 
+## Practice 3
+1. Make sure to have a local branch tracking remote dev/info branch
+2. Switch to dev/info branch
+3. Create a branch \<your name\>/techinfo and switch to created branch
+4. Under git-playground/\<your name\> folder, add a file "techinfo"
+5. Edit techinfo file and list your favorite programming languages separated by commas in one single line
+6. Commit changes (apply Commit Best Practices)
+7. Edit techinfo file and list your favorite code editors or IDEs separated by commas in a new line
+8. Commit changes (apply Commit Best Practices)
+9. Edit techinfo file and add your favorite OS in a new line
+10. Commit changes (apply Commit Best Practices)
+11. Push your branch \<your name\>/techinfo to remote repo
+
+## Practice 4
+1. Switch to dev/info branch
+2. Create a branch \<your name\>/hobbyinfo and switch to created branch
+3. Under git-playground/\<your name\> folder, add a file "hobbyinfo"
+4. Edit hobbyinfo file and list your favorite sports separated by commas in one single line
+5. Commit changes (apply Commit Best Practices)
+6. Edit hobbyinfo file and list your music genres separated by commas in a new line
+7. Commit changes (apply Commit Best Practices)
+8. Edit hobbyinfo file and add your favorite movies in a new line
+9. Commit changes (apply Commit Best Practices)
+10. Push your branch \<your name\>/hobbyinfo to remote repo
+
+## Practice 5
+1. Switch to dev/info branch
+2. Create a branch \<your name\>/machineinfo and switch to created branch
+3. Under git-playground/\<your name\> folder, add a file "machineinfo"
+4. Edit machineinfo file and add your CPU brand/model in one single line
+5. Commit changes (apply Commit Best Practices)
+6. Edit machineinfo file and add your RAM capacity in a new line
+7. Commit changes (apply Commit Best Practices)
+8. Edit machineinfo file and add your storage capacity in a new line
+9. Commit changes (apply Commit Best Practices)
+10. Push your branch \<your name\>/machineinfo to remote repo
+
 # Cheatsheet
 
 List configurations
