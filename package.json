@@ -1,0 +1,19 @@
+{
+  "name": "at17",
+  "version": "1.0.0",
+  "description": "Coding (Dev Fundamentals) repository for AT17 group",
+  "type": "module",
+  "scripts": {
+    "langant:jose": "node katas/langtonant/jose/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjcoding/AT17.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fjcoding/AT17/issues"
+  },
+  "homepage": "https://github.com/fjcoding/AT17#readme"
+}
