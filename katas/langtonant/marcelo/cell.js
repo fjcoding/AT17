@@ -30,6 +30,10 @@ export class Cell {
     getAnt(){
         return this.ant;
     }
+    
+    setAnt(ant){
+        this.ant=ant;
+    }
 
     changeAntCell(positionX,positionY){
         this.positionX = positionX;
@@ -44,12 +48,6 @@ export class Cell {
         }
                
     }
-
-
-    
-
-
-
 
 
     
