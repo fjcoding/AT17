@@ -14,6 +14,27 @@ Tutorials
 - https://www.w3schools.com/js/
 - https://docs.npmjs.com/
 
+## Project Setup
+Install project dependencies
+```
+npm install
+```
+
+Check lint issues
+```
+npm run lint
+```
+
+Fix lint issues
+```
+npm run lint:fix
+```
+
+Run tests
+```
+npm run test
+```
+
 ## Development process
 1. Create branch with the following format for the name: \<your name\>/\<kata or feature name being implemented\>
 2. Commit changes in the branch created. For each commit created, make sure to add a meaningful commit message that describes the group of changes being committed. Limit=100 chars
