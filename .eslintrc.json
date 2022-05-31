@@ -41,6 +41,18 @@
             "error",
             "never"
         ],
+        "space-before-blocks": [
+            "error",
+            "always"
+        ],
+        "padded-blocks": [
+            "error",
+            "never"
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
         "comma-spacing": [
             "error",
             {
@@ -48,8 +60,15 @@
                 "after": true
             }
         ],
+        "keyword-spacing": [
+            "error",
+            {
+                "after": true
+            }
+        ],
         "no-multiple-empty-lines" : "error",
         "no-trailing-spaces": "error",
-        "camelcase": "error"
+        "camelcase": "error",
+        "space-infix-ops": "error"
     }
 }
