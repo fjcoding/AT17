@@ -2,4 +2,9 @@ Rafael Sebastian Quispe
 18 de febrero de 1995
 Antonia
 La Paz, Bolivia
+<<<<<<< HEAD
 Rafael-02
+=======
+City career code: La Paz-N/A
+user code: Rafael-1995
+>>>>>>> dev/info
