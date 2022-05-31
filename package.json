@@ -6,7 +6,8 @@
   "scripts": {
     "langant:jose": "node katas/langtonant/jose/main.js",
     "lint": "eslint . --ext .js",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/fjcoding/AT17#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.18.2",
-    "eslint": "^8.16.0"
+    "eslint": "^8.16.0",
+    "jest": "^28.1.0"
   }
 }
