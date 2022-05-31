@@ -4,7 +4,9 @@
   "description": "Coding (Dev Fundamentals) repository for AT17 group",
   "type": "module",
   "scripts": {
-    "langant:jose": "node katas/langtonant/jose/main.js"
+    "langant:jose": "node katas/langtonant/jose/main.js",
+    "lint": "eslint . --ext .js",
+    "lint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/fjcoding/AT17/issues"
   },
-  "homepage": "https://github.com/fjcoding/AT17#readme"
+  "homepage": "https://github.com/fjcoding/AT17#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  }
 }
