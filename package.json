@@ -4,7 +4,8 @@
   "description": "Coding (Dev Fundamentals) repository for AT17 group",
   "type": "module",
   "scripts": {
-    "langant:jose": "node katas/langtonant/jose/main.js"
+    "langant:jose": "node katas/langtonant/jose/main.js",
+    "langtoant:marcelo": "node katas/langtonant/marcelo/main.js"
   },
   "repository": {
     "type": "git",
