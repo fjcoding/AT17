@@ -31,9 +31,12 @@ export function Langtonant(DimensionSize, numberSteps) {
         posX = changePositionX(posX, HeadDirection);
         posY = changePositionY(posY, HeadDirection);
 
+        posX = VerifyLimitAnt(posX, size);
+        posY = VerifyLimitAnt(posY, size);
+
 
         console.log('');
-        console.log('Paso: ' + i);
+        console.log('step: ' + i);
         MostrarLimite(size);
         mostrarMatriz(myArray, size);
         MostrarLimite(size);
@@ -41,7 +44,15 @@ export function Langtonant(DimensionSize, numberSteps) {
         console.log('');
     }
 
-
+    function VerifyLimitAnt(value, size) {
+        if (value > size) {
+            return 0;
+        }
+        if (value < 0) {
+            return size - 1;
+        }
+        return value;
+    }
     function changePositionX(posX, direction) {
         switch (direction) {
         case 'up':
