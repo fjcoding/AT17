@@ -6,6 +6,7 @@
   "scripts": {
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
+    "langant:richard": "node katas/langtonant/richard/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"
