@@ -80,7 +80,7 @@ function moveForward(rows, cols) {
     }
 }
 
-//Function From Defect that it function principal is Draw in the Canvas
+//Function move Ant
 export function move(rows, cols, steps) {
     for (let n = 0; n < steps; n++) {
         let state = grid[x][y];
