@@ -20,18 +20,16 @@ var steps = process.argv[3];
 
 //var steps = 10;
 
-var dir = Direction.u;
-for (var i = 0;i < steps;i++) 
-{
+var dir = dir.u;
+for (var i = 0;i < steps;i++) {
     var s = i + 1;
     console.log('Step: ' + s);
     colorbox(matrix, ant[0], ant[1]);
     console.log(matrix);
-    if (i != steps - 1) 
-    {
+    if (i != steps - 1) {
         dir = movements(dir, 0, 3);
-        console.log('next direction: ' + dir);
+        console.log('movements: ' + dir);
         ant = walk(ant[0], ant[1], dir, size);
         //console.log(ant[0], ant[1]);
     }
-} 
+}
