@@ -3,7 +3,7 @@ import { ShowMatrix } from "./module1.js";
 import { positionX } from "./module2.js";
 import { positionY } from "./module2.js";
 import { setupNewDirection } from "./module3.js";
-import { ChekingColorBlack } from "./modulo5.js";
+import { ChekingColorBlack } from "./module5.js";
 import { ChangeToBlackOrWhite } from "./module4.js";
 
 
