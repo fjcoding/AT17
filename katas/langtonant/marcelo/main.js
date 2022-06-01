@@ -1,4 +1,7 @@
-import { Ant } from './ant.js';
+import { TableAnt } from './table.js';
 
-console.log(new Ant().greeting_jala());
+var table = new TableAnt(10);
+table.addAntTable(4,5);
+table.moveAnt(100);
+console.log(table.showTable());
 
