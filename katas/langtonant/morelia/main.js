@@ -15,18 +15,18 @@ var ant = [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
 console.log('First position of the ant: ' + ant[0], ant[1]);
 //Determine the steps
 var steps = process.argv[3];
-//var steps = 10;
+//var steps = 15;
 //move ant
 var direction = Direction.UP;
-for (var i = 0;i < steps;i++) {
+for (var i = 0; i < steps; i++) {
     var s = i + 1;
     console.log('Step: ' + s);
     changeColor(matrix, ant[0], ant[1]);
     console.log(matrix);
     if (i != steps - 1) {
-        direction = nextDirection(direction, 0, 3);
+        direction = nextDirection(direction, 0, size - 1, ant[0], ant[1]);
         console.log('next direction: ' + direction);
-        ant = move(ant[0], ant[1], direction, size);
-        //console.log(ant[0], ant[1]);
+        ant = move(ant[0], ant[1], direction);
+        console.log(ant[0], ant[1]);
     }
 }
