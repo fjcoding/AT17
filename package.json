@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "langant:jose": "node katas/langtonant/jose/main.js",
-    "langtoant:marcelo": "node katas/langtonant/marcelo/main.js"
+    "langtonant:marcelo": "node katas/langtonant/marcelo/main.js"
   },
   "repository": {
     "type": "git",
