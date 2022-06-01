@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "langant:jose": "node katas/langtonant/jose/main.js",
-    "langant:jorge": "node katas/langtonant/jose/jlangtonsant.js",
+    "langant:jorge": "node katas/langtonant/jorge/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"

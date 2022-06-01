@@ -1,22 +1,40 @@
 let grid;
 let x;
 let y;
-let dir;
-let finy;
-let finx;
-let mov = 10;
+let antDir;
 
+//Define where the ant turns
 let ANTUP = 0;
 let ANTRIGHT = 1;
 let ANTDOWN = 2;
 let ANTLEFT = 3;
 
-function setup() {
-  createCanvas(400, 400);
-  grid = make2DArray(width, height);
-  x = width / 2;
-  y = height / 2;
-  dir = ANTUP;
+export function setup(numRow, numCol) {
+  grid = make2DArray(numRow, numCol);
+  x = numRow / 2;
+  y = numCol / 2;
+  antDir = ANTUP;
+}
+
+function make2DArray(numCol, numRow) {
+  let arr = new Array(numCol);
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = new Array(numRow);
+    for (let j = 0; j < arr[i].length; j++) {
+      arr[i][j] = 0;
+    }
+  }
+  return arr;
+}
+
+export function printGrid(){
+  for (let i = 0; i < grid.length; i++) {
+    var fill = '0';
+    for (let j = 0; j < grid[i].length; j++) {
+        fill += grid[i][j] + '0';
+    }
+    console.log(fill);
+}
 }
 
  function turnRight() {
@@ -44,57 +62,28 @@ function setup() {
           x--;
         }
       
-        if (x > width - 1) {
+        if (x > numRow - 1) {
           x = 0;
         } else if (x < 0) {
-          x = width - 1;
+          x = numRow - 1;
         }
-        if (y > height - 1) {
+        if (y > numCol - 1) {
           y = 0;
         } else if (y < 0) {
-          y = height - 1;
+          y = numCol - 1;
         }
       }
       
-
-      /*function draw() {
-        strokeWeight(1);
-        for (let n = 0; n < 100; n++) {
-          let state = grid[x][y];
-          if (state == 0) {
-            turnRight();
-            grid[x][y] = 1;
-          } else if (state == 1) {
-            turnLeft();
-            grid[x][y] = 0;
-          }
-      
-          stroke(color(255));
-          if (grid[x][y] == 1) {
-            stroke(color(0));
-          }
-          point(x, y);
-          moveForward();
+      export function antWalk (numRow, numCol, numSteps) {
+        for (let w = 0; w < numSteps; w++) {
+            let state = grid[x][y];
+            if (state == 0) {
+                turnRight();
+                grid[x][y] = 1;
+            } else if (state == 1) {
+                turnLeft();
+                grid[x][y] = '0';
+            }
+            moveForward(numRow, numCol);
         }
       }
-      
-      function make2DArray(cols, rows) {
-        let arr = new Array(cols);
-        for (let i = 0; i < arr.length; i++) {
-          arr[i] = new Array(rows);
-          for (let j = 0; j < arr[i].length; j++) {
-            arr[i][j] = 0;
-          }
-        }
-        return arr;
-      }*/
-
-for (i=0; i<=mov; i++) {
- if (i == mov){
-    finx = x;
-    finy = y;
-      
-  console.log(finx, finy);     
- }
-   
-}
