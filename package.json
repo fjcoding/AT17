@@ -8,6 +8,7 @@
     "langtonant:jhon": "node katas/langtonant/jhon/main.js",
     "langtonant:jhontest": "node katas/langtonant/jhon/board.test.js",
     "langtonant:jhontestmodulo1": "node katas/langtonant/jose/modulo1.test.js",
+    "langant:richard": "node katas/langtonant/richard/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"
