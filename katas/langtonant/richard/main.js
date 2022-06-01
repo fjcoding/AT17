@@ -1,4 +1,4 @@
 
-import { Langtonant } from './module1.js';
+import { Langtonant } from './langtonant.js';
 
 Langtonant(process.argv[2], process.argv[3]);
