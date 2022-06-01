@@ -33,28 +33,28 @@ export function Ant(Area, Steps)
  
     let direction='left';
     let positionx= (Math.floor(extension/2))-1;
-    let pos_y= (Math.floor(extension/2))-1;
+    let positiony= (Math.floor(extension/2))-1;
     
 
 
     for(let i=1;i<= parseInt(Steps);i++){
 
-       if(ChekingColorBlack(Picture,positionx,pos_y))
+       if(ChekingColorBlack(Picture,positionx,positiony))
        {
             direction=setupNewDirection(direction,'black');
            
-            Picture=ChangeToBlackOrWhite(Picture,positionx,pos_y);
+            Picture=ChangeToBlackOrWhite(Picture,positionx,positiony);
         }
         else
         {
             direction=setupNewDirection(direction,'white');
            
-            Picture=ChangeToBlackOrWhite(Picture,positionx,pos_y) ;
+            Picture=ChangeToBlackOrWhite(Picture,positionx,positiony) ;
         }
 
         positionx=positionX(positionx,direction);
         
-        pos_y=positionY(pos_y,direction);
+        positiony=positionY(positiony,direction);
 
 
         
