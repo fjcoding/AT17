@@ -22,8 +22,8 @@ export class Board {
     fillboard(sizeX, sizeY) {
         const x = sizeX * 1;
         const y = sizeY * 1;
-        for (var i = 0;i < x;i++) {
-            for (var j = 0;j < y;j++) {
+        for (var i = 0; i < x; i++) {
+            for (var j = 0; j < y; j++) {
                 this.board[i][j] = ' ';
             }
         }
