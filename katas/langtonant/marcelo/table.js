@@ -48,7 +48,7 @@ export class TableAnt {
                 this.takeAStep(posX + 1, true, posX, posY);
             }
             if (this.ant.direction == this.ant.EAST) {
-                this.takeAStep(posY + 1,false, posX, posY);
+                this.takeAStep(posY + 1, false, posX, posY);
             }
             if (this.ant.direction == this.ant.WEST) {
                 this.takeAStep(posY - 1, false, posX, posY);
@@ -89,7 +89,6 @@ export class TableAnt {
     }
 
     takeAStep(step, axisX, positionX, positionY) {
-
         if (axisX) {
             this.ant.positionX = this.controlerLimits(step);
             this.table[positionX][positionY] = this.ant.paint(this.ant.colorCell);

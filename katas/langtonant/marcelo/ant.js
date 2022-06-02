@@ -1,9 +1,9 @@
 export class Ant {
-    EAST = "E";
-    WEST = "O";
-    NORTH = "N";
-    SOUTH = "S";
     constructor() {
+        this.EAST = 'E';
+        this.WEST = 'O';
+        this.NORTH = 'N';
+        this.SOUTH = 'S';
         this.listImagens = { 'N': '↑', 'S': '↓', 'E': '→', 'O': '←' };
         this.direction = this.NORTH;
         this.imageAnt = '↑';

@@ -6,6 +6,7 @@ const size = 10;
 const stringTableLength = 10 * 10 + 10;
 
 let tableAnt = new TableAnt(size);
+
 test('TableAnt, the addAntTable function should add an Ant to the table)', () => {
     tableAnt.addAntTable(positionAntX, positionAntY);
     expect(tableAnt.table[positionAntX][positionAntY]).toMatchObject({ positionX:positionAntX, positionY:positionAntY});
@@ -29,15 +30,13 @@ test('TableAnt, the showTable function should display table)', () => {
 test('TableAnt, the createTable function should create matrix (size))', () => {
     let table = new TableAnt(size);
     expect(table.createTable().length).toEqual(10);
-    expect(table.createTable()[size-1].length).toEqual(10);
+    expect(table.createTable()[size - 1].length).toEqual(10);
     // console.log(table.showTable().replace(/ /g, '').length);
     expect(table.showTable().replace(/ /g, '').length).toEqual(stringTableLength);
     // expect(table.showTable().replace(/ /g, "")).toContain(".");
 });
 
-test("TableAnt,  the takeAStep function of  should move the ant one position", () => {
-    tableAnt.takeAStep(positionAntX+1,true,positionAntX,positionAntY);
-    expect(tableAnt.table[positionAntX+1][positionAntY]).not.toBe(".");
+test('TableAnt,  the takeAStep function of  should move the ant one position', () => {
+    tableAnt.takeAStep(positionAntX + 1, true, positionAntX, positionAntY);
+    expect(tableAnt.table[positionAntX + 1][positionAntY]).not.toBe('.');
 });
-
- 
