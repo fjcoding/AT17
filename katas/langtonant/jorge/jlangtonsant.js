@@ -29,9 +29,9 @@ function make2DArray(numCol, numRow) {
 
 export function printGrid() {
     for (let i = 0; i < grid.length; i++) {
-        var fill = '0';
+        var fill = '';
         for (let j = 0; j < grid[i].length; j++) {
-            fill += grid[i][j] + '0';
+            fill += grid[i][j];
         }
         console.log(fill);
     }
@@ -88,5 +88,13 @@ export function antWalk (numRow, numCol, numSteps) {
             grid[x][y] = '0';
         }
         moveForward(numRow, numCol);
+    }
+}
+
+export function VerifyBlack(myArray, posX, posY) {
+    if (myArray[posY][posX] == '#') {
+        return true;
+    } else {
+        return false;
     }
 }
