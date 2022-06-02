@@ -75,15 +75,14 @@ export class TableAnt {
                 this.table[posX][this.controlerLimits(posY - 1)] = this.ant;
             }
 
-            console.log(this.showTable());
         }
     }
 
     createTable(size = 10) {
-        var tableArray = new Array(size);
-        for (var i = 0; i < tableArray.length ; i++) {
+        let tableArray = new Array(size);
+        for (let i = 0; i < tableArray.length ; i++) {
             tableArray[i] = new Array(size);
-            for (var j = 0; j < tableArray.length; j++) {
+            for (let j = 0; j < tableArray.length; j++) {
                 tableArray[i][j] = '.';
             }
         }
