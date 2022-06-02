@@ -38,30 +38,33 @@ export function printGrid(){
 }
 
  function turnRight() {
-        dir++;
-        if (dir > ANTLEFT) {
-          dir = ANTUP;
+   antDir++;
+        if (antDir > ANTLEFT) {
+          antDir = ANTUP;
         }
       }
       
       function turnLeft() {
-        dir--;
-        if (dir < ANTUP) {
-          dir = ANTLEFT;
+        antDir--;
+        if (antDir < ANTUP) {
+          antDir = ANTLEFT;
         }
       }
       
       function moveForward() {
-        if (dir == ANTUP) {
+        if (antDir == ANTUP) {
           y--;
-        } else if (dir == ANTRIGHT) {
+        } else if (antDir == ANTRIGHT) {
           x++;
-        } else if (dir == ANTDOWN) {
+        } else if (antDir == ANTDOWN) {
           y++;
-        } else if (dir == ANTLEFT) {
+        } else if (antDir == ANTLEFT) {
           x--;
         }
       
+        let numRow;
+        let numCol;
+
         if (x > numRow - 1) {
           x = 0;
         } else if (x < 0) {
