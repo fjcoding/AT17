@@ -1,7 +1,7 @@
 import { class1 } from './module1.js';
 
 let cl = new class1();
-cl.matrizdefine();
+
 
 let itera = process.argv[2];
 console.log(itera);

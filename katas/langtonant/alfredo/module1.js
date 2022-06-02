@@ -6,15 +6,30 @@ export class class1 {
         this.posi[0] = 5;
         this.posi[1] = 5;
         this.waymatriz = new Array(10);
+        
+        for (let i = 0; i < 10 ;i++) {
+            this.matriz[i] = new Array(10);
+            this.waymatriz[i] = new Array(10);
+        }
+        for (let i = 0; i < 10 ;i++) {
+            for (let j = 0; j < 10 ;j++) {
+                this.matriz[i][j] = true;
+                this.waymatriz[i][j] = true;
+            }
+        }
+        
     }
 
-    changeblock() {
+     changeblock() {
+
         this.posicion = this.getAntPosition();
-        if (this.matriz[this.posicion[0]][this.posicion[1]]) {
-            this.matriz[this.posicion[0]][this.posicion[1]] = false;
-        } else {
-            this.matriz[this.posicion[0]][this.posicion[1]] = true;
-        }
+        this.matriz[this.posicion[0]][this.posicion[1]] = !this.matriz[this.posicion[0]][this.posicion[1]];
+
+    }
+    getblock()
+    {  
+         this.posicion = this.getAntPosition();
+        return this.matriz[this.posicion[0]][this.posicion[1]];
     }
 
     matrizdefine() {
@@ -49,13 +64,16 @@ export class class1 {
                 this.direction = 4;
             }
         }
-        return this.getdirection();
     }
 
     getdirection() {
         return this.direction;
     }
+    setdirection(varD)
+    {
+        this.direction=varD;
 
+    }
     getAntPosition() {
         return this.posi;
     }
