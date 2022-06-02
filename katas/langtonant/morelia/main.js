@@ -6,27 +6,26 @@ import { move } from './functions.js';
 import { Direction } from './functions.js';
 
 //Generating the initial matrix
-var size = process.argv[2];
-//var size = 5;
-var matrix = generateMatrix(size, size);
+const size = process.argv[2];
+let matrix = generateMatrix(size, size);
 
 // Locate the ant
-var ant = [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
+let ant = [Math.floor(Math.random() * size), Math.floor(Math.random() * size)];
 console.log('First position of the ant: ' + ant[0], ant[1]);
 //Determine the steps
-var steps = process.argv[3];
-//var steps = 15;
+const steps = process.argv[3];
+
 //move ant
 var direction = Direction.UP;
-for (var i = 0; i < steps; i++) {
-    var s = i + 1;
+for (let i = 0; i < steps; i++) {
+    let s = i + 1;
     console.log('Step: ' + s);
     changeColor(matrix, ant[0], ant[1]);
     console.log(matrix);
     if (i != steps - 1) {
-        direction = nextDirection(direction, 0, size - 1, ant[0], ant[1]);
+        direction = nextDirection(matrix, ant[0], ant[1], direction);
         console.log('next direction: ' + direction);
-        ant = move(ant[0], ant[1], direction);
+        ant = move(ant[0], ant[1], direction, size);
         console.log(ant[0], ant[1]);
     }
 }

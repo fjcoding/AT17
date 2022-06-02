@@ -12,9 +12,8 @@ test('changeColor change to 1 the place where the ant will be positioned, when t
     matrix[1][1] = 0;
     const result = changeColor(matrix, 1, 0);
     expect(result).toEqual(expect.arrayContaining([[0, 0], [1, 0]]));
-    //expect(result).toBe(1);
 });
-test('changeColor change to 0 if the place was already ocuupied before by the ant', () => {
+test('changeColor change to 0 if the place was already ocupied before by the ant', () => {
     const matrix = new Array();
     matrix[0] = new Array();
     matrix[1] = new Array();
@@ -25,30 +24,63 @@ test('changeColor change to 0 if the place was already ocuupied before by the an
     const result = changeColor(matrix, 0, 1);
     expect(result).toEqual(expect.arrayContaining([[0, 0], [0, 1]]));
 });
-test('nextDirection to force the ant in the top right corner and look up to move to the left', () => {
-    // const dir1=0;
-    //const result = nextDirection(0,0,5,0,4);
-    expect(nextDirection(0, 0, 5, 0, 4)).toBe(3);
-});/*
-test('nextDirection to force the ant in the lower left corner looking down to move to the right', () => {
-    expect(nextDirection(2, 0, 5, 4, 0)).toBe(1);
+test('nextDirection changes the direction of the ant to the left when sense is true(1)', () => {
+    const matrix = new Array();
+    matrix[0] = new Array();
+    matrix[1] = new Array();
+    matrix[0][0] = 0;
+    matrix[0][1] = 1;
+    matrix[1][0] = 0;
+    matrix[1][1] = 0;
+    const row = 0;
+    const column = 1;
+    const direction = 0;
+    const result = nextDirection(matrix, row, column, direction);
+    expect(result).toBe(3);
 });
-test('nextDirection to force the ant in the lower right corner and looking to the right to advance to the top', () => {
-    expect(nextDirection(1, 0, 5, 4, 4)).toBe(0);
-});*/
-test('move the ante to the up', () => {
-    const result = move(2, 2, 0);
+test('nextDirection changes the direction of the ant to the right when sense is false(0)', () => {
+    const matrix = new Array();
+    matrix[0] = new Array();
+    matrix[1] = new Array();
+    matrix[0][0] = 0;
+    matrix[0][1] = 0;
+    matrix[1][0] = 0;
+    matrix[1][1] = 0;
+    const row = 0;
+    const column = 1;
+    const direction = 0;
+    const result = nextDirection(matrix, row, column, direction);
+    expect(result).toBe(1);
+});
+test('move the ant to the up', () => {
+    const row = 2;
+    const column = 2;
+    const direction = 0;
+    const size = 5;
+    const result = move(row, column, direction, size);
     expect(result).toEqual(expect.arrayContaining([1, 2]));
 });
 test('move the ant to the right', () => {
-    const result = move(2, 2, 1);
+    const row = 2;
+    const column = 2;
+    const direction = 1;
+    const size = 5;
+    const result = move(row, column, direction, size);
     expect(result).toEqual(expect.arrayContaining([2, 3]));
 });
 test('move the ant to the down', () => {
-    const result = move(2, 2, 2);
+    const row = 2;
+    const column = 2;
+    const direction = 2;
+    const size = 5;
+    const result = move(row, column, direction, size);
     expect(result).toEqual(expect.arrayContaining([3, 2]));
 });
 test('move the ant to the left', () => {
-    const result = move(2, 2, 3);
+    const row = 2;
+    const column = 2;
+    const direction = 3;
+    const size = 5;
+    const result = move(row, column, direction, size);
     expect(result).toEqual(expect.arrayContaining([2, 1]));
 });

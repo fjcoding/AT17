@@ -12,111 +12,51 @@ export function changeColor(matrix, row, column) {
     }
     return matrix;
 }
-export function nextDirection(direction1, min, max, x, y) {
-    var direction2;
-    if (direction1 == Direction.UP) {
-        if (x == min && y == min) { //Top left corner
-            direction2 = 1;
-        } else if (x == min && y == max) { //Top right corner
-            direction2 = 3;
-        } else if (x == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 2 || direction2 == 0);
-        } else if (y == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 2 || direction2 == 3);
-        } else if (y == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 2 || direction2 == 1);
+export function nextDirection(matrix, row, column, direction) {
+    var sense = true; // true: right , false:left
+    if (matrix[row][column] == 1) {
+        sense = false;
+    }
+    if (sense) {
+        if (direction != Direction.LEFT) {
+            return direction + 1;
         } else {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 2);
+            return 0;
+        }
+    } else {
+        if (direction != Direction.UP) {
+            return direction - 1;
+        } else {
+            return 3;
         }
     }
-    if (direction1 == Direction.RIGHT) {
-        if (x == min && y == max) { //Top right corner
-            direction2 = 2;
-        } else if (x == max && y == max) { //Lower right corner
-            direction2 = 0;
-        } else if (y == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 3 || direction2 == 1);
-        } else if (x == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 3 || direction2 == 0);
-        } else if (x == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 3 || direction2 == 2);
-        } else {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 3);
-        }
-    }
-    if (direction1 == Direction.DOWN) {
-        if (x == max && y == min) { //Lower left corner
-            direction2 = 1;
-        } else if (x == max && y == max) { //Lower right corner
-            direction2 = 3;
-        } else if (x == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 0 || direction2 == 2);
-        } else if (y == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 0 || direction2 == 3);
-        } else if (y == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 0 || direction2 == 1);
-        } else {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 0);
-        }
-    }
-    if (direction1 == Direction.LEFT) {
-        if (x == min && y == min) { //Top left corner
-            direction2 = 2;
-        } else if (x == max && y == min) { //Lower left corner
-            direction2 = 0;
-        } else if (y == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 1 || direction2 == 3);
-        } else if (x == min) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 1 || direction2 == 0);
-        } else if (x == max) {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 1 || direction2 == 2);
-        } else {
-            do {
-                direction2 = Math.floor(Math.random() * 4);
-            } while (direction2 == 1);
-        }
-    }
-    return direction2;
 }
-export function move(x, y, direction) {
+export function move(x, y, direction, size) {
+    const max = size - 1;
     if (direction == Direction.UP) {
-        x -= 1;
+        if (x == 0) {
+            x = max;
+        } else {
+            x -= 1;
+        }
     } else if (direction == Direction.RIGHT) {
-        y += 1;
+        if (y == max) {
+            y = 0;
+        } else {
+            y += 1;
+        }
     } else if (direction == Direction.DOWN) {
-        x += 1;
+        if (x == max) {
+            x = 0;
+        } else {
+            x += 1;
+        }
     } else if (direction == Direction.LEFT) {
-        y -= 1;
+        if (y == 0) {
+            y = max;
+        } else {
+            y -= 1;
+        }
     }
     return [x, y];
 }
