@@ -1,6 +1,7 @@
 import { Board } from './board.js';
 
-test('isValidPos should return true', () => {
-    const boarTest = new Board(5, 5);
-    expect(boarTest.isPosValid(2, 2)).toBe(true);
+test('createBoard should return matriz 5 x 5 Filled with \'\'', () => {
+    let expected = [[' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ', ' ']];
+    let board = new Board(5, 5).createBoard();
+    expect(board).toEqual(expected);
 });
