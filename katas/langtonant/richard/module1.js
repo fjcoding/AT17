@@ -4,9 +4,9 @@ export function Langtonant(DimensionSize, numberSteps) {
     console.log('Steps Number: ' + numberSteps);
     var size = parseInt(DimensionSize);
     var myArray = new Array();
-    for (let i = 0;i < size;i++) {
+    for (let i = 0; i < size; i++) {
         myArray[i] = new Array();
-        for (let j = 0;j < size;j++) {
+        for (let j = 0; j < size; j++) {
             myArray[i][j] = 'O';
         }
     }
@@ -18,7 +18,7 @@ export function Langtonant(DimensionSize, numberSteps) {
     console.log('X: ' + posX + ' - ' + 'Y: ' + posY);
 
 
-    for (let i = 1;i <= parseInt(numberSteps);i++) {
+    for (let i = 1; i <= parseInt(numberSteps); i++) {
         //Code Ant
         if (VerifyBlack(myArray, posX, posY)) {
             HeadDirection = ChangeDirection(HeadDirection, 'black');

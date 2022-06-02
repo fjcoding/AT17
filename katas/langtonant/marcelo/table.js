@@ -31,8 +31,8 @@ export class TableAnt {
 
     showTable() {
         let tableString = '';
-        for (var i = 0; i < this.table.length; i++) {
-            for (var j = 0; j < this.table[0].length; j++) {
+        for (let i = 0; i < this.table.length; i++) {
+            for (let j = 0; j < this.table[0].length; j++) {
                 if (this.isAnt(i, j)) {
                     // tableString += this.ant.direction + ' ';
                     tableString += this.ant.getImage() + ' ';
@@ -46,10 +46,10 @@ export class TableAnt {
     }
 
     moveAnt(iterationAnt) {
-        for (var k = 0; k < iterationAnt;k++) {
+        for (let k = 0; k < iterationAnt; k++) {
             this.rotateAnt();
-            var posX = this.ant.positionX;
-            var posY = this.ant.positionY;
+            let posX = this.ant.positionX;
+            let posY = this.ant.positionY;
             if (this.ant.direction == 'N') {
                 this.ant.positionX = this.controlerLimits(posX - 1);
                 this.table[posX][posY] = this.ant.paint(this.ant.colorCell);
@@ -74,13 +74,12 @@ export class TableAnt {
                 this.ant.colorCell = this.table[posX][this.controlerLimits(posY - 1)];
                 this.table[posX][this.controlerLimits(posY - 1)] = this.ant;
             }
-
         }
     }
 
     createTable(size = 10) {
         let tableArray = new Array(size);
-        for (let i = 0; i < tableArray.length ; i++) {
+        for (let i = 0; i < tableArray.length; i++) {
             tableArray[i] = new Array(size);
             for (let j = 0; j < tableArray.length; j++) {
                 tableArray[i][j] = '.';
