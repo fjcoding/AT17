@@ -10,6 +10,7 @@ export function changeColor(matrix, row, column) {
     } else {
         matrix[row][column] = 0;
     }
+    return matrix;
 }
 export function nextDirection(direction1, min, max, x, y) {
     var direction2;
