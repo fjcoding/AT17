@@ -1,10 +1,10 @@
 import { generateMatrix } from './matrix.js';
 
 //import * as functions from '.functions.js';
-import { colorbox } from './functions.js';
-import { movements } from './functions.js';
-import { walk } from './functions.js';
-import { dir } from './functions.js';
+import { colorbox } from './module1';
+import { movements } from './module1.js';
+import { walk } from './module1';
+import { dir } from './module1';
 
 //Generating the initial matrix
 var size = process.argv[2];
@@ -20,7 +20,7 @@ var steps = process.argv[3];
 
 //var steps = 10;
 
-var dir = dir.u;
+var direction = dir.u;
 for (var i = 0;i < steps;i++) {
     var s = i + 1;
     console.log('Step: ' + s);
