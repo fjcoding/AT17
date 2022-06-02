@@ -44,7 +44,7 @@ export var dir =
 };
 
 //Creat a function to express the ant movements
-export function movements(dir1, min, max) 
+export function Movements(dir1, min, max) 
 {
     var dir2;
     if (dir1 == dir.north) 
@@ -83,7 +83,7 @@ export function movements(dir1, min, max)
 }
 
 
-export function walk(x, y, direction, size) 
+export function Walk(x, y, direction, size) 
 {
     var max = size - 1;
     if (direction == dir.north) 
