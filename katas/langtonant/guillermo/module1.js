@@ -1,82 +1,62 @@
+const LEFT = 0;
+const UP = 1;
+const RIGHT = 2;
+const DOWN = 3;
+
 export class ant {
     constructor() {
         this.fila = 0;
         this.columna = 0;
-        this.step = 0;
-        this.comand = 2;
-        /* Comportamiento de la hormiga:
-        0:La hormiga disminuyo una posición en las filas
-        1:La hormiga aumento una posición en las filas
-        2:La hormiga disminuyo una posición en las columnas
-        3:La hormiga aumento una posición en las columnas */
+        this.direction = LEFT;
     }
 }
 
-export function mover(ant, n, step) {
-    var matriz = matrix(n);
+export function right(ant) {
+    ant.direction++;
+    if (ant.direction > DOWN) {
+        ant.direction = LEFT;
+    }
+}
+
+export function left(ant) {
+    ant.direction--;
+    if (ant.direction < LEFT) {
+        ant.direction = DOWN;
+    }
+}
+
+export function move(ant) {
+    switch (ant.direction) {
+    case LEFT:
+        ant.columna--;
+        break;
+    case UP:
+        ant.fila--;
+        break;
+    case RIGHT:
+        ant.columna++;
+        break;
+    case DOWN:
+        ant.fila++;
+        break;
+    }
+}
+
+export function langtonant(ant, n, step) {
+    var matriz = createBiMatrix(n);
     ant.fila = ant.columna = Math.round((n - 1) / 2);
     for (var i = 0; i < step; i++) {
-        switch (ant.comand) {
-        case 0:
-            switch (matriz[ant.fila][ant.columna]) {
-            case 0:
-                matriz[ant.fila][ant.columna] = 1;
-                ant.columna += 1;
-                ant.comand = 3;
-                break;
-            case 1:
-                matriz[ant.fila][ant.columna] = 0;
-                ant.columna -= 1;
-                ant.comand = 2;
-                break;
-            }
-            break;
-        case 1:
-            switch (matriz[ant.fila][ant.columna]) {
-            case 0:
-                matriz[ant.fila][ant.columna] = 1;
-                ant.columna -= 1;
-                ant.comand = 2;
-                break;
-            case 1:
-                matriz[ant.fila][ant.columna] = 0;
-                ant.columna += 1;
-                ant.comand = 3;
-                break;
-            }
-            break;
-        case 2:
-            switch (matriz[ant.fila][ant.columna]) {
-            case 0:
-                matriz[ant.fila][ant.columna] = 1;
-                ant.fila -= 1;
-                ant.comand = 0;
-                break;
-            case 1:
-                matriz[ant.fila][ant.columna] = 0;
-                ant.fila += 1;
-                ant.comand = 1;
-                break;
-            }
-            break;
-        case 3:
-            switch (matriz[ant.fila][ant.columna]) {
-            case 0:
-                matriz[ant.fila][ant.columna] = 1;
-                ant.fila += 1;
-                ant.comand = 1;
-                break;
-            case 1:
-                matriz[ant.fila][ant.columna] = 0;
-                ant.fila -= 1;
-                ant.comand = 0;
-                break;
-            }
-            break;
+        if (matriz[ant.fila][ant.columna] == 0) {
+            matriz[ant.fila][ant.columna] = 1;
+            right(ant);
+            move(ant);
+        } else {
+            matriz[ant.fila][ant.columna] = 0;
+            left(ant);
+            move(ant);
         }
     }
     var arrText = '';
-
     for (var j = 0; j < matriz.length; j++) {
         for (var k = 0; k < matriz[j].length; k++) {
             if (j == ant.fila && k == ant.columna) {
@@ -92,7 +72,7 @@ export function mover(ant, n, step) {
     console.log('La hormiga se encuentra en la posición: (%s,%s), luego de %i pasos en una matriz de %i x %i', ant.fila, ant.columna, step, n, n);
 }
 
-function matrix(n) {
+export function createBiMatrix(n) {
     var arraybidimensional = new Array(n);
     for (var i = 0; i < n; i++) {
         arraybidimensional[i] = new Array(n).fill(0);
