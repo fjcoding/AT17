@@ -1,29 +1,34 @@
 export class Ant {
+    EAST = "E";
+    WEST = "O";
+    NORTH = "N";
+    SOUTH = "S";
     constructor() {
         this.listImagens = { 'N': '↑', 'S': '↓', 'E': '→', 'O': '←' };
-        this.direction = 'N';
+        this.direction = this.NORTH;
         this.imageAnt = '↑';
         this.positionX = 0;
         this.positionY = 0;
-        this.colorCell = '.';
+        this.colorCellBlack = '#';
+        this.colorCellWhite = '.';
     }
 
     rotate(color = '.') {
-        if (color == '.' || color == '#') {
+        if (color == this.colorCellWhite || color == this.colorCellBlack) {
             switch (this.direction) {
-            case 'N': this.direction = (color == '.') ? 'E' : 'O'; break;
-            case 'S': this.direction = (color == '.') ? 'O' : 'E'; break;
-            case 'E': this.direction = (color == '.') ? 'S' : 'N'; break;
-            case 'O': this.direction = (color == '.') ? 'N' : 'S'; break;
+            case this.NORTH: this.direction = (color == this.colorCellWhite) ? this.EAST : this.WEST; break;
+            case this.SOUTH: this.direction = (color == this.colorCellWhite) ? this.WEST : this.EAST; break;
+            case this.EAST: this.direction = (color == this.colorCellWhite) ? this.SOUTH : this.NORTH; break;
+            case this.WEST: this.direction = (color == this.colorCellWhite) ? this.NORTH : this.SOUTH; break;
             }
         }
     }
 
     paint(color = '.') {
-        if (color == '.' || color == '#') {
-            let paintColor = '.';
-            if (color == '.') {
-                paintColor = '#';
+        if (color == this.colorCellWhite || color == this.colorCellBlack) {
+            let paintColor = this.colorCellWhite;
+            if (color == this.colorCellWhite) {
+                paintColor = this.colorCellBlack;
             }
             return paintColor;
         }

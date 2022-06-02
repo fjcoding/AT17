@@ -3,18 +3,8 @@ import { Ant } from './ant.js';
 export class TableAnt {
     constructor(size = 3) {
         this.ant = new Ant();
-        this.table =  this.createTable(size);
+        this.table = this.createTable(size);
     }
-    // constructor(size = 3, positionX=2,positionX=5) {
-    //     this.table =  tableArray(size);
-    //     this.ant = new Ant();
-    //     this.ant.positionX = positionX;
-    //     this.ant.positionY = positionY;
-
-    //     this.addAntTable(positionX, positionY);
-
-    // }
-
 
     rotateAnt() {
         this.ant.rotate(this.ant.colorCell);
@@ -50,29 +40,18 @@ export class TableAnt {
             this.rotateAnt();
             let posX = this.ant.positionX;
             let posY = this.ant.positionY;
-            if (this.ant.direction == 'N') {
-                this.ant.positionX = this.controlerLimits(posX - 1);
-                this.table[posX][posY] = this.ant.paint(this.ant.colorCell);
-                this.ant.colorCell = this.table[this.controlerLimits(posX - 1)][posY];
-                this.table[this.controlerLimits(posX - 1)][posY] = this.ant;
+
+            if (this.ant.direction == this.ant.NORTH) {
+                this.takeAStep(posX - 1, true, posX, posY);
             }
-            if (this.ant.direction == 'S') {
-                this.ant.positionX = this.controlerLimits(posX + 1);
-                this.table[posX][posY] = this.ant.paint(this.ant.colorCell);
-                this.ant.colorCell = this.table[this.controlerLimits(posX + 1)][posY];
-                this.table[this.controlerLimits(posX + 1)][posY] = this.ant;
+            if (this.ant.direction == this.ant.SOUTH) {
+                this.takeAStep(posX + 1, true, posX, posY);
             }
-            if (this.ant.direction == 'E') {
-                this.ant.positionY = this.controlerLimits(posY + 1);
-                this.table[posX][posY] = this.ant.paint(this.ant.colorCell);
-                this.ant.colorCell = this.table[posX][this.controlerLimits(posY + 1)];
-                this.table[posX][this.controlerLimits(posY + 1)] = this.ant;
+            if (this.ant.direction == this.ant.EAST) {
+                this.takeAStep(posY + 1,false, posX, posY);
             }
-            if (this.ant.direction == 'O') {
-                this.ant.positionY = this.controlerLimits(posY - 1);
-                this.table[posX][posY] = this.ant.paint(this.ant.colorCell);
-                this.ant.colorCell = this.table[posX][this.controlerLimits(posY - 1)];
-                this.table[posX][this.controlerLimits(posY - 1)] = this.ant;
+            if (this.ant.direction == this.ant.WEST) {
+                this.takeAStep(posY - 1, false, posX, posY);
             }
         }
     }
@@ -90,10 +69,11 @@ export class TableAnt {
     }
 
     isAnt(positionX, positionY) {
+        let isAnt = false;
         if (this.table[positionX][positionY] instanceof Ant) {
-            return true;
+            isAnt = true;
         }
-        return false;
+        return isAnt;
     }
 
     controlerLimits(position) {
@@ -106,5 +86,20 @@ export class TableAnt {
             }
         }
         return newPosition;
+    }
+
+    takeAStep(step, axisX, positionX, positionY) {
+
+        if (axisX) {
+            this.ant.positionX = this.controlerLimits(step);
+            this.table[positionX][positionY] = this.ant.paint(this.ant.colorCell);
+            this.ant.colorCell = this.table[this.controlerLimits(step)][positionY];
+            this.table[this.controlerLimits(step)][positionY] = this.ant;
+        } else {
+            this.ant.positionY = this.controlerLimits(step);
+            this.table[positionX][positionY] = this.ant.paint(this.ant.colorCell);
+            this.ant.colorCell = this.table[positionX][this.controlerLimits(step)];
+            this.table[positionX][this.controlerLimits(step)] = this.ant;
+        }
     }
 }
