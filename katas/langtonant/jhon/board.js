@@ -11,11 +11,11 @@ export class Board {
         for (var i = 0; i < x; i++) {
             this.board[i] = new Array(y);
         }
-        this.fillboard(x, y);
+        this.fillBoard(x, y);
         return this.board;
     }
 
-    fillboard(sizeX, sizeY) {
+    fillBoard(sizeX, sizeY) {
         const x = sizeX * 1;
         const y = sizeY * 1;
         for (var i = 0; i < x; i++) {

@@ -1,11 +1,10 @@
 import {Board} from './board.js';
 export class Langtonant {
-    constructor(sizeX, sizeY, steps) {
+    constructor(sizeX, sizeY) {
         this.positionX = this.random(0, sizeX);
         this.positionY = this.random(0, sizeY);
         this.orientation = 0;
         this.board = new Board(sizeX, sizeY).createBoard();
-        this.langtonantFunction(steps);
     }
 
     langtonantFunction(moves) {
@@ -15,7 +14,6 @@ export class Langtonant {
             while (count < steps) {
                 var x = this.positionX;
                 var y = this.positionY;
-                console.log('-----------------------------------------');
                 if (this.isPosValid(x, y)) {
                     if (this.isWhiteSlot(x, y)) {
                         this.board[x][y] = '0';
