@@ -1,4 +1,10 @@
-import { ColorBox } from '/functions.js';
+// test functions 
+
+import { FuncMatrix } from './functions';
+import { ColorBox } from './functions';
+import { Movements } from './functions.js';
+import { Walk } from './functions';
+
 test(matrix[1][1] = 0) 
 ('ColorBox func should return 1', 
 () => {
