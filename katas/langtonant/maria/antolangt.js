@@ -3,10 +3,10 @@ export function Grid(n, m) {
     this.n = n;
     this.m = m;
     var matrix = new Array();
-   
+
     this.load = function() {
         for (let i = 0; i <= n - 1; i++) {
-        matrix[i] = new Array();
+            matrix[i] = new Array();
 
             for (let j = 0; j <= m - 1; j++) {
                 matrix[i][j] = this.random();
@@ -16,8 +16,8 @@ export function Grid(n, m) {
 
     this.random = function() {
         let randomN = Math.random();
-        let white=0;
-        let black=1;
+        let white = 0;
+        let black = 1;
         if (randomN < 0.2) {
             return black;
         }
@@ -39,8 +39,6 @@ export function Grid(n, m) {
     this.setAnt = function(a, c) {
         matrix[a][c] = '&';
     };
-
-    
 }
 
 
@@ -67,9 +65,9 @@ export function Ant(a, c, direction, matrix) {
     };
     this.left = function() {
         let directions = ['n', 'e', 's', 'w'];
-        
+
         let i = directions.indexOf(this.direction);
-        console.log( ' turn to left');
+        console.log(' turn to left');
         if (i - 1 == -1) {
             return directions[4];
         } else {
@@ -78,8 +76,8 @@ export function Ant(a, c, direction, matrix) {
     };
 
     this.changeDirection = function() {
-        let white=0;
-        let black=1;
+        let white = 0;
+        let black = 1;
         if (this.matrixCopy.valor(this.a, this.c) == white) {
             this.setDir(this.rigth());
 
@@ -89,11 +87,9 @@ export function Ant(a, c, direction, matrix) {
 
             this.matrixCopy.setValor(this.a, this.c, white);
         }
-        
     };
     this.move = function(nStep) {
         for (let i = 0; i < nStep; i++) {
-           
             console.log('Ant position: ' + this.a + ',' + this.c + ', ' + this.direction);
             this.changeDirection();
             if (this.direction == 'n') {
@@ -108,9 +104,8 @@ export function Ant(a, c, direction, matrix) {
             if (this.direction == 'w') {
                 this.c = this.c - 1;
             }
-            console.log("-----------------");
+            console.log('-----------------');
             this.matrixCopy.print();
-         
         }
     };
 }
