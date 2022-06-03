@@ -6,12 +6,9 @@
   "scripts": {
     "langant:christian": "node katas/langtonant/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
-<<<<<<< HEAD
     "langant:jorge": "node katas/langtonant/jorge/main.js",
-=======
     "langant:rafael": "node katas/langtonant/rafael/main.js",
     "langtonant:marcelo": "node katas/langtonant/marcelo/main.js",
->>>>>>> dev/langtonant
     "langtonant:jhon": "node katas/langtonant/jhon/main.js",
     "langant:morelia": "node katas/langtonant/morelia/main.js",
     "langant:richard": "node katas/langtonant/richard/main.js",
