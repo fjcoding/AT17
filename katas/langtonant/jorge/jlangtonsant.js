@@ -4,10 +4,10 @@ let y;
 let antDir;
 
 //Define where the ant turns
-let ANTUP = 0;
-let ANTRIGHT = 1;
-let ANTDOWN = 2;
-let ANTLEFT = 3;
+const ANTUP = 0;
+const ANTRIGHT = 1;
+const ANTDOWN = 2;
+const ANTLEFT = 3;
 
 export function setup(numRow, numCol) {
     grid = make2DArray(numRow, numCol);
@@ -97,4 +97,20 @@ export function VerifyBlack(myArray, posX, posY) {
     } else {
         return false;
     }
+}
+
+export function turnAntRight(antDirec) {
+    antDirec++;
+    if (antDirec > ANTLEFT) {
+        antDirec = ANTUP;
+    }
+    return antDirec;
+}
+
+export function turnAntLeft(antDirec) {
+    antDirec--;
+    if (antDirec < ANTUP) {
+        antDirec = ANTLEFT;
+    }
+    return antDirec;
 }
