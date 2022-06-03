@@ -1,12 +1,12 @@
 //Create a function to generate a Matrix
 
 export function FuncMatrix(rows, columns) {
-    var matrix = [];
-    for (var i = 0;
+    let matrix = [];
+    for (let i = 0;
         i < rows;
         i++) {
-        var row = [];
-        for (var j = 0;
+        let row = [];
+        for (let j = 0;
             j < columns;
             j++) {
             row.push(0);
@@ -28,7 +28,7 @@ export function ColorBox(matrix, row, column) {
 }
 
 // Create a variable with cardinal points
-export var dir =
+export const dir =
 {
     north:0,
     east:1,
@@ -36,9 +36,9 @@ export var dir =
     west:3,
 };
 
-//Creat a function to express the ant movements
+//Create a function to express the ant movements
 export function Movements(dir1, min, max) {
-    var dir2;
+    let dir2;
     if (dir1 == dir.north) {
         do {
             dir2 = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -68,7 +68,7 @@ export function Movements(dir1, min, max) {
 
 
 export function Walk(x, y, direction, size) {
-    var max = size - 1;
+    let max = size - 1;
     if (direction == dir.north) {
         if (x == 0) {
             x = max;
