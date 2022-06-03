@@ -22,6 +22,7 @@ export function langtonant(DimensionSize, numberSteps) {
 
     for (let i = 1; i <= parseInt(numberSteps); i++) {
         //Code Ant
+
         if (isSquareBlack(myArray, posX, posY)) {
             HeadDirection = ChangeDirection(HeadDirection, 'black');
             myArray = ChangeColor(myArray, posX, posY);
@@ -29,6 +30,7 @@ export function langtonant(DimensionSize, numberSteps) {
             HeadDirection = ChangeDirection(HeadDirection, 'white');
             myArray = ChangeColor(myArray, posX, posY);
         }
+
 
         posX = changePositionX(posX, HeadDirection);
         posY = changePositionY(posY, HeadDirection);
