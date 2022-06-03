@@ -1,14 +1,14 @@
 
-export function Grid(n, m) {
-    this.n = n;
-    this.m = m;
+export function Grid(numberOfArrows, numberOfColumns) {
+    this.numberOfArrows = numberOfArrows;
+    this.numberOfColumns = numberOfColumns;
     var matrix = new Array();
 
     this.load = function() {
-        for (let i = 0; i <= n - 1; i++) {
+        for (let i = 0; i < numberOfArrows; i++) {
             matrix[i] = new Array();
 
-            for (let j = 0; j <= m - 1; j++) {
+            for (let j = 0; j < numberOfColumns; j++) {
                 matrix[i][j] = this.random();
             }
         }
@@ -24,8 +24,8 @@ export function Grid(n, m) {
         return white;
     };
     this.print = function() {
-        for (let elemento in matrix) {
-            console.log(elemento + '=' + matrix[elemento]);
+        for (let element in matrix) {
+            console.log(element + '=' + matrix[element]);
         }
     };
 
@@ -40,19 +40,19 @@ export function Grid(n, m) {
 }
 
 
-export function Ant(a, c, direction, matrix) {
-    this.a = a;
-    this.c = c;
+export function Ant(arrow, column, direction, matrix) {
+    this.arrow = arrow;
+    this.column = column;
 
     this.direction = direction;
     this.matrixCopy = matrix;
 
-    this.setDir = function(dir) {
-        this.direction = dir;
+    this.setDir = function(dirrection) {
+        this.direction = direction;
     };
     this.rigth = function() {
+        //n=north, e= est, s=south, w=west
         let directions = ['n', 'e', 's', 'w'];
-
         let i = directions.indexOf(this.direction);
         console.log(' turn to right');
         if (i + 1 > 3) {
@@ -62,8 +62,8 @@ export function Ant(a, c, direction, matrix) {
         }
     };
     this.left = function() {
+         //n=north, e= est, s=south, w=west
         let directions = ['n', 'e', 's', 'w'];
-
         let i = directions.indexOf(this.direction);
         console.log(' turn to left');
         if (i - 1 == -1) {
@@ -76,35 +76,34 @@ export function Ant(a, c, direction, matrix) {
     this.changeDirection = function() {
         let white = 0;
         let black = 1;
-        if (this.matrixCopy.getValor(this.a, this.c) == white) {
+        if (this.matrixCopy.getValor(this.arrow, this.column) == white) {
             this.setDir(this.rigth());
 
-            this.matrixCopy.setValor(this.a, this.c, black);
+            this.matrixCopy.setValor(this.arrow, this.column, black);
         } else {
             this.setDir(this.left());
 
-            this.matrixCopy.setValor(this.a, this.c, white);
+            this.matrixCopy.setValor(this.arrow, this.column, white);
         }
     };
     this.move = function(nStep) {
         for (let i = 0; i < nStep; i++) {
-            console.log('Ant position: ' + this.a + ',' + this.c + ', ' + this.direction);
+            console.log('Ant position: ' + this.arrow + ',' + this.column + ', ' + this.direction);
             this.changeDirection();
             if (this.direction == 'n') {
-                this.a = this.a - 1;
+                this.arrow = this.arrow - 1;
             }
             if (this.direction == 's') {
-                this.a = this.a + 1;
+                this.arrow = this.arrow + 1;
             }
             if (this.direction == 'e') {
-                this.c = this.c + 1;
+                this.column = this.column + 1;
             }
             if (this.direction == 'w') {
-                this.c = this.c - 1;
+                this.column = this.column - 1;
             }
             console.log('-----------------');
             this.matrixCopy.print();
         }
     };
 }
-
