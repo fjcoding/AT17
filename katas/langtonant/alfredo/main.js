@@ -1,20 +1,16 @@
-import { class1 } from './module1.js';
+import { langtonant } from './langtonant.js';
 
-let cl = new class1();
+let cl = new langtonant();
 
+let steps = process.argv[2];
+console.log(steps);
 
-let itera = process.argv[2];
-console.log(itera);
-
-while (itera-- >= 0) {
-    let antposi = cl.getAntPosition();
-    let block = cl.getmatriz()[antposi[0]][antposi[1]];
-    cl.waysmatriz(cl.getAntPosition());
-    cl.printwaymatriz();
-    cl.changedirection(block);
-    cl.changeblock();
-    cl.changepositionAnt();
+while (steps-- >= 0) {
+    let block = cl.getMatrix()[cl.getPosiX()][cl.getPosiY()];
+    cl.setWayAnt(cl.getPosiX(), cl.getPosiY());
+    cl.printWaymatrix();
+    cl.changeDirection(block);
+    cl.changeColorBlock();
+    cl.changePositionAnt();
     console.log('');
 }
-
-

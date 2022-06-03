@@ -1,32 +1,31 @@
-import { class1 } from './module1.js';
+import { langtonant } from './langtonant.js';
 
 test('change position ant ', () => {
-    const class1Inst = new class1();
-    class1Inst.setdirection(1);
-    class1Inst.changedirection(true);
-    expect(class1Inst.getdirection()).toBe(2);
-    class1Inst.changedirection(true);
-    expect(class1Inst.getdirection()).toBe(3);
-    class1Inst.changedirection(true);
-    expect(class1Inst.getdirection()).toBe(4);
-    class1Inst.changedirection(true);
-    expect(class1Inst.getdirection()).toBe(1);
+    const class1Inst = new langtonant();
+    class1Inst.setDirection(1);
+    class1Inst.changeDirection(true);
+    expect(class1Inst.getDirection()).toBe(2);
+    class1Inst.changeDirection(true);
+    expect(class1Inst.getDirection()).toBe(3);
+    class1Inst.changeDirection(true);
+    expect(class1Inst.getDirection()).toBe(4);
+    class1Inst.changeDirection(true);
+    expect(class1Inst.getDirection()).toBe(1);
 
-    class1Inst.changedirection(false);
-    expect(class1Inst.getdirection()).toBe(4);
-    class1Inst.changedirection(false);
-    expect(class1Inst.getdirection()).toBe(3);
-    class1Inst.changedirection(false);
-    expect(class1Inst.getdirection()).toBe(2);
-    class1Inst.changedirection(false);
-    expect(class1Inst.getdirection()).toBe(1);
+    class1Inst.changeDirection(false);
+    expect(class1Inst.getDirection()).toBe(4);
+    class1Inst.changeDirection(false);
+    expect(class1Inst.getDirection()).toBe(3);
+    class1Inst.changeDirection(false);
+    expect(class1Inst.getDirection()).toBe(2);
+    class1Inst.changeDirection(false);
+    expect(class1Inst.getDirection()).toBe(1);
 });
 
 test('Change Color Block', () => {
-    const class1Inst = new class1();
+    const class1Inst = new langtonant();
 
-     var x = class1Inst.getblock();
-     class1Inst.changeblock();
-     expect(class1Inst.getblock()).toBe(!x);
-
+    class1Inst.setColorBlock(true);
+    class1Inst.changeColorBlock();
+    expect(class1Inst.getColorBlock()).toBe(false);
 });
