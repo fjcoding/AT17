@@ -8,7 +8,6 @@ export function isSquareLimit(value, size) {
     return value;
 }
 export function isSquareBlack(myArray, posX, PosY) {
-    ///console.log('Entra X:['+posX+']  - Y:['+PosY+']' )
     if (myArray[PosY][posX] == '#') {
         return true;
     } else {
