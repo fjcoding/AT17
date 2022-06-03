@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "Coding (Dev Fundamentals) repository for AT17 group",
   "type": "module",
+  "jest": {
+    "projects": [
+      "katas"
+    ],
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
+  },
   "scripts": {
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:morelia": "node katas/langtonant/morelia/main.js",
