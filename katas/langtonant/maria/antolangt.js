@@ -36,7 +36,6 @@ export function Grid(numberOfArrows, numberOfColumns) {
     this.setValor = function(n, m, v) {
         matrix[n][m] = v;
     };
-    
 }
 
 
@@ -47,7 +46,7 @@ export function Ant(arrow, column, direction, matrix) {
     this.direction = direction;
     this.matrixCopy = matrix;
 
-    this.setDir = function(dirrection) {
+    this.setDir = function(direction) {
         this.direction = direction;
     };
     this.rigth = function() {
@@ -62,7 +61,7 @@ export function Ant(arrow, column, direction, matrix) {
         }
     };
     this.left = function() {
-         //n=north, e= est, s=south, w=west
+        //n=north, e= est, s=south, w=west
         let directions = ['n', 'e', 's', 'w'];
         let i = directions.indexOf(this.direction);
         console.log(' turn to left');
