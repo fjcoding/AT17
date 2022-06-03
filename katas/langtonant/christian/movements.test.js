@@ -1,4 +1,4 @@
-import { isWhite, isBlack, grid, move, init, x, dir } from './movements.js';
+import { isWhite, isBlack, grid, move, init } from './movements.js';
 
 
 init(5);
