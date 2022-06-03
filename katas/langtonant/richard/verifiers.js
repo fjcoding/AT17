@@ -1,5 +1,5 @@
 export function isSquareLimit(value, size) {
-    if (value > size) {
+    if (value == size) {
         return 0;
     }
     if (value < 0) {

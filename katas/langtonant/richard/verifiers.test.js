@@ -29,7 +29,7 @@ test('isSquareBlack should return false if position does not contains # symbol',
 });
 
 test('isSquareLimit should return 0 if the value is greather than  ', () => {
-    const testLimitValue = 10;
+    const testLimitValue = 11;
     const result = isSquareLimit(11, testLimitValue);
     expect(result).toBe(0);
 });
