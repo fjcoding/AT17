@@ -4,12 +4,9 @@ import { changePositionX } from './changers.js';
 import { changePositionY } from './changers.js';
 import { ChangeColor } from './changers.js';
 import { ChangeDirection } from './changers.js';
-import { printLimit } from './printers.js';
-import { printGrid } from './printers.js';
 
-export function Langtonant(DimensionSize, numberSteps) {
-    console.log('The Area will be : ' + DimensionSize + ' X ' + DimensionSize);
-    console.log('Steps Number: ' + numberSteps);
+
+export function langtonant(DimensionSize, numberSteps) {
     var size = parseInt(DimensionSize);
     var myArray = new Array();
     for (let i = 0; i < size; i++) {
@@ -22,7 +19,6 @@ export function Langtonant(DimensionSize, numberSteps) {
     var HeadDirection = 'left';
     var posX = (Math.floor(size / 2)) - 1;
     var posY = (Math.floor(size / 2)) - 1;
-    console.log('X: ' + posX + ' - ' + 'Y: ' + posY);
 
     for (let i = 1; i <= parseInt(numberSteps); i++) {
         //Code Ant
@@ -39,13 +35,6 @@ export function Langtonant(DimensionSize, numberSteps) {
 
         posX = isSquareLimit(posX, size);
         posY = isSquareLimit(posY, size);
-
-        console.log('');
-        console.log('step: ' + i);
-        printLimit(size);
-        printGrid(myArray, size);
-        printLimit(size);
-        console.log('info ant: dir>' + HeadDirection + ' _ ' + 'pos>[' + posY + '][' + posX + ']');
-        console.log('');
     }
+    return myArray;
 }

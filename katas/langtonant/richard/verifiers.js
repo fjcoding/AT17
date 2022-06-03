@@ -3,7 +3,7 @@ export function isSquareLimit(value, size) {
         return 0;
     }
     if (value < 0) {
-        return size - 1;
+        return (size - 1);
     }
     return value;
 }
