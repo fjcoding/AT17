@@ -1,38 +1,37 @@
-import {isWhite, isBlack, grid, move, init, x} from './movements.js'
+import { isWhite, isBlack, grid, move, init, x, dir } from './movements.js';
 
 
-
-//------------------------Init Test-----------------------------------------
-init(3);
-
-test('Init Test whit position x and di is correct', () => {
-    const result = x;
-    expect(result).toBe(1);  
-});
-
-
-test('Init Test correct craeation from Matrix', () => {
-    const result = grid.length;
-    expect(result).toBe(3);
-});
-//-------------------------MOVE TEST--------------------------------------
-init(3);
-move(3,1);
+init(5);
+move(5, 5);
 
 test('Move function must changue position to Black if is not in Black', () => {
-    const result = grid[1][1];
-    expect(result).toBe("1");
+    const result = grid[3][2];
+    expect(result).toBe('1');
 });
-//------------------------------------------------------------------------
-move(3,2);
 
 test('Move function must changue position to Black if is not in Black', () => {
-    const result = grid[1][1];
-    const result2 = grid[2][1];
-    expect(result).toBe("1");
-    expect(result2).toBe("1");
+    const result = grid[2][3];
+    const result2 = grid[3][2];
+    expect(result).toBe('1');
+    expect(result2).toBe('1');
 });
-//-------------------------isWhite or isBlack Test------------------------
+
+test('Move function must changue position to White if is in Black', () => {
+    const result = grid[2][2];
+    expect(result).toBe('');
+});
+
+test('Move function must changue position to 5 steps', () => {
+    const result = grid[3][2];
+    const result2 = grid[2][3];
+    const result3 = grid[3][3];
+    const result4 = grid[2][2];
+    expect(result).toBe('1');
+    expect(result2).toBe('1');
+    expect(result3).toBe('1');
+    expect(result4).toBe('');
+});
+
 const testGrid = new Array();
 testGrid[0] = new Array();
 testGrid[1] = new Array();

@@ -23,14 +23,14 @@ export function init(size) {
 
 
 //function for Rotate to Right
-function turnRight() {
+export function turnRight() {
     dir++;
     if (dir > ANTLEFT) {
         dir = ANTUP;
     }
 }
 //function for Rotate to Left
-function turnLeft() {
+export function turnLeft() {
     dir--;
     if (dir < ANTUP) {
         dir = ANTLEFT;
@@ -67,22 +67,22 @@ export function move(size, steps) {
     for (let n = 0; n < steps; n++) {
         let state = grid[x][y];
         if (isWhite(state)) {
-          turnRight();
-          grid[x][y] = "1";
+            turnRight();
+            grid[x][y] = '1';
         } else if (isBlack(state)) {
-          turnLeft();
-          grid[x][y] = "";
+            turnLeft();
+            grid[x][y] = '';
         }
         moveForward(size, size);
     }
 }
 
-export function isWhite(state){
-  return (state == 0);    
+export function isWhite(state) {
+    return (state == 0);
 }
 
-export function isBlack(state){
-  return (state == 1); 
+export function isBlack(state) {
+    return (state == 1);
 }
 
 
