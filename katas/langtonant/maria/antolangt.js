@@ -53,7 +53,6 @@ export function Ant(arrow, column, direction, matrix) {
         //n=north, e= est, s=south, w=west
         let directions = ['n', 'e', 's', 'w'];
         let i = directions.indexOf(this.direction);
-        console.log(' turn to right');
         if (i + 1 > 3) {
             return directions[0];
         } else {
@@ -64,7 +63,6 @@ export function Ant(arrow, column, direction, matrix) {
         //n=north, e= est, s=south, w=west
         let directions = ['n', 'e', 's', 'w'];
         let i = directions.indexOf(this.direction);
-        console.log(' turn to left');
         if (i - 1 == -1) {
             return directions[4];
         } else {
