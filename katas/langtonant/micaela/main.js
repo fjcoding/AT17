@@ -17,7 +17,7 @@ let ant = [1, 1];
 
 //Determine the steps
 const steps = 10;
-let dir = dir.north;
+let Dir = dir.north;
 for (let i = 0;
     i < steps;
     i++) {
@@ -26,8 +26,8 @@ for (let i = 0;
     ColorBox(matrix, ant[0], ant[1]);
     console.log(matrix);
     if (i != steps - 1) {
-        dir = Movements(dir, 0, 3);
-        console.log('Movement: ' + dir);
-        ant = Walk(ant[0], ant[1], dir, size);
+        Dir = Movements(Dir, 0, 3);
+        console.log('Movement: ' + Dir);
+        ant = Walk(ant[0], ant[1], Dir, size);
     }
 }

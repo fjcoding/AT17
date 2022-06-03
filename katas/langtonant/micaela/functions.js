@@ -28,7 +28,7 @@ export function ColorBox(matrix, row, column) {
 }
 
 // Create a variable with cardinal points
-export const dir =
+export let dir =
 {
     north:0,
     east:1,
