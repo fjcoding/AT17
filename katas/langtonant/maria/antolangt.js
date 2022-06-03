@@ -29,16 +29,14 @@ export function Grid(n, m) {
         }
     };
 
-    this.valor = function(n, m) {
+    this.getValor = function(n, m) {
         return matrix[n][m];
     };
 
     this.setValor = function(n, m, v) {
         matrix[n][m] = v;
     };
-    this.setAnt = function(a, c) {
-        matrix[a][c] = '&';
-    };
+    
 }
 
 
@@ -78,7 +76,7 @@ export function Ant(a, c, direction, matrix) {
     this.changeDirection = function() {
         let white = 0;
         let black = 1;
-        if (this.matrixCopy.valor(this.a, this.c) == white) {
+        if (this.matrixCopy.getValor(this.a, this.c) == white) {
             this.setDir(this.rigth());
 
             this.matrixCopy.setValor(this.a, this.c, black);
