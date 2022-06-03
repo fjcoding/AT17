@@ -3,10 +3,10 @@ const UP = 1;
 const RIGHT = 2;
 const DOWN = 3;
 
-export class ant {
+export class Ant {
     constructor() {
-        this.fila = 0;
-        this.columna = 0;
+        this.row = 0;
+        this.column = 0;
         this.direction = LEFT;
     }
 }
@@ -28,30 +28,30 @@ export function left(ant) {
 export function move(ant) {
     switch (ant.direction) {
     case LEFT:
-        ant.columna--;
+        ant.column--;
         break;
     case UP:
-        ant.fila--;
+        ant.row--;
         break;
     case RIGHT:
-        ant.columna++;
+        ant.column++;
         break;
     case DOWN:
-        ant.fila++;
+        ant.row++;
         break;
     }
 }
 
 export function langtonant(ant, n, step) {
     var matriz = createBiMatrix(n);
-    ant.fila = ant.columna = Math.round((n - 1) / 2);
+    ant.row = ant.column = Math.round((n - 1) / 2);
     for (var i = 0; i < step; i++) {
-        if (matriz[ant.fila][ant.columna] == 0) {
-            matriz[ant.fila][ant.columna] = 1;
+        if (matriz[ant.row][ant.column] == 0) {
+            matriz[ant.row][ant.column] = 1;
             right(ant);
             move(ant);
         } else {
-            matriz[ant.fila][ant.columna] = 0;
+            matriz[ant.row][ant.column] = 0;
             left(ant);
             move(ant);
         }
@@ -59,7 +59,7 @@ export function langtonant(ant, n, step) {
     var arrText = '';
     for (var j = 0; j < matriz.length; j++) {
         for (var k = 0; k < matriz[j].length; k++) {
-            if (j == ant.fila && k == ant.columna) {
+            if (j == ant.row && k == ant.column) {
                 //arrText += '\u2658' + '  ';
                 arrText += (matriz[j][k] ? '\u2658' : '\u265E') + '  ';
             } else {
@@ -69,7 +69,7 @@ export function langtonant(ant, n, step) {
         console.log(arrText);
         arrText = '';
     }
-    console.log('La hormiga se encuentra en la posición: (%s,%s), luego de %i pasos en una matriz de %i x %i', ant.fila, ant.columna, step, n, n);
+    console.log('The ant now is in the position: (%s,%s), after %i steps in a %i x %i matrix', ant.row, ant.column, step, n, n);
 }
 
 export function createBiMatrix(n) {
