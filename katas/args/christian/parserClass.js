@@ -15,6 +15,12 @@ export class Parser {
     }
 }
 
+//Schema by deffect
+// -l flag logging = trues if exist and false if not exist
+// -p flag port = port must go accompanied for number of port (Number)
+// -d flag directory =  directory must go accompanied for direction of directory (String)
+// -g flag Array Of String = must go accompanied for Array Of String
+// -n flag Array Of Numbers = must go accompanied for Array Of Numbers
 
 export function verifyString(array) {
     let aux = '';
