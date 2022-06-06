@@ -41,6 +41,6 @@ test('get argument -d list decimal', () => {
     let test1 = classArgs.getDecimal('-d 1,2,3,-4,19,-800,800');
     let result = new Object();
     result.identifier = '-d';
-    result.value = ['1', '2', '3', '-4', '19', '-800', '800'];
+    result.value = [1, 2, 3, -4, 19, -800, 800];
     expect(test1).toEqual(result);
 });
