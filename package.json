@@ -23,11 +23,8 @@
     "langant:morelia": "node katas/langtonant/morelia/main.js",
     "langant:richard": "node katas/langtonant/richard/main.js",
     "langant:maria": "node katas/langtonant/maria/main.js",
-<<<<<<< HEAD
     "args:guillermo": "node katas/args/guillermo/main.js",
-=======
     "args:morelia": "node katas/args/morelia/main.js",
->>>>>>> dev/args
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"
