@@ -4,7 +4,7 @@ export class class1 {
         this.variableB = 'a string';
     }
 
-    func1(a,b) {
+    func1(a, b) {
         var c = parseInt(a) + parseInt(b);
         console.log(c);
         return this.variableA;
