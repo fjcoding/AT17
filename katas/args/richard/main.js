@@ -4,7 +4,6 @@ import { constructPort } from './constructors.js';
 import { constructDirection } from './constructors.js';
 import { constructStringArray } from './constructors.js';
 import { constructIntegerArray } from './constructors.js';
-
 import { isDirectionOrArray } from './verifiers.js';
 import { isLogging } from './verifiers.js';
 import { isPort } from './verifiers.js';
