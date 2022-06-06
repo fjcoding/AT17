@@ -1,14 +1,11 @@
+import * as fs from 'fs';
 
 export class Interpreter {
-    // constructor(command = '-l -p 8080 -d /usr/logs', fileSchema = "./commandsSchema.json") {
-    constructor(command = '-l -p 8080 -d /usr/logs', fileSchema) {
-        // const defaultboolean = false;
-        // const defaultInteger = 0;
-        // const defaullString = '';
+    constructor(command = '-l -p 8080 -d /usr/logs') {
         this.commandArray = this.convertToArray(command);
-        // let fileSchema = require('./commandsSchema.json');
-        // this.fileSchema = myJson;
-        this.fileSchema = fileSchema;
+        this.fileSchema = JSON.parse(fs.readFileSync('./katas/args/marcelo/commandsSchema.json')); 
+        // this.fileSchema = JSON.parse(fs.readFileSync(fileSchema));
+       
     }
 
     convertToArray(command) {
@@ -51,16 +48,13 @@ export class Interpreter {
     }
 
     getValue(parameter, value) {
-        let response = false;
-        // let index = value.indexOf(' ');
-        // response = value.substring(index, value.length);
-        // response = value;
+        let response = false;        
         if (!this.fileSchema.integers.includes(parameter) && !this.fileSchema.booleans.includes(parameter) && !this.fileSchema.strings.includes(parameter)) {
             if (typeof value != 'boolean') {
                 response = (Number(response) ? 0 : '""');
             }
         } else {
-            console.log(value, '========== ');
+           
             if (typeof value != 'boolean') {
                 response = (Number(value) ? parseInt(value) : '"' + value.trim() + '"');
             } else {
@@ -78,5 +72,9 @@ export class Interpreter {
             showResponse = this.getObjectParameter();
         }
         return showResponse;
+    }
+
+    getSchema(){
+        return this.fileSchema;
     }
 }
