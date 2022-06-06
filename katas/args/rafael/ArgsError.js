@@ -8,57 +8,56 @@ export const ErrorCode = {
     INVALID_INTEGER: 'INVALID_INTEGER',
     MISSING_DOUBLE: 'MISSING_DOUBLE',
     INVALID_DOUBLE: 'INVALID_DOUBLE',
-  };
-  
-  export class ArgsError extends Error {
+};
+
+export class ArgsError extends Error {
     constructor(errorCode, errorArgumentID, errorParameter) {
-      super();
-      this.errorCode = errorCode;
-      this.errorArgumentID = errorArgumentID;
-      this.errorParameter = errorParameter;
-      Error.captureStackTrace(this, ArgsError);
+        super();
+        this.errorCode = errorCode;
+        this.errorArgumentID = errorArgumentID;
+        this.errorParameter = errorParameter;
+        Error.captureStackTrace(this, ArgsError);
     }
-  
+
     errorMessage() {
-      switch (this.errorCode) {
+        switch (this.errorCode) {
         case ErrorCode.OK:
-          return 'TILT: Should not get here.';
+            return 'TILT: Should not get here.';
         case ErrorCode.UNEXPECTED_ARGUMENT:
-          return `Argument -${this.errorArgumentID} unexpected.`;
+            return `Argument -${this.errorArgumentID} unexpected.`;
         case ErrorCode.MISSING_STRING:
-          return `Could not find string parameter for -${this.errorArgumentID}.`;
+            return `Could not find string parameter for -${this.errorArgumentID}.`;
         case ErrorCode.INVALID_INTEGER:
-          return `Argument -${this.errorArgumentID} expects an integer but was '${this.errorParameter}'.`;
+            return `Argument -${this.errorArgumentID} expects an integer but was '${this.errorParameter}'.`;
         case ErrorCode.MISSING_INTEGER:
-          return `Could not find integer parameter for -${this.errorArgumentID}.`;
+            return `Could not find integer parameter for -${this.errorArgumentID}.`;
         case ErrorCode.INVALID_DOUBLE:
-          return `Argument -${this.errorArgumentID} expects a double but was '${this.errorParameter}'.`;
+            return `Argument -${this.errorArgumentID} expects a double but was '${this.errorParameter}'.`;
         case ErrorCode.MISSING_DOUBLE:
-          return `Could not find double parameter for -${this.errorArgumentID}.`;
+            return `Could not find double parameter for -${this.errorArgumentID}.`;
         case ErrorCode.INVALID_ARGUMENT_NAME:
-          return `'${this.errorArgumentID}' is not a valid argument name.`;
+            return `'${this.errorArgumentID}' is not a valid argument name.`;
         case ErrorCode.INVALID_ARGUMENT_FORMAT:
-          return `'${this.errorParameter}' is not a valid argument format.`;
+            return `'${this.errorParameter}' is not a valid argument format.`;
         default:
-          return '';
-      }
+            return '';
+        }
     }
-  
+
     setErrorCode(errorCode) {
-      this.errorCode = errorCode;
+        this.errorCode = errorCode;
     }
-  
+
     getErrorCode() {
-      return this.errorCode;
+        return this.errorCode;
     }
-  
+
     setErrorArgumentID(errorArgumentID) {
-      this.errorArgumentID = errorArgumentID;
+        this.errorArgumentID = errorArgumentID;
     }
-  
+
     setErrorParameter(errorParameter) {
-      this.errorParameter = errorParameter;
+        this.errorParameter = errorParameter;
     }
-  }
-  
-  
+}
+
