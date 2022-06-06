@@ -50,15 +50,21 @@ function correctValues(arrFlags, arrValues){
             if (arrValues[index] != 'true') {
                 result[index]= 'false';
             }
+            else{
+                result[index]= arrValues[index];
+            }
         }
         if (arrFlags[index] === '-p') {
             if (isNaN(Number(arrValues[index]))|| arrValues[index]==='') {
                 result[index]= '0';
             }
+            else{
+                result[index]= arrValues[index];
+            }
         }
         if (arrFlags[index] === '-d') {
             if (isNaN(Number(arrValues[index]))){
-            
+                result[index]= arrValues[index];
             }else{
                 result[index]= '';
             }
