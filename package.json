@@ -3,9 +3,34 @@
   "version": "1.0.0",
   "description": "Coding (Dev Fundamentals) repository for AT17 group",
   "type": "module",
+  "jest": {
+    "projects": [
+      "katas"
+    ],
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
+  },
   "scripts": {
+<<<<<<< HEAD
     "langant:jose": "node katas/langtonant/jose/main.js",
     "args:pablo": "node katas/args/pablo/args.js"
+=======
+    "langant:christian": "node katas/langtonant/christian/main.js",
+    "langant:jose": "node katas/langtonant/jose/main.js",
+    "langant:rafael": "node katas/langtonant/rafael/main.js",
+    "langtonant:marcelo": "node katas/langtonant/marcelo/main.js",
+    "langtonant:jhon": "node katas/langtonant/jhon/main.js",
+    "langant:morelia": "node katas/langtonant/morelia/main.js",
+    "langant:richard": "node katas/langtonant/richard/main.js",
+    "langant:maria": "node katas/langtonant/maria/main.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --fix",
+    "test": "jest"
+>>>>>>> dev/args
   },
   "repository": {
     "type": "git",
@@ -16,5 +41,11 @@
   "bugs": {
     "url": "https://github.com/fjcoding/AT17/issues"
   },
-  "homepage": "https://github.com/fjcoding/AT17#readme"
+  "homepage": "https://github.com/fjcoding/AT17#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
+    "eslint": "^8.16.0",
+    "eslint-plugin-jest": "^26.4.6",
+    "jest": "^28.1.0"
+  }
 }
