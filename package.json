@@ -15,10 +15,6 @@
     ]
   },
   "scripts": {
-<<<<<<< HEAD
-    "langant:jose": "node katas/langtonant/jose/main.js",
-    "args:pablo": "node katas/args/pablo/args.js"
-=======
     "langant:christian": "node katas/langtonant/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
@@ -30,7 +26,6 @@
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"
->>>>>>> dev/args
   },
   "repository": {
     "type": "git",
