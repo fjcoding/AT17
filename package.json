@@ -24,6 +24,8 @@
     "langant:richard": "node katas/langtonant/richard/main.js",
     "langant:maria": "node katas/langtonant/maria/main.js",
     "args:marcelo": "node katas/args/marcelo/main.js",
+    "args:guillermo": "node katas/args/guillermo/main.js",
+    "args:morelia": "node katas/args/morelia/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"

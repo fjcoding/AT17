@@ -3,9 +3,8 @@ import * as fs from 'fs';
 export class Interpreter {
     constructor(command = '-l -p 8080 -d /usr/logs') {
         this.commandArray = this.convertToArray(command);
-        this.fileSchema = JSON.parse(fs.readFileSync('./katas/args/marcelo/commandsSchema.json')); 
+        this.fileSchema = JSON.parse(fs.readFileSync('./katas/args/marcelo/commandsSchema.json'));
         // this.fileSchema = JSON.parse(fs.readFileSync(fileSchema));
-       
     }
 
     convertToArray(command) {
@@ -48,13 +47,12 @@ export class Interpreter {
     }
 
     getValue(parameter, value) {
-        let response = false;        
+        let response = false;
         if (!this.fileSchema.integers.includes(parameter) && !this.fileSchema.booleans.includes(parameter) && !this.fileSchema.strings.includes(parameter)) {
             if (typeof value != 'boolean') {
-                response = (Number(response) ? 0 : '""');
+                response = Number(value) ? 0 : '';
             }
         } else {
-           
             if (typeof value != 'boolean') {
                 response = (Number(value) ? parseInt(value) : '"' + value.trim() + '"');
             } else {
@@ -64,7 +62,7 @@ export class Interpreter {
         return response;
     }
 
-    displayParameters() {
+    displayCommandParameters() {
         let showResponse = '';
         if (this.isParameterValid() != '') {
             showResponse = this.isParameterValid();
@@ -74,7 +72,7 @@ export class Interpreter {
         return showResponse;
     }
 
-    getSchema(){
+    getSchema() {
         return this.fileSchema;
     }
 }
