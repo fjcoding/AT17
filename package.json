@@ -15,6 +15,7 @@
     ]
   },
   "scripts": {
+    "smb": "node src/smb/main.js",
     "langant:christian": "node katas/langtonant/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
