@@ -20,16 +20,20 @@ for (let index = 0; index < input.length; index++) {
         values.push(val.replace(/ /g, ''));
     }
 }
+
 console.log(flags);
 console.log(values);
 console.log(flagExist(flags, schema));
 correctValues(flags, values);
 
-function isLetter(str) {
-    return str.length === 1 && str.match(/[a-z]/i);
+export function isLetter(str) {
+    if(str.length === 1 && str.match(/[a-z]/i))
+    {return true;}
+    else
+    {return false;}
 }
 
-function flagExist(arrflags, arrSchema) {
+export function flagExist(arrflags, arrSchema) {
     for (let index = 0; index < arrflags.length; index++) {
         const res = arrSchema.includes(arrflags[index]);
         if (!res) {
@@ -40,7 +44,7 @@ function flagExist(arrflags, arrSchema) {
     return true;
 }
 
-function correctValues(arrFlags, arrValues) {
+export function correctValues(arrFlags, arrValues) {
     for (let index = 0; index < arrFlags.length; index++) {
         if (arrFlags[index] === '-l') {
             if (arrValues[index] != 'true') {
@@ -64,5 +68,6 @@ function correctValues(arrFlags, arrValues) {
             }
         }
     }
+    return result;
     console.log(result);
 }
