@@ -51,7 +51,11 @@ export function verifyString(array) {
             }
         }
     }
-    return aux.trim();
+    if (aux.split(' ').includes('true')) {
+        return aux.trim();
+    } else {
+        return 'false ' + aux.trim();
+    }
 }
 
 
