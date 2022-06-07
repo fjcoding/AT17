@@ -13,21 +13,18 @@ let result = [];
 
 for (let position = 0; position < stringSplitted.length; position++) {
     if (login(schema, stringSplitted[position])) {
-         let list = loginRule();
-         result.push(list);
+        let list = loginRule();
+        result.push(list);
     }
     if (port(schema, stringSplitted[position])) {
-         let list = portRule(stringSplitted[position + 1]);
-         result.push(list);
-     }
+        let list = portRule(stringSplitted[position + 1]);
+        result.push(list);
+    }
     if (address(schema, stringSplitted[position]) && addressOrArray(stringSplitted) == 'direction') {
         let list = addressRule(stringSplitted[position + 1]);
         result.push(list);
     }
-
-    };
-    for (let position = 0 ; position < result.length; position++){
-        console.log(result[position]);
-
-    }
-   
+}
+for (let position = 0; position < result.length; position++) {
+    console.log(result[position]);
+}

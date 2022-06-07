@@ -1,8 +1,7 @@
 
 
-import {loginRule} from "./rules.js";
-import {portRule} from "./rules.js";
-import {addressRule} from "./rules.js"
+import {loginRule} from './rules.js';
+
 test('constructLogging should be retorned a json structure with a logging dates', () => {
     let login = {
         argument: '-l',

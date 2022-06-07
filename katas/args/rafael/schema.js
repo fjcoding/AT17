@@ -1,5 +1,4 @@
 export function rules() {
-    
     let address = ' ';
     let port = 0;
     let loging = false;
@@ -22,7 +21,7 @@ export function rules() {
             type: 'int',
             value: port
         },
-      
+
     ];
     return givenRules;
 }
