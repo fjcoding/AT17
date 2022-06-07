@@ -4,7 +4,7 @@ export class textParserToArray {
     }
 
     init() {
-        let textIntoArray = this.args.split(' ');  
+        let textIntoArray = this.args.split(' ');
         let result = verifyString(textIntoArray);
 
         if (result == '') {
