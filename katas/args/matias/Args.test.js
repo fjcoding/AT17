@@ -1,4 +1,4 @@
-const { Args, ErrorCode } = require('../matias/Args',);
+const { Args,} = require('../matias/Args',);
 
 describe('#Args before refactoring', () => {
     describe('Given a valid schema "i#,b,d##,s*"', () => {
