@@ -27,10 +27,11 @@ console.log(flagExist(flags, schema));
 correctValues(flags, values);
 
 export function isLetter(str) {
-    if(str.length === 1 && str.match(/[a-z]/i))
-    {return true;}
-    else
-    {return false;}
+    if (str.length === 1 && str.match(/[a-z]/i)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export function flagExist(arrflags, arrSchema) {
