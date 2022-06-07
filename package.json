@@ -25,6 +25,7 @@
     "langant:maria": "node katas/langtonant/maria/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
+    "args:rafael": "node katas/args/rafael/main.js",
     "test": "jest"
   },
   "repository": {
@@ -42,5 +43,8 @@
     "eslint": "^8.16.0",
     "eslint-plugin-jest": "^26.4.6",
     "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "sinon": "^14.0.0"
   }
 }
