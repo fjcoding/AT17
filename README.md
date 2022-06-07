@@ -48,3 +48,9 @@ As authors, make sure that PRs have the following:
 - PR Title: Brief summary of changes being delivered by the PR. This should help reviewers to understand what is the goal of the changes
 - PR Description (Optional): If Title is not enough, use PR description to add details about changes being delivered in the PR.
 - A moderate number of changes. Goals for PRs should be kept as small as possible, so it's easier for reviewers to understand and reduce chances to introduce bugs hard to catch
+
+# Project - Console Gaming
+Console gaming aims to "emulate" classic videogames but run in the console!
+
+- [Pacman](./src/pacman/README.md)
+- [Space Invaders](./src/spaceinvaders/README.md)
