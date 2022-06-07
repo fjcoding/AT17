@@ -23,7 +23,8 @@ export class Interpreter {
             if (index > -1) {
                 key = e.trim().substring(0, index);
                 value = e.trim().substring(index, e.trim().length);
-                value = (Number(value) ? parseInt(value) : '"' + value.trim() + '"');
+                // value = (Number(value) ? parseInt(value) : '"' + value.trim() + '"');
+                value = this.getValue(key, value);
             }
             stringObject += '"' + key + '":' + value + ',';
         });
