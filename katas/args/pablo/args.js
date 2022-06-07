@@ -68,6 +68,6 @@ export function correctValues(arrFlags, arrValues) {
             }
         }
     }
-    return result;
     console.log(result);
+    return result;
 }
