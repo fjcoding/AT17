@@ -25,7 +25,8 @@
     "langant:maria": "node katas/langtonant/maria/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
-    "test": "jest"
+    "test": "jest",
+    "args:jorge": "node katas/args/jorge/main.js"
   },
   "repository": {
     "type": "git",
