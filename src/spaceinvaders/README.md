@@ -24,3 +24,12 @@ Demo: https://freeinvaders.org/
     - If spaceship hits a super alien ship, extra points are won
     - If the last alien alive is hit, spaceship wins
     - If aliens reach spaceship position, spaceship loses a life and game restarts
+
+# Team members
+- Rafael
+- Micaela
+- Morelia
+- Matias
+- Christian
+- Jorge
+- Richard

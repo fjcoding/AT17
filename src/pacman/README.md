@@ -26,3 +26,12 @@ Demo: https://g.co/kgs/G8eUP1
     - Fruits appear randomly in pacman's starting point for a brief period of time. If eaten by pacman, pacman wins extra points
     - Once all dots have been eaten, pacman wins
     - Ghosts move randomnly trying to hunt pacman
+
+# Team members
+- Maria
+- Pablo
+- Jhon
+- Guillermo
+- Alfredo
+- Marcelo
+- Rene
