@@ -53,9 +53,8 @@ export function verifyString(array) {
     }
     if (aux.split(' ').includes('true')) {
         return aux.trim();
-    } 
-        return aux.trim();
-    
+    }
+    return aux.trim();
 }
 
 
