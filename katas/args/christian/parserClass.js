@@ -53,9 +53,9 @@ export function verifyString(array) {
     }
     if (aux.split(' ').includes('true')) {
         return aux.trim();
-    } else {
-        return 'false ' + aux.trim();
-    }
+    } 
+        return aux.trim();
+    
 }
 
 
