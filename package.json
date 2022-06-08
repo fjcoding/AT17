@@ -16,6 +16,7 @@
   },
   "scripts": {
     "langant:christian": "node katas/langtonant/christian/main.js",
+    "args:christian": "node katas/args/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
     "langtonant:marcelo": "node katas/langtonant/marcelo/main.js",
