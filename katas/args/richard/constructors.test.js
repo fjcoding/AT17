@@ -5,7 +5,7 @@ import { constructDirection } from './constructors.js';
 import { constructStringArray } from './constructors.js';
 import { constructIntegerArray } from './constructors.js';
 
-test('declareSchema should be retorned a json structure', () => {
+test('declareSchema should be returned a json structure', () => {
     const testSchema = {
         symbol: '-l',
         name: 'logging',
@@ -16,7 +16,7 @@ test('declareSchema should be retorned a json structure', () => {
     expect(result[0]).toStrictEqual(testSchema);
 });
 
-test('constructLogging should be retorned a json structure with a logging dates', () => {
+test('constructLogging should be returned a json structure with a logging dates', () => {
     const testLogging = {
         symbol: '-l',
         name: 'logging',
@@ -28,7 +28,7 @@ test('constructLogging should be retorned a json structure with a logging dates'
 });
 
 
-test('constructPort should be retorned a json structure with a port dates and a port value', () => {
+test('constructPort should be returned a json structure with a port dates and a port value', () => {
     const testValue = 8080;
     const testPort = {
         symbol: '-p',
@@ -39,7 +39,7 @@ test('constructPort should be retorned a json structure with a port dates and a 
     const result = constructPort(testValue);
     expect(result).toStrictEqual(testPort);
 });
-test('constructDirection should be retorned a json structure with a direction dates and a direction value', () => {
+test('constructDirection should be returned a json structure with a direction dates and a direction value', () => {
     const testDirectionValue = '/usr/dir';
     const testDirection = {
         symbol: '-d',
@@ -51,7 +51,7 @@ test('constructDirection should be retorned a json structure with a direction da
     expect(result).toStrictEqual(testDirection);
 });
 
-test('constructStringArray should be retorned a json structure with an array dates and a string array values', () => {
+test('constructStringArray should be returned a json structure with an array dates and a string array values', () => {
     const testChain = 'this,is,a,list';
     const stringArray = testChain.split(',');
     const testListString = {
@@ -64,7 +64,7 @@ test('constructStringArray should be retorned a json structure with an array dat
     expect(result).toStrictEqual(testListString);
 });
 
-test('constructIntegerArray should be retorned a json structure with an array dates and a string array values', () => {
+test('constructIntegerArray should be returned a json structure with an array dates and a string array values', () => {
     const testChain = '1,2,3,-5';
     const stringArray = testChain.split(',');
     const testListInteger = {
