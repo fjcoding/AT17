@@ -42,7 +42,7 @@ export class Parser {
                     pos++;
                 }
             } else {
-                console.log('Inserte argumentos validos');
+                console.log('Please insert valids args');
                 break;
             }
         }
@@ -51,8 +51,8 @@ export class Parser {
 
     isCommand(char) {
         let flag = Boolean(false);
-        for (let x = 0; x < 3; x++) {
-            let args = 'param' + x;
+        for (let index = 0; index < 3; index++) {
+            let args = 'param' + index;
             let charAux = this.schema[args]['symbol'];
             if (char == charAux) {
                 flag = Boolean(true);
@@ -63,11 +63,11 @@ export class Parser {
 
     getValue(args, pos) {
         let res = '';
-        for (let x = pos + 1; x < args.length; x++) {
-            if (args.charAt(x) != ' ') {
-                res = res + args.charAt(x);
+        for (let index = pos + 1; index < args.length; index++) {
+            if (args.charAt(index) != ' ') {
+                res = res + args.charAt(index);
             } else {
-                x = args.length;
+                index = args.length;
             }
         }
         return res;
@@ -76,17 +76,9 @@ export class Parser {
     fillSchema(cont, command) {
         let flag;
         if (command == 'l') {
-            if (cont.length <= 0) {
-                flag = Boolean(true);
-            } else {
-                flag = Boolean(false);
-            }
+            flag = cont.length <= 0;
         } else if (command == 'p') {
-            if (this.isNumber(cont)) {
-                flag = cont * 1;
-            } else {
-                flag = 0;
-            }
+            flag = this.isNumber(cont) ? flag = cont * 1 : flag = 0;
         } else if (command == 'd') {
             flag = cont;
         }
