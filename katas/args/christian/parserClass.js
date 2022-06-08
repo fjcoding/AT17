@@ -8,7 +8,7 @@ export class Parser {
         let result = verifyString(array);
 
         if (result == '') {
-            return 'Ningun Argumento Coincide';
+            return 'No Argument Matches';
         } else {
             return result;
         }

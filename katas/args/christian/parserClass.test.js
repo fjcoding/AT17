@@ -1,15 +1,15 @@
 import { Parser, verifyString, isArrayString, isArrayNumber } from './parserClass.js';
 
-const aux = new Parser('hola mundo');
+const aux = new Parser('hello world');
 test('Class Init recived String correctly', () => {
     const result = aux.args;
-    expect(result).toBe('hola mundo');
+    expect(result).toBe('hello world');
 });
 
-const aux1 = new Parser('hola mundo');
+const aux1 = new Parser('hello world');
 test(' Parser Work Completly', () => {
     const result = aux1.init();
-    expect(result).toBe('Ningun Argumento Coincide');
+    expect(result).toBe('No Argument Matches');
 });
 
 const aux2 = new Parser('-l -g r,t,r');
