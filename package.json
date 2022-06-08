@@ -45,8 +45,5 @@
     "eslint": "^8.16.0",
     "eslint-plugin-jest": "^26.4.6",
     "jest": "^28.1.0"
-  },
-  "dependencies": {
-    "sinon": "^14.0.0"
   }
 }
