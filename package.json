@@ -7,6 +7,7 @@
     "langant:christian": "node katas/langtonant/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:matias": "node katas/langtonant/matias/main.js",
+    "langant:alfredo": "node katas/langtonant/alfredo/main.js",
     "langant:guillermo": "node katas/langtonant/guillermo/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
     "langtonant:marcelo": "node katas/langtonant/marcelo/main.js",
