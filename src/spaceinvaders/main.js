@@ -6,7 +6,7 @@ import { Alien } from './enemy.js';
 let row = 15;
 let col = 15;
 let posColAliens = -1;
-let posRowAliens = 0;
+let posRowAliens = 1;
 let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
@@ -33,7 +33,7 @@ function run() {
         updateAliensCol(posRowAliens, posColAliens);
         posColAliens ++;
     } else {
-        posRowAliens = 0;
+        posRowAliens = 1;
     }
 
     process.stdout.write(board.print());
@@ -45,7 +45,7 @@ setInterval(run, 300);
 
 function initAliens(content) {
     for (let posX = content.length - 2; posX >= Math.floor(content.length * 0.8); posX--) {
-        for (let posY = 2; posY < content[posX].length - 2; posY++) {
+        for (let posY = 4; posY < content[posX].length - 4; posY++) {
             const alien = new Alien(posX, posY, content);
             aliens.push(alien);
         }

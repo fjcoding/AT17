@@ -12,6 +12,7 @@ export class Alien {
 
     setAlien(x, y) {
         this.content[x][y] = ' A ';
+        return this.content;
     }
 
 
