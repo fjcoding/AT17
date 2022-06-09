@@ -16,6 +16,7 @@
   },
   "scripts": {
     "langant:christian": "node katas/langtonant/christian/main.js",
+    "args:christian": "node katas/args/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
     "langtonant:marcelo": "node katas/langtonant/marcelo/main.js",
@@ -24,6 +25,8 @@
     "langant:richard": "node katas/langtonant/richard/main.js",
     "langant:maria": "node katas/langtonant/maria/main.js",
     "args:marcelo": "node katas/args/marcelo/main.js",
+    "args:richard": "node katas/args/richard/main.js",
+    "args:alfredo": "node katas/args/alfredo/main.js",
     "args:guillermo": "node katas/args/guillermo/main.js",
     "args:morelia": "node katas/args/morelia/main.js",
     "lint": "eslint . --ext .js",
