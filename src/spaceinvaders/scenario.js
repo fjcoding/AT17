@@ -38,22 +38,22 @@ export class Scenario {
  *
  * return this content
  */
-        for (let i = 0; i < this.row; i++) {
+        for (let i = 0; i < this.col; i++) {
             this.content[0][i] = '---';
         }
-        for (let i = 0; i < this.row; i++) {
+        for (let i = 0; i < this.col; i++) {
             this.content[this.row - 1][i] = '---';
         }
-        for (let i = 0; i < this.col; i++) {
+        for (let i = 0; i < this.row; i++) {
             this.content[i][0] = ' | ';
         }
-        for (let i = 0; i < this.col; i++) {
+        for (let i = 0; i < this.row; i++) {
             this.content[i][this.col - 1] = ' | ';
         }
         this.content[0][0] = ' ╚-';
-        this.content[0][this.row - 1] = '-╝ ';
-        this.content[this.col - 1][0] = ' ╔-';
-        this.content[this.col - 1][this.row - 1] = '-╗ ';
+        this.content[0][this.col - 1] = '-╝ ';
+        this.content[this.row - 1][0] = ' ╔-';
+        this.content[this.row - 1][this.col - 1] = '-╗ ';
         return this.content;
     }
 
