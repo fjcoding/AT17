@@ -1,10 +1,10 @@
 
 
 export class Scenario {
-    constructor(row, col, content) {
+    constructor(row, col) {
         this.row = row + 2;
         this.col = col + 2;
-        this.content = content;
+        this.content = [];
     }
 
     initBoard() {
@@ -24,6 +24,9 @@ export class Scenario {
                 this.content[row][column] = ' . ';
             }
         }
+    }
+
+    getBoard() {
         return this.content;
     }
 
