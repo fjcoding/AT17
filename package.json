@@ -15,6 +15,8 @@
     ]
   },
   "scripts": {
+    "space": "node src/spaceinvaders/main.js",
+    "space:test": "jest src/spaceinvaders/*",
     "langant:christian": "node katas/langtonant/christian/main.js",
     "langant:jose": "node katas/langtonant/jose/main.js",
     "langant:rafael": "node katas/langtonant/rafael/main.js",
