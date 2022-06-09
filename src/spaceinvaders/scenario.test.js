@@ -1,12 +1,11 @@
 import { Scenario } from './scenario.js';
 
 test('the function inicialize the scenario and the content on center it will be the dimation in this case 2x2', () => {
-   
     let row = 2;
     let col = 2;
-    let content = []
+    let content = [];
 
-    let board = new Scenario(row,col, content);
+    let board = new Scenario(row, col, content);
     board.initBoard();
 
     expect(board.content[1][1]).toBe(' . ');
@@ -15,12 +14,11 @@ test('the function inicialize the scenario and the content on center it will be 
     expect(board.content[2][2]).toBe(' . ');
 });
 test('the function to comprobe the border of the scenario', () => {
-   
     let row = 2;
     let col = 2;
-    let content = []
- 
-    let board = new Scenario(row,col, content);
+    let content = [];
+
+    let board = new Scenario(row, col, content);
     board.initBoard();
     board.putBorder();
 
