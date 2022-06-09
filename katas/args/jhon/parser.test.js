@@ -61,3 +61,25 @@ test('isNumber should return the value of the command', () => {
     let valActual2 = new Parser().isNumber('56029swa');
     expect(valActual2).toEqual(false);
 });
+
+test('disjoinArgs should get the value of the arg and set their value into the res', () => {
+    let resExpected = {
+        l : false,
+        p : 1010,
+        d : ''
+    };
+    let parser = new Parser;
+    parser.pos = 2;
+    parser.disjoinArgs('p', ' ', '-p 1010 -d /path/etc');
+    let valActual = parser.res;
+    expect(valActual).toEqual(resExpected);
+});
+
+test('disjoinArgs should set the pos before the next arg', () => {
+    let resExpected = 8;
+    let parser = new Parser;
+    parser.pos = 2;
+    parser.disjoinArgs('p', ' ', '-p 1010 -d /path/etc');
+    let valActual = parser.pos;
+    expect(valActual).toEqual(resExpected);
+});
