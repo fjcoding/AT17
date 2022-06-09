@@ -18,35 +18,39 @@ export class Parser {
                 type: 'String'
             }
         };
-    }
-
-    parser(args) {
-        let res = {
+        this.res = {
             l : false,
             p : 0,
             d : ''
         };
-        let pos = 0;
-        while (pos < args.length) {
-            let char = args.charAt(pos);
+        this.pos = 0;
+    }
+
+    parser(args) {
+        while (this.pos < args.length) {
+            let char = args.charAt(this.pos);
             if (char == '-') {
-                char = args.charAt(pos = pos + 1);
-                let charR = args.charAt(pos = pos + 1);
-                if (this.isCommand(char) && charR == ' ' && args.charAt(pos + 1) != '-') {
-                    let cont = this.getValue(args, pos);
-                    pos = pos + cont.length + 2;
-                    res[char] = this.fillSchema(cont, char);
-                    console.log(res);
-                } else {
-                    res[char] = this.fillSchema('', char);
-                    pos++;
-                }
+                char = args.charAt(this.pos = this.pos + 1);
+                let charR = args.charAt(this.pos = this.pos + 1);
+                this.disjoinArgs(char, charR, args);
             } else {
                 console.log('Please insert valids args');
                 break;
             }
         }
-        return res;
+        return this.res;
+    }
+
+    disjoinArgs(char, charR, args) {
+        if (this.isCommand(char) && charR == ' ' && args.charAt(this.pos + 1) != '-') {
+            let cont = this.getValue(args, this.pos);
+            this.pos = this.pos + cont.length + 2;
+            this.res[char] = this.fillSchema(cont, char);
+            console.log(this.res);
+        } else {
+            this.res[char] = this.fillSchema('', char);
+            this.pos++;
+        }
     }
 
     isCommand(char) {
