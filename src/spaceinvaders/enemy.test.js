@@ -45,7 +45,7 @@ test('Probing if the alien is setting up in the position (2,0)', () => {
     expect(alien.setAlien(2, 0)).toStrictEqual(expected);
 });
 
-test('Probing if the alien is setting up in the position (2,0)', () => {
+test('Probing if the alien is setting up in the position (4,1)', () => {
     let expected = [[0, 0],
         [0, 0],
         [0, 0],
