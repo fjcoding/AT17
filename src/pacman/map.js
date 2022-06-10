@@ -2,9 +2,11 @@ import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
 
 const CLEAR = '\x1Bc';
 const PACMAN = '\u15E7';
+const GHOST = '\u15E3';
 const BLOCK = '\u25B1';
 const DOT = '*';
 const SPACE = ' ';
+const CRASH = '\u1F4A5';
 
 export class Map {
     constructor (map) {
@@ -21,20 +23,35 @@ export class Map {
         return this.map[positionY][positionX];
     }
 
-    printMap(positionX, positionY) {
+    printLenght(i) {
+        return this.map[i].length;
+    }
+
+    printMap(positionXPacman, positionYPacman, positionXGhost, positionYGhost,) {
         let arrText = '';
         process.stdout.write(CLEAR);
         for (let i = 0; i < this.rows; i++) {
             for (let k = 0; k < this.columns; k++) {
-                if (positionY == i && positionX == k) {
-                    arrText += PACMAN + '  ';
+                if (positionYPacman == positionXGhost && positionXPacman == positionYGhost) {
+                    arrText += CRASH + '  ';
                 } else {
-                    if (this.map[i][k] == 0) {
-                        arrText += BLOCK + '  ';
-                    } else if ((this.map[i][k] == 1)) {
-                        arrText += DOT + '  ';
-                    } else if ((this.map[i][k] == 2) || (this.map[i][k] == 3)) {
-                        arrText += SPACE + '  ';
+                    if (positionYPacman == i && positionXPacman == k) {
+                        //arrText += GHOST + '  ';
+                        arrText += PACMAN + '  ';
+                    } else {
+                        if (this.map[i][k] == 0) {
+                            arrText += BLOCK + '  ';
+                        } else if ((this.map[i][k] == 1)) {
+                            arrText += DOT + '  ';
+                        } else if ((this.map[i][k] == 2) || (this.map[i][k] == 3)) {
+                            arrText += SPACE + '  ';
+                        } else if ((this.map[i][k] == 4)) {
+                            arrText += 'O' + '  ';
+                        }
+                    }
+                    if (positionYGhost == i && positionXGhost == k) {
+                        arrText = '';
+                        arrText += GHOST + '  ';
                     }
                 }
                 process.stdout.write(arrText);
