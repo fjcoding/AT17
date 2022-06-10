@@ -1,6 +1,6 @@
 import { Scenario } from './scenario.js';
 
-test('the function inicialize the scenario and the content on center it will be the dimation in this case 2x2', () => {
+test('the function initialize the scenario and the content on center it will be the dimention in this case 2x2', () => {
     let row = 2;
     let col = 2;
     let content = [];
@@ -13,7 +13,7 @@ test('the function inicialize the scenario and the content on center it will be 
     expect(board.content[2][1]).toBe(' . ');
     expect(board.content[2][2]).toBe(' . ');
 });
-test('the function to comprobe the border of the scenario', () => {
+test('the function to comprobe the border of the scenario, in this case 2x2 dimention', () => {
     let row = 2;
     let col = 2;
     let content = [];
