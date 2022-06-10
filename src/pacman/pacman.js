@@ -8,6 +8,11 @@ export class Pacman {
         this.positionX = posX;
         this.positionY = posY;
         this.direction = RIGHT;
+        this.edible = true;
+        this.score = 0;
+        this.initialPositionX = posX;
+        this.initialPositionY = posY;
+        this.life = 2;
     }
 
     setDirection(newDirection) {
@@ -21,6 +26,10 @@ export class Pacman {
     setPosition(posX, posY) {
         this.positionX = posX;
         this.positionY = posY;
+    }
+
+    changeEdible() {
+        this.edible = !this.edible;
     }
 
     movePacman() {
@@ -38,5 +47,18 @@ export class Pacman {
             this.positionY++;
             break;
         }
+    }
+
+    eat(positionX, positionY) {
+        if (positionX == this.positionX && positionY == this.positionY) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    resetToInitialPosition() {
+        this.positionX = this.initialPositionX;
+        this.positionY = this.initialPositionY;
     }
 }
