@@ -1,24 +1,25 @@
 export class textParserToArray {
-    constructor(args) {
-        this.args = args;
+    constructor(inputText) {
+        this.inputText = inputText;
     }
 
     init() {
-        let textIntoArray = this.args.split(' ');
-        let result = verifyString(textIntoArray);
+        let textIntoArray = this.inputText.split(' ');
+        let result = verifyInputString(textIntoArray);
 
         if (result == '') {
-            return 'Please write your args';
+            return 'Please write again your input Text';
         } else {
             return result;
         }
     }
 }
 
-export function verifyString(array) {
+export function verifyInputString(array) {
     let result = '';
+    let size = array.length;
     // -l flag logging = trues if exist and false if not exist
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < size; i++) {
         if (array[i] == '-l') {
             result += true + ' ';
         }
@@ -36,16 +37,16 @@ export function verifyString(array) {
         }
         // -g flag Array Of String = must go accompanied for Array Of String
         if (array[i] == '-g' && array[i + 1] != undefined) {
-            let arrString = array[i + 1].split(',');
-            if (isArrayString(arrString)) {
-                result += arrString + ' ';
+            let flagString = array[i + 1].split(',');
+            if (isString(flagString)) {
+                result += flagString + ' ';
             }
         }
         // -n flag Array Of Numbers = must go accompanied for Array Of Numbers
         if (array[i] == '-n' && array[i + 1] != undefined) {
-            let arrNumber = array[i + 1].split(',');
-            if (isArrayNumber(arrNumber)) {
-                result += arrNumber + ' ';
+            let flagNumber = array[i + 1].split(',');
+            if (isNumber(flagNumber)) {
+                result += flagNumber + ' ';
             }
         }
     }
@@ -53,29 +54,29 @@ export function verifyString(array) {
 }
 
 
-export function isArrayString(array) {
-    let flag = true;
+export function isString(array) {
+    let size = array.length;
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < size; i++) {
         if (isNaN(array[i])) {
-            flag = flag && true;
+            return true;
         } else {
             return false;
         }
     }
-    return flag;
+    return true;
 }
 
-export function isArrayNumber(array) {
-    let flag = true;
+export function isNumber(array) {
+    let size = array.length;
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < size; i++) {
         if (!isNaN(parseInt(array[i]))) {
-            flag = flag && true;
+            return true;
         } else {
             return false;
         }
     }
 
-    return flag;
+    return true;
 }
