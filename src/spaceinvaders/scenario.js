@@ -6,6 +6,7 @@ export class Scenario {
         this.col = col + 2;
         this.content = [];
     }
+
     /**
      * This function create a vector bidimensional with borders adition but all of them will have character (' . ')
      *
@@ -17,7 +18,6 @@ export class Scenario {
      * return this content
      */
     initBoard() {
-       
         for (let row = 0; row < this.row; row++) {
             this.content[row] = [];
             for (let column = 0; column < this.col; column++) {
@@ -29,6 +29,7 @@ export class Scenario {
     getBoard() {
         return this.content;
     }
+
     /**
      * This function create a border on the content with specific characters
      *
@@ -40,7 +41,6 @@ export class Scenario {
      * return this content
      */
     putBorder() {
-        
         for (let i = 0; i < this.col; i++) {
             this.content[0][i] = '---';
         }
@@ -68,7 +68,6 @@ export class Scenario {
      * return all the chain to print on console
      */
     print() {
-        
         let printed = '';
         for (let posX = this.row - 1; posX >= 0; posX--) {
             for (let posY = 0; posY < this.col; posY++) {
