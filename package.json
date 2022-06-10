@@ -23,7 +23,7 @@
     "langant:morelia": "node katas/langtonant/morelia/main.js",
     "langant:richard": "node katas/langtonant/richard/main.js",
     "langant:maria": "node katas/langtonant/maria/main.js",
-    "pacman:pacmangame": "node src/pacman/pacmanGame/main.js",
+    "pacman:pacmangame": "node src/pacman/main.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix",
     "test": "jest"
