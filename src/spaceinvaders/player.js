@@ -10,6 +10,7 @@ export class Player {
 
     setPlayer(content, element) {
         content[this.x][this.y] = element;
+        return content;
     }
 
     walkToRight() {
