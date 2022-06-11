@@ -1,5 +1,3 @@
-import { LEFT, Pacman, RIGHT } from './pacman.js';
-import { Ghost } from './ghost.js';
 import { Map } from './map.js';
 
 let mapPacman = [
@@ -42,4 +40,4 @@ function run() {
     gameBoard.map = gameBoard.redrawMap();
 }
 
-let id = setInterval(run, 600);
+setInterval(run, 600);
