@@ -6,7 +6,7 @@ export class Alien {
     constructor(x, y, content) {
         this.x = x;
         this.y = y;
-        this.dierction = 'left';
+        this.direction = 'left';
         this.content = content;
     }
 
@@ -17,15 +17,15 @@ export class Alien {
 
 
     setDirectionRight() {
-        this.dierction = RIGHT;
+        this.direction = RIGHT;
     }
 
     setDirectionLeft() {
-        this.dierction = LEFT;
+        this.direction = LEFT;
     }
 
     updateAlien(banderaRow, banderaCol) {
-        if (this.dierction == LEFT) {
+        if (this.direction == LEFT) {
             this.setAlien(this.x - banderaRow, this.y + banderaCol);
         }
     }
