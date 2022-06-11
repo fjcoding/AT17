@@ -7,17 +7,17 @@ export class Scenario {
         this.content = [];
     }
 
+    /**
+     * This function create a vector bidimensional with borders adition but all of them will have character (' . ')
+     *
+     * . . . .
+     * . . . .
+     * . . . .
+     * . . . .
+     *
+     * return this content
+     */
     initBoard() {
-        /**
- * This function create a vector bidimensional with borders adition but all of them will have character (' . ')
- *
- * . . . .
- * . . . .
- * . . . .
- * . . . .
- *
- * return this content
- */
         for (let row = 0; row < this.row; row++) {
             this.content[row] = [];
             for (let column = 0; column < this.col; column++) {
@@ -30,17 +30,17 @@ export class Scenario {
         return this.content;
     }
 
+    /**
+     * This function create a border on the content with specific characters
+     *
+     * ╔-----╗
+     * | . . |
+     * | . . |
+     * ╚-----╝
+     *
+     * return this content
+     */
     putBorder() {
-        /**
- * This function create a border on the content with specific characters
- *
- * ╔-----╗
- * | . . |
- * | . . |
- * ╚-----╝
- *
- * return this content
- */
         for (let i = 0; i < this.col; i++) {
             this.content[0][i] = '---';
         }
@@ -60,16 +60,14 @@ export class Scenario {
         return this.content;
     }
 
-
+    /**
+     * This function print in one chain and it will give all the positions the character send like:
+     *
+     * printed : ╔-----╗ +'\n' + | . . | '\n' + | . . | '\n' + ╚-----╝' \n'
+     *
+     * return all the chain to print on console
+     */
     print() {
-        /**
- * This function print in one chain and it will give all the positions the character send like:
- *
- * printed : ╔-----╗ +'\n' + | . . | '\n' + | . . | '\n' + ╚-----╝' \n'
- *
- *
- * return all the chain to print on console
- */
         let printed = '';
         for (let posX = this.row - 1; posX >= 0; posX--) {
             for (let posY = 0; posY < this.col; posY++) {
