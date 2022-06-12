@@ -1,7 +1,7 @@
 import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
-
+import { Apple } from './apple.js';
 const CLEAR = '\x1Bc';
 const PACMAN = '\u15E7';
 // const GHOST = '\u2126';
@@ -10,7 +10,7 @@ const BLOCK = '\u2592';
 const DOT = '•';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
-
+const APPLE = '\uD83C\uDF4E';
 export class Map {
     constructor(map) {
         this.map = map;
@@ -18,6 +18,7 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(14, 11);
+        this.apple = new Apple(20,29);
     }
 
     changeValue(positionX, positionY, value) {
@@ -58,6 +59,14 @@ export class Map {
                         arrText = '';
                         arrText += ' ' + GHOST + ' ';
                     }
+                    if (this.apple.positionY== i && this.apple.positionX == k && this.apple.notEaten==false) {
+                        arrText = '';
+                        arrText += ' ' + APPLE + ' ';
+                    } 
+                    if (this.apple.positionY== i && this.apple.positionX == k && this.apple.notEaten==true) {
+                        arrText = '';
+                        arrText += ' ' + SPACE + ' ';
+                    } 
                 }
                 process.stdout.write(arrText);
                 arrText = '';
@@ -159,6 +168,11 @@ export class Map {
             this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
             this.pacman.score += 10;
         }
+         if (this.pacman.positionX==this.apple.positionX && this.pacman.positionY==this.apple.positionY) {
+            this.changeValue(this.apple.positionY, this.apple.positionX, 2);
+            this.apple.notEaten==true;
+            this.pacman.score += 700;
+        } 
         if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {
             this.pacman.setPosition(0, 14);
         } else if (this.pacman.positionX == 0 && this.pacman.positionY == 14 && this.pacman.direction == LEFT) {
