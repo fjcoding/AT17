@@ -4,6 +4,7 @@ export class Apple {
         this.positionX=posX;
         this.positionY=posY; 
         this.notEaten=true;
+        this.id=5;
     }
 
     getPositionX() {
@@ -12,7 +13,9 @@ export class Apple {
     getPositionY() {
         return this.positionY;
     }
-   
+    getnotEaten() {
+        return this.notEaten;
+    }
     setPosition(posX, posY) {
         this.positionX = posX;
         this.positionY = posY;
