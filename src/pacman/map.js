@@ -71,16 +71,17 @@ export class Map {
     }
 
     checkCorners (direction, positionX, positionY) {
-        switch (direction) {
-        case RIGHT:
-            return this.checkRight(positionX, positionY);
-        case LEFT:
-            return this.checkLeft(positionX, positionY);
-        case UP:
-            return this.checkUp(positionX, positionY);
-        case DOWN:
-            return this.checkDown(positionX, positionY);
-        }
+        // switch (direction) {
+        // case RIGHT:
+        //     return this.checkRight(positionX, positionY);
+        // case LEFT:
+        //     return this.checkLeft(positionX, positionY);
+        // case UP:
+        //     return this.checkUp(positionX, positionY);
+        // case DOWN:
+        //     return this.checkDown(positionX, positionY);
+        // }
+        return this.returnRouteDireccion(positionX, positionY, direction);
     }
 
     checkRight(positionX, positionY) {
@@ -192,5 +193,70 @@ export class Map {
         process.stdout.write('Ghost: ' + this.ghost.positionX + ' , ' + this.ghost.positionY);
         process.stdout.write('\n');
         return this.map;
+    }
+
+    /**
+    * It returns an array of directions that are free to move to
+    * @param positionX - The x coordinate of the current position.
+    * @param positionY - The Y coordinate of the current position.
+    * @param direction - the direction the "actor" is currently facing.
+    * @returns an array of directions that are free to move to.
+    */
+     getFreeDirection(positionX, positionY, routeFree) {
+        let freeDirection = [];
+        if (this.map[positionY][positionX + 1] == routeFree) {
+            freeDirection.push(RIGHT);
+        }
+        if (this.map[positionY - 1][positionX] == routeFree) {
+            freeDirection.push(UP);
+        }
+        if (this.map[positionY + 1][positionX] == routeFree) {
+            freeDirection.push(DOWN);
+        }
+        if (this.map[positionY][positionX - 1] == routeFree) {
+            freeDirection.push(LEFT);
+        }
+        if (positionX == 0) {
+            freeDirection.push( LEFT);
+        } else if (positionX == this.columns - 1) {
+            freeDirection.push( RIGHT);
+        }
+        return freeDirection;
+    }
+
+    /**
+     * If the direction is left, the opposite direction is right. If the direction is up, the opposite
+     * direction is down. If the direction is down, the opposite direction is up
+     * @param direction - The direction the "actor" is currently moving in.
+     * @returns The opposite direction of the direction passed in.
+     */
+    oppositeDirection(direction) {
+        let oppositeDirection = LEFT;
+        switch (direction) {
+            case LEFT: oppositeDirection = RIGHT; break;
+            case UP: oppositeDirection = DOWN; break;
+            case DOWN: oppositeDirection = UP; break;
+        }
+        return oppositeDirection;
+    }
+
+    /**
+     * It returns a random direction from an array of directions that are free
+     * @param positionX - The X position of the Actor.
+     * @param positionY - The Y position of the Actor
+     * @param direction - The direction the Actor is facing.
+     * @returns the direction of the next movement of the ghost.
+     */
+    returnRouteDireccion(positionX, positionY, direction) {
+        let newDireccion = direction;
+        let arrayDirections = this.getFreeDirection(positionX, positionY, 1);
+        if (arrayDirections.length == 0) {
+            arrayDirections = this.getFreeDirection(positionX, positionY, 2);
+        }
+        if (!arrayDirections.includes(direction)) {
+            let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length)));
+            newDireccion = arrayDirections[indexDirection];
+        }
+        return newDireccion;
     }
 }
