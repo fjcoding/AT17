@@ -14,6 +14,8 @@ let score = ' SCORE:  00000';
 let tab = '                   ';
 let lives = ' Lives: X X X';
 score += tab + lives + '\n';
+let flag = true;
+const posInitial = 1;
 
 
 function run() {
@@ -24,7 +26,8 @@ function run() {
     process.stdout.write(`\r${score}`);
     let boardFill = board.getBoard();
     initAliens(boardFill);
-    new Player(posXPlayer, posYPlayer, boardFill, ' W ');
+    let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
+    player.setPlayer(boardFill, ' W ');
     if (posColAliens == 2) {
         posRowAliens ++;
         posColAliens = -1;
@@ -35,9 +38,9 @@ function run() {
     } else {
         posRowAliens = 1;
     }
-
     process.stdout.write(board.print());
-    posXPlayer = posXPlayer == col ? 1 : posXPlayer + 1;
+    posYPlayer = player.changeDirection(flag, col, posInitial);
+    flag = player.changeFlag();
 }
 
 console.clear();
@@ -59,3 +62,4 @@ function updateAliensCol(banderaRow, banderaCol) {
         alien.updateAlien(banderaRow, banderaCol);
     });
 }
+
