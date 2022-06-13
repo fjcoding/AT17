@@ -202,7 +202,7 @@ export class Map {
     * @param direction - the direction the "actor" is currently facing.
     * @returns an array of directions that are free to move to.
     */
-     getFreeDirection(positionX, positionY, routeFree) {
+    getFreeDirection(positionX, positionY, routeFree) {
         let freeDirection = [];
         if (this.map[positionY][positionX + 1] == routeFree) {
             freeDirection.push(RIGHT);
@@ -217,9 +217,9 @@ export class Map {
             freeDirection.push(LEFT);
         }
         if (positionX == 0) {
-            freeDirection.push( LEFT);
+            freeDirection.push(LEFT);
         } else if (positionX == this.columns - 1) {
-            freeDirection.push( RIGHT);
+            freeDirection.push(RIGHT);
         }
         return freeDirection;
     }
@@ -233,9 +233,9 @@ export class Map {
     oppositeDirection(direction) {
         let oppositeDirection = LEFT;
         switch (direction) {
-            case LEFT: oppositeDirection = RIGHT; break;
-            case UP: oppositeDirection = DOWN; break;
-            case DOWN: oppositeDirection = UP; break;
+        case LEFT: oppositeDirection = RIGHT; break;
+        case UP: oppositeDirection = DOWN; break;
+        case DOWN: oppositeDirection = UP; break;
         }
         return oppositeDirection;
     }
