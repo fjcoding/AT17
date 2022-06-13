@@ -59,13 +59,13 @@ export class Map {
                         arrText = '';
                         arrText += ' ' + GHOST + ' ';
                     }
-                    if (this.apple.positionY== i && this.apple.positionX == k && this.apple.notEaten==false) {
-                        arrText = '';
-                        arrText += ' ' + APPLE + ' ';
-                    } 
                     if (this.apple.positionY== i && this.apple.positionX == k && this.apple.notEaten==true) {
                         arrText = '';
-                        arrText += ' ' + SPACE + ' ';
+                        arrText += ' '+APPLE ;
+                    } 
+                    if (this.apple.positionY== i && this.apple.positionX == k && this.apple.notEaten==false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
                     } 
                 }
                 process.stdout.write(arrText);
@@ -168,9 +168,9 @@ export class Map {
             this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
             this.pacman.score += 10;
         }
-         if (this.pacman.positionX==this.apple.positionX && this.pacman.positionY==this.apple.positionY) {
-            this.changeValue(this.apple.positionY, this.apple.positionX, 2);
-            this.apple.notEaten==true;
+         if (this.pacman.positionX==this.apple.positionX && this.pacman.positionY==this.apple.positionY&&this.apple.notEaten) {
+            this.changeValue(this.apple.positionX, this.apple.positionY, 2);
+            this.apple.notEaten=false;
             this.pacman.score += 700;
         } 
         if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {

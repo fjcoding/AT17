@@ -3,7 +3,7 @@ export class Apple {
     constructor(posX, posY) {
         this.positionX=posX;
         this.positionY=posY; 
-        this.notEaten=false;
+        this.notEaten=true;
     }
 
     getPositionX() {
@@ -12,9 +12,7 @@ export class Apple {
     getPositionY() {
         return this.positionY;
     }
-    setEaten() {
-        this.notEaten==true;
-    }
+   
     setPosition(posX, posY) {
         this.positionX = posX;
         this.positionY = posY;
