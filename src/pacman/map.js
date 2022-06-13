@@ -4,9 +4,10 @@ import { Ghost } from './ghost.js';
 
 const CLEAR = '\x1Bc';
 const PACMAN = '\u15E7';
+// const GHOST = '\u2126';
 const GHOST = '\u15E3';
-const BLOCK = '\u25B1';
-const DOT = '*';
+const BLOCK = '\u2592';
+const DOT = '•';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
 
@@ -37,25 +38,25 @@ export class Map {
         for (let i = 0; i < this.rows; i++) {
             for (let k = 0; k < this.columns; k++) {
                 if (positionYPacman == positionXGhost && positionXPacman == positionYGhost) {
-                    arrText += CRASH + '  ';
+                    arrText += ' ' + CRASH + ' ';
                 } else {
                     if (positionYPacman == i && positionXPacman == k) {
                         //arrText += GHOST + '  ';
-                        arrText += PACMAN + '  ';
+                        arrText += ' ' + PACMAN + ' ';
                     } else {
                         if (this.map[i][k] == 0) {
-                            arrText += BLOCK + '  ';
+                            arrText += BLOCK + BLOCK + BLOCK;
                         } else if ((this.map[i][k] == 1)) {
-                            arrText += DOT + '  ';
+                            arrText += ' ' + DOT + ' ';
                         } else if ((this.map[i][k] == 2) || (this.map[i][k] == 3)) {
                             arrText += SPACE + '  ';
                         } else if ((this.map[i][k] == 4)) {
-                            arrText += 'O' + '  ';
+                            arrText += ' ' + 'O' + ' ';
                         }
                     }
                     if (positionYGhost == i && positionXGhost == k) {
                         arrText = '';
-                        arrText += GHOST + '  ';
+                        arrText += ' ' + GHOST + ' ';
                     }
                 }
                 process.stdout.write(arrText);
