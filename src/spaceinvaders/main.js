@@ -6,7 +6,7 @@ import { Alien } from './enemy.js';
 let row = 15;
 let col = 15;
 let posColAliens = 0;
-let countMoveAlyen = 0;
+let stepsAlien = 0;
 let posRowAliens = 1;
 let posXPlayer = 1;
 let posYPlayer = 1;
@@ -57,17 +57,17 @@ function verifyMoveAliens() {
     if (posColAliens == 1) {
         posRowAliens ++;
         flagAlien = false;
-        countMoveAlyen = -1;
+        stepsAlien = -1;
     } else if (posColAliens == -1) {
         posRowAliens ++;
         flagAlien = true;
-        countMoveAlyen = -1;
+        stepsAlien = -1;
     } if (flagAlien) {
         posColAliens ++;
-        countMoveAlyen ++;
+        stepsAlien ++;
     } else {
         posColAliens --;
-        countMoveAlyen ++;
+        stepsAlien ++;
     }
 
     updateAliensCol();
@@ -75,7 +75,7 @@ function verifyMoveAliens() {
 
 function updateAliensCol() {
     aliens.forEach((alien) => {
-        alien.moveAlienRigthDown(posRowAliens, countMoveAlyen, flagAlien);
+        alien.moveAlienRigthDown(posRowAliens, stepsAlien, flagAlien);
     });
 }
 
