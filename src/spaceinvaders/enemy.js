@@ -1,12 +1,8 @@
-const LEFT = 'left';
-const RIGHT = 'right';
-
 
 export class Alien {
     constructor(x, y, content) {
         this.x = x;
         this.y = y;
-        this.direction = 'left';
         this.content = content;
     }
 
@@ -15,18 +11,11 @@ export class Alien {
         return this.content;
     }
 
-
-    setDirectionRight() {
-        this.direction = RIGHT;
-    }
-
-    setDirectionLeft() {
-        this.direction = LEFT;
-    }
-
-    updateAlien(banderaRow, banderaCol) {
-        if (this.direction == LEFT) {
+    moveAlienRigthDown(banderaRow, banderaCol, flag) {
+        if (flag) {
             this.setAlien(this.x - banderaRow, this.y + banderaCol);
+        } else {
+            this.setAlien(this.x - banderaRow, this.y - banderaCol);
         }
     }
 }

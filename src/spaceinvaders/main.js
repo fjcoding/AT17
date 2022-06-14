@@ -5,7 +5,8 @@ import { Alien } from './enemy.js';
 
 let row = 15;
 let col = 15;
-let posColAliens = -1;
+let posColAliens = 0;
+let countMoveAlyen = 0;
 let posRowAliens = 1;
 let posXPlayer = 1;
 let posYPlayer = 1;
@@ -15,6 +16,7 @@ let tab = '                   ';
 let lives = ' Lives: X X X';
 score += tab + lives + '\n';
 let flag = true;
+let flagAlyen = true;
 const posInitial = 1;
 
 
@@ -26,18 +28,9 @@ function run() {
     process.stdout.write(`\r${score}`);
     let boardFill = board.getBoard();
     initAliens(boardFill);
+    verifyMoveAliens();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
-    if (posColAliens == 2) {
-        posRowAliens ++;
-        posColAliens = -1;
-        updateAliensCol(posRowAliens, posColAliens);
-    } else if (posRowAliens < row - Math.floor(row / 5)) {
-        updateAliensCol(posRowAliens, posColAliens);
-        posColAliens ++;
-    } else {
-        posRowAliens = 1;
-    }
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
@@ -57,9 +50,33 @@ function initAliens(content) {
     return aliens;
 }
 
-function updateAliensCol(banderaRow, banderaCol) {
+function verifyMoveAliens() {
+    if (posRowAliens > row - Math.floor(row / 3)) {
+        posRowAliens = 1;
+    }
+    if (posColAliens == 1) {
+        posRowAliens ++;
+        flagAlyen = false;
+        countMoveAlyen = -1;
+    } else if (posColAliens == -1) {
+        posRowAliens ++;
+        flagAlyen = true;
+        countMoveAlyen = -1;
+    } if (flagAlyen) {
+        posColAliens ++;
+        countMoveAlyen ++;
+    } else {
+        posColAliens --;
+        countMoveAlyen ++;
+    }
+
+    updateAliensCol();
+}
+
+function updateAliensCol() {
     aliens.forEach((alien) => {
-        alien.updateAlien(banderaRow, banderaCol);
+        alien.moveAlienRigthDown(posRowAliens, countMoveAlyen, flagAlyen);
     });
 }
+
 
