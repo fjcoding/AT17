@@ -16,7 +16,7 @@ let tab = '                   ';
 let lives = ' Lives: X X X';
 score += tab + lives + '\n';
 let flag = true;
-let flagAlyen = true;
+let flagAlien = true;
 const posInitial = 1;
 
 
@@ -56,13 +56,13 @@ function verifyMoveAliens() {
     }
     if (posColAliens == 1) {
         posRowAliens ++;
-        flagAlyen = false;
+        flagAlien = false;
         countMoveAlyen = -1;
     } else if (posColAliens == -1) {
         posRowAliens ++;
-        flagAlyen = true;
+        flagAlien = true;
         countMoveAlyen = -1;
-    } if (flagAlyen) {
+    } if (flagAlien) {
         posColAliens ++;
         countMoveAlyen ++;
     } else {
@@ -75,7 +75,7 @@ function verifyMoveAliens() {
 
 function updateAliensCol() {
     aliens.forEach((alien) => {
-        alien.moveAlienRigthDown(posRowAliens, countMoveAlyen, flagAlyen);
+        alien.moveAlienRigthDown(posRowAliens, countMoveAlyen, flagAlien);
     });
 }
 
