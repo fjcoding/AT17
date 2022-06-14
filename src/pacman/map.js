@@ -168,7 +168,7 @@ export class Map {
             this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
             this.pacman.score += 10;
         }
-        if (this.apple.eaten(this.pacman.positionX,this.pacman.positionY) && this.apple.getnotEaten()) {
+        if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
             this.changeValue(this.apple.positionX, this.apple.positionY, 2);
             this.apple.notEaten = false;
             this.pacman.score += 700;
