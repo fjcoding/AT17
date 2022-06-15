@@ -31,3 +31,30 @@ test('the function to comprobe the border of the scenario, in this case 2x2 dime
 
     expect(board.content).toEqual(contentExpect);
 });
+
+test('the function to get only the board at the moment that the method getBoard is called', () => {
+    let content = [];
+    let contentExpect = [
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . ']
+
+    ];
+
+    let board = new Scenario(2, 2, content);
+    board.initBoard(' . ');
+
+    expect(board.getBoard()).toEqual(contentExpect);
+});
+
+test('the function that print the board when it is called, only return a large string', () => {
+    let content = [];
+    let resultExpect = ' .  .  . \n .  .  . \n .  .  . \n';
+
+    let board = new Scenario(1, 1, content);
+    board.initBoard(' . ');
+    console.log(board.print());
+    console.log(resultExpect);
+    expect(board.print()).toBe(resultExpect);
+});
