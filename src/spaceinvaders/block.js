@@ -17,25 +17,6 @@ export class Block {
 
         return this.content;
     }
-    /*
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  i  i  X  X  X  X  i  i  X  X  X  X  X  X
- X  i  o  i  i  X  X  i  o  i  i  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
- X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X
-
-largo = 16
-1er bloque = (16/2)= 8 luego 16/8 = 2, pos 1
-
-2do bloque =
-
-
-*/
-
 
     CheckDimentionBoard(content) {
         if (content.length > 10  && content[0].length > 7) {
@@ -44,7 +25,6 @@ largo = 16
             return false;
         }
     }
-
 
     setBlock(x1, x2, y) {
         this.content[y + 1][x1] = ' ━ ';
