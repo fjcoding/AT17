@@ -2,6 +2,7 @@ import readline from 'readline';
 import { Scenario } from './scenario.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
+import { Block } from './block.js';
 
 let row = 15;
 let col = 15;
@@ -31,6 +32,8 @@ function run() {
     verifyMoveAliens();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
+    let block = new Block(2, 3, 2, boardFill);
+    block.setBlock(2, 3, 2);
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
