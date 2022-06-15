@@ -1,42 +1,53 @@
+export const RIGTH = 'right';
+export const LEFT  = 'left';
+
 export class Player {
-    constructor(x, y, content, element, flag) {
-        this.x = x;
-        this.y = y;
+    constructor(posX, posY, content, element, direction) {
+        this.posX = posX;
+        this.posY = posY;
         this.content = content;
         this.element = element;
         this.setPlayer(content, element);
-        this.flag = flag;
+        this.direction = direction;
     }
 
     setPlayer(content, element) {
-        content[this.x][this.y] = element;
+        content[this.x][this.posY] = element;
         return content;
     }
 
     walkToRight() {
-        this.y += 1;
+        this.posY += 1;
     }
 
     walkToLeft() {
-        this.y -= 1;
+        this.posY -= 1;
     }
 
-    changeFlag() {
-        return this.flag;
-    }
-
-    changeDirection(flag, col, posInitial) {
-        if (flag == true && this.y < col) {
+    move(leftLimit, rightLimit) {
+        const canMoveToRight = this.posY < rightLimit;  // estos pueden ser funciones
+        const canMoveToLeft = this.posY > leftLimit;
+        if (this.isMovingTo(RIGTH) && canMoveToRight) {
             this.walkToRight();
-            if (this.y == col) {
-                this.flag = false;
+            const hasReachedTheLimit = this.posY == rightLimit;
+            if (hasReachedTheLimit) {
+                this.ChangeDirection(LEFT);
             }
-        } else if (flag == false && this.y > 0) {
+        } else if (this.isMovingTo(LEFT) && canMoveToLeft) {
             this.walkToLeft();
-            if (this.y == posInitial) {
+            const hasReachedTheLimit = this.posY == leftLimit;
+            if (hasReachedTheLimit) {
                 this.flag = true;
             }
         }
-        return this.y;
+        return this.posY;
+    }
+
+    static isMovingTo(targetDirection) {
+        return this.direction === targetDirection; //devuelve true o false
+    }
+
+    static ChangeDirection(targetDirection) {
+        this.direction = targetDirection;
     }
 }

@@ -77,4 +77,9 @@ export class Scenario {
         }
         return printed;
     }
+    /*
+    addElement(posX, posY, element){
+        this.content[posX][posY]= element;
+    }
+ */
 }
