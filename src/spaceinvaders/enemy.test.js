@@ -72,7 +72,7 @@ test('Probing if the alien is update to position add to y+1', () => {
         [0, 0],
         [0, 0]];
     let alien = new Alien(1, 0, matrixEmpty);
-    alien.moveAlienRigthDown(0, 1, true);
+    alien.moveAlien(0, 1, true);
     expect(alien.content).toStrictEqual(expected);
 });
 
@@ -88,7 +88,7 @@ test('Probing if the alien is update to position add to y-1', () => {
         [0, 0],
         [0, 0]];
     let alien = new Alien(2, 1, matrixEmpty);
-    alien.moveAlienRigthDown(0, 1, false);
+    alien.moveAlien(0, 1, false);
     expect(alien.content).toStrictEqual(expected);
 });
 
