@@ -61,12 +61,14 @@ test('Probing if the alien is setting up in the position (4,1)', () => {
 });
 
 test('Probing if the alien is update to position add to y+1', () => {
-    let expected = [[0, 0],
+    let expected = [
+        [0, 0],
         [0, ' A '],
         [0, 0],
         [0, 0],
         [0, 0] ];
-    let matrixEmpty = [[0, 0],
+    let matrixEmpty = [
+        [0, 0],
         [0, 0],
         [0, 0],
         [0, 0],
@@ -77,12 +79,14 @@ test('Probing if the alien is update to position add to y+1', () => {
 });
 
 test('Probing if the alien is update to position add to y-1', () => {
-    let expected = [[0, 0],
+    let expected = [
+        [0, 0],
         [0, 0],
         [' A ', 0],
         [0, 0],
         [0, 0] ];
-    let matrixEmpty = [[0, 0],
+    let matrixEmpty = [
+        [0, 0],
         [0, 0],
         [0, 0],
         [0, 0],
