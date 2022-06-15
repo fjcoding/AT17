@@ -54,7 +54,5 @@ test('the function that print the board when it is called, only return a large s
 
     let board = new Scenario(1, 1, content);
     board.initBoard(' . ');
-    console.log(board.print());
-    console.log(resultExpect);
     expect(board.print()).toBe(resultExpect);
 });
