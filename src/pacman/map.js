@@ -1,7 +1,7 @@
 import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
-
+import { Apple } from './apple.js';
 const CLEAR = '\x1Bc';
 const PACMAN = '\u15E7';
 // const GHOST = '\u2126';
@@ -10,7 +10,7 @@ const BLOCK = '\u2592';
 const DOT = '•';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
-
+const APPLE = '\uD83C\uDF4E';
 export class Map {
     constructor(map) {
         this.map = map;
@@ -18,6 +18,7 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(14, 11);
+        this.apple = new Apple(15, 29);
     }
 
     changeValue(positionX, positionY, value) {
@@ -58,6 +59,14 @@ export class Map {
                         arrText = '';
                         arrText += ' ' + GHOST + ' ';
                     }
+                    if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
+                        arrText = '';
+                        arrText += ' ' + APPLE;
+                    }
+                    if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
+                    }
                 }
                 process.stdout.write(arrText);
                 arrText = '';
@@ -72,6 +81,11 @@ export class Map {
         if (this.getValue(this.pacman.positionX, this.pacman.positionY) == 1) {
             this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
             this.pacman.score += 10;
+        }
+        if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
+            this.changeValue(this.apple.positionX, this.apple.positionY, 2);
+            this.apple.notEaten = false;
+            this.pacman.score += 700;
         }
         if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {
             this.pacman.setPosition(0, 14);
