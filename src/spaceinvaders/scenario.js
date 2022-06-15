@@ -17,11 +17,11 @@ export class Scenario {
      *
      * return this content
      */
-    initBoard() {
+    initBoard(character) {
         for (let row = 0; row < this.row; row++) {
             this.content[row] = [];
             for (let column = 0; column < this.col; column++) {
-                this.content[row][column] = ' . ';
+                this.content[row][column] = character;
             }
         }
     }
