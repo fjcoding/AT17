@@ -79,7 +79,7 @@ function verifyMoveAliens() {
 
 function updateAliensCol() {
     aliens.forEach((alien) => {
-        alien.moveAlienRigthDown(posRowAliens, stepsAlien, flagAlien);
+        alien.moveAlien(posRowAliens, stepsAlien, flagAlien);
     });
 }
 
