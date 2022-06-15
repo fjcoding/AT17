@@ -60,4 +60,36 @@ test('Probing if the alien is setting up in the position (4,1)', () => {
     expect(alien.setAlien(4, 1)).toStrictEqual(expected);
 });
 
+test('Probing if the alien is update to position add to y+1', () => {
+    let expected = [[0, 0],
+        [0, ' A '],
+        [0, 0],
+        [0, 0],
+        [0, 0] ];
+    let matrixEmpty = [[0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(1, 0, matrixEmpty);
+    alien.moveAlienRigthDown(0,1,true);
+    expect(alien.content).toStrictEqual(expected);
+});
+
+test('Probing if the alien is update to position add to y-1', () => {
+    let expected = [[0, 0],
+        [0, 0],
+        [' A ', 0],
+        [0, 0],
+        [0, 0] ];
+    let matrixEmpty = [[0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(2, 1, matrixEmpty);
+    alien.moveAlienRigthDown(0,1,false);
+    expect(alien.content).toStrictEqual(expected);
+});
+
 

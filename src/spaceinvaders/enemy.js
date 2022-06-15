@@ -11,7 +11,7 @@ export class Alien {
         return this.content;
     }
 
-    moveAlienRigthDown(banderaRow, banderaCol, flag) {
+    moveAlien(banderaRow, banderaCol, flag) {
         if (flag) {
             this.setAlien(this.x - banderaRow, this.y + banderaCol);
         } else {
