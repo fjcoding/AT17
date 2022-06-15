@@ -11,8 +11,8 @@ export class Block {
         this.content[y + 1][x2] = ' ━ ';
         this.content[y][x1] = ' ━ ';
         this.content[y][x2] = ' ━ ';
-        this.content[y + 1][x1 - 1] = ' ◢ ';
-        this.content[y + 1][x2 + 1] = ' ◣ ';
+        this.content[y][x1 - 1] = ' ◢ ';
+        this.content[y][x2 + 1] = ' ◣ ';
         return this.content;
     }
 }
