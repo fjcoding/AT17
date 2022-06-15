@@ -1,37 +1,60 @@
 import { Scenario } from './scenario.js';
 
 test('the function initialize the scenario and the content on center it will be the dimension in this case 2x2', () => {
-    let row = 2;
-    let col = 2;
+    let characterTest = ' . ';
     let content = [];
+    let contentExpect = [];
+    for (let i = 0; i < 4; i++) {
+        contentExpect[i] = [];
+        for (let j = 0; j < 4; j++) {
+            contentExpect[i][j] = characterTest;
+        }
+    }
+    let board = new Scenario(2, 2, content);
+    board.initBoard(characterTest);
 
-    let board = new Scenario(row, col, content);
-    board.initBoard();
-
-    expect(board.content[1][1]).toBe(' . ');
-    expect(board.content[1][2]).toBe(' . ');
-    expect(board.content[2][1]).toBe(' . ');
-    expect(board.content[2][2]).toBe(' . ');
+    expect(board.content).toEqual(contentExpect);
 });
 test('the function to comprobe the border of the scenario, in this case 2x2 dimension', () => {
-    let row = 2;
-    let col = 2;
     let content = [];
+    let contentExpect = [
+        [' ╚-', '---', '---', '-╝ '],
+        [' | ', ' . ', ' . ', ' | '],
+        [' | ', ' . ', ' . ', ' | '],
+        [' ╔-', '---', '---', '-╗ ']
 
-    let board = new Scenario(row, col, content);
-    board.initBoard();
+    ];
+
+    let board = new Scenario(2, 2, content);
+    board.initBoard(' . ');
     board.putBorder();
 
-    expect(board.content[0][1]).toBe('---');
-    expect(board.content[0][2]).toBe('---');
-    expect(board.content[3][1]).toBe('---');
-    expect(board.content[3][2]).toBe('---');
-    expect(board.content[1][0]).toBe(' | ');
-    expect(board.content[2][0]).toBe(' | ');
-    expect(board.content[1][3]).toBe(' | ');
-    expect(board.content[2][3]).toBe(' | ');
-    expect(board.content[0][0]).toBe(' ╚-');
-    expect(board.content[0][3]).toBe('-╝ ');
-    expect(board.content[3][0]).toBe(' ╔-');
-    expect(board.content[3][3]).toBe('-╗ ');
+    expect(board.content).toEqual(contentExpect);
+});
+
+test('the function to get only the board at the moment that the method getBoard is called', () => {
+    let content = [];
+    let contentExpect = [
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . '],
+        [' . ', ' . ', ' . ', ' . ']
+
+    ];
+
+    let board = new Scenario(2, 2, content);
+    board.initBoard(' . ');
+
+    expect(board.getBoard()).toEqual(contentExpect);
+});
+
+test('the function that print the board when it is called, only return a large string', () => {
+    let content = [];
+    let resultExpect = ' .  .  . \n .  .  . \n .  .  . \n';
+
+    let board = new Scenario(1, 1, content);
+    board.initBoard(' . ');
+    console.log(board.print());
+    console.log(resultExpect);
+    expect(board.print()).toBe(resultExpect);
 });

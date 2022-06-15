@@ -24,7 +24,7 @@ const posInitial = 1;
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
     let board = new Scenario(row, col);
-    board.initBoard();
+    board.initBoard('   ');
     board.putBorder();
     process.stdout.write(`\r${score}`);
     let boardFill = board.getBoard();
