@@ -1,6 +1,6 @@
-import { Pacman, UP } from './pacman.js';
+import { Actor, UP } from './actor.js';
 
-export class Ghost extends Pacman {
+export class Ghost extends Actor {
     constructor(posX, posY) {
         super(posX, posY);
         this.direction = UP;
