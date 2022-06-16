@@ -1,5 +1,5 @@
 import { Map } from './map.js';
-import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
+import { RIGHT, LEFT, UP, DOWN } from './actor.js';
 
 test('This function proof the cornes in the map ', () => {
     let matrix = [

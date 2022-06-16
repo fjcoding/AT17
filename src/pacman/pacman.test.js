@@ -1,4 +1,5 @@
-import { Pacman, RIGHT, LEFT, UP, DOWN } from './pacman.js';
+import { Pacman} from './pacman.js';
+import{RIGHT, LEFT, UP, DOWN } from './actor.js'
 
 test('the function setdirection change the direction property for a Pacman object', () => {
     let pacman = new Pacman (2, 29);
