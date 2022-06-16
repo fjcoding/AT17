@@ -1,4 +1,4 @@
-import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
+import { RIGHT, LEFT, UP, DOWN } from './actor.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
