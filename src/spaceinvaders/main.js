@@ -20,20 +20,22 @@ let flag = true;
 let flagAlien = true;
 const posInitial = 1;
 
+let countForUpdateAlien = 0;
+
+let board = new Scenario(row, col);
+
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
-    let board = new Scenario(row, col);
     board.initBoard('   ');
     board.putBorder();
     process.stdout.write(`\r${score}`);
     let boardFill = board.getBoard();
     initAliens(boardFill);
-    verifyMoveAliens();
+    aliensInBoard();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
     let block = new Block(boardFill);
-    // block.setBlock(2, 3, 3);
     block.putDinamicBlocks(3, boardFill);
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
@@ -42,6 +44,7 @@ function run() {
 
 console.clear();
 setInterval(run, 300);
+
 
 function initAliens(content) {
     for (let posX = content.length - 2; posX >= Math.floor(content.length * 0.8); posX--) {
@@ -52,6 +55,16 @@ function initAliens(content) {
     }
 
     return aliens;
+}
+
+function aliensInBoard() {
+    if (countForUpdateAlien == 10) {
+        verifyMoveAliens();
+        countForUpdateAlien = 0;
+    } else {
+        countForUpdateAlien ++;
+        updateAliensCol();
+    }
 }
 
 function verifyMoveAliens() {

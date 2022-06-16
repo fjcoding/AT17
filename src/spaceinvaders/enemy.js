@@ -11,6 +11,11 @@ export class Alien {
         return this.content;
     }
 
+    printAlien() {
+        //this.content[this.x][this.y] = ' A ';
+        return this.content;
+    }
+
     moveAlien(banderaRow, banderaCol, flag) {
         if (flag) {
             this.setAlien(this.x - banderaRow, this.y + banderaCol);
