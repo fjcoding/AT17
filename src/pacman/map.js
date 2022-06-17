@@ -142,7 +142,7 @@ export class Map {
             this.changeValue(this.superDot4.positionX, this.superDot4.positionY, 2);
             this.superDot4.notEaten = false;
             //should return a flag to make gosth blue
-        }       
+        }
         this.pacman.checkLimitsMap(27, 14);
         this.ghost.checkLimitsMap(27, 14);
         this.pacman.movePacman();
