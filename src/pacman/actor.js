@@ -123,12 +123,11 @@ export class Actor {
         this.setDirection(arrayDirections[indexDirection]);
     }
 
-    checkLimitsMap(limitUpperAxisX,limitUpperAxisY ){
+    checkLimitsMap(limitUpperAxisX, limitUpperAxisY) {
         if (this.positionX == limitUpperAxisX && this.pacman.positionY == limitUpperAxisY && this.getDirection() == RIGHT) {
-            this.setPosition(0, 14);
-        } else if (this.positionX == 0 && this.positionY == 14 && this.getDirection() == LEFT) {
+            this.setPosition(0, limitUpperAxisY);
+        } else if (this.positionX == 0 && this.positionY == limitUpperAxisY && this.getDirection() == LEFT) {
             this.setPosition(limitUpperAxisX, limitUpperAxisY);
         }
     }
-
 }

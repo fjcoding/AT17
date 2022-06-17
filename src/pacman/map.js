@@ -1,4 +1,3 @@
-import { RIGHT, LEFT } from './actor.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
@@ -11,7 +10,6 @@ const DOT = '•';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
 const APPLE = '\uD83C\uDF4E';
-const WALL = 0;
 const DOT_VALUE = 1;
 export class Map {
     constructor(map) {
@@ -79,17 +77,16 @@ export class Map {
 
     redrawMap() {
         this.pacman.selectFreeDirection(this.map);
-        this.ghost.selectFreeDirection(this.map);    
-        this.checkContentsCell(this.pacman.positionX,this.pacman.positionY);
+        this.ghost.selectFreeDirection(this.map);
+        this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
 
         if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
             this.changeValue(this.apple.positionX, this.apple.positionY, 2);
             this.apple.notEaten = false;
             this.pacman.score += 700;
         }
-              
-        this.pacman.checkLimitsMap(27,14);
-        this.ghost.checkLimitsMap(27,14);
+        this.pacman.checkLimitsMap(27, 14);
+        this.ghost.checkLimitsMap(27, 14);
         this.pacman.movePacman();
         if (this.pacman.edible) {
             if (this.ghost.eat(this.pacman.positionX, this.pacman.positionY)) {
@@ -116,15 +113,10 @@ export class Map {
         return this.map;
     }
 
-    checkContentsCell(positionX,positionY){
+    checkContentsCell(positionX, positionY) {
         if (this.getValue(positionX, positionY) == DOT_VALUE) {
-            this.pacman.eatFoot(10) ;
+            this.pacman.eatFoot(10);
             this.changeValue(positionX, positionY, 2);
         }
-
     }
-    
-
-
-
 }

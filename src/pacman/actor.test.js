@@ -33,7 +33,7 @@ test('The function listFreeDirections return an array of directions that are fre
     actor.setDirection(RIGHT);
     expect(actor.listFreeDirections(matrixA, 1).sort()).toEqual([DOWN, RIGHT, UP].sort());
     actor.setDirection(LEFT);
-    expect(actor.listFreeDirections(matrixA, 1).sort()).toEqual([DOWN, LEFT, UP].sort());   
+    expect(actor.listFreeDirections(matrixA, 1).sort()).toEqual([DOWN, LEFT, UP].sort());
 
     actor.setPosition(1, 0);
     actor.setDirection(UP);
@@ -62,7 +62,6 @@ test('The function listFreeDirections return an array of directions that are fre
 });
 
 test('The function listFreeDirections return an array of directions that are free(void) to move to, with parameter routeFree=2, AXIS = X', () => {
-    
     actor.setPosition(1, 1);
     actor.setDirection(UP);
     expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([LEFT, UP, RIGHT].sort());
@@ -71,7 +70,7 @@ test('The function listFreeDirections return an array of directions that are fre
     actor.setDirection(RIGHT);
     expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([DOWN, RIGHT, UP].sort());
     actor.setDirection(LEFT);
-    expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([DOWN, LEFT, UP].sort());   
+    expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([DOWN, LEFT, UP].sort());
 
     actor.setPosition(1, 0);
     actor.setDirection(UP);
@@ -86,7 +85,6 @@ test('The function listFreeDirections return an array of directions that are fre
     expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([UP].sort());
 });
 test('The function listFreeDirections return an array of directions that are free(void) to move to, with parameter routeFree=2, AXIS = Y', () => {
-    
     actor.setPosition(0, 1);
     actor.setDirection(RIGHT);
     expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([RIGHT, LEFT].sort());
