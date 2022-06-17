@@ -26,13 +26,12 @@ export class Player {
     }
 
     changeDirection(flag, col, posInitial) {
-        
         if (flag == true && this.y < col) {
             this.walkToRight();
             if (this.y == col) {
                 this.flag = false;
-            }else {
-                if(Math.random() > 0.75) {
+            } else {
+                if (Math.random() > 0.75) {
                     this.flag = false;
                 }
             }
@@ -40,8 +39,8 @@ export class Player {
             this.walkToLeft();
             if (this.y == posInitial) {
                 this.flag = true;
-            }else {
-                if(Math.random() > 0.75) {
+            } else {
+                if (Math.random() > 0.75) {
                     this.flag = true;
                 }
             }

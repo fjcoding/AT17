@@ -11,9 +11,9 @@ let posColAliens = 0;
 let stepsAlien = 0;
 let posRowAliens = 1;
 let posXPlayer = 1;
-let posYPlayer = (col/2);
+let posYPlayer = (col / 2);
 let posXBoss = row;
-let posYBoss = (col/2);
+let posYBoss = (col / 2);
 let aliens = [];
 let score = ' SCORE:  00000';
 let tab = '                   ';
@@ -45,7 +45,7 @@ function run() {
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
-    posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial)
+    posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
     flagBoss = boss.changeFlag();
 }
 
