@@ -38,5 +38,13 @@ export class Pacman extends Actor {
         }
     }
 
+    // checkLimitsMap(limitUpperAxisX,limitUpperAxisY ){
+    //     if (this.positionX == limitUpperAxisX && this.pacman.positionY == limitUpperAxisY && this.getDirection() == RIGHT) {
+    //         this.setPosition(0, 14);
+    //     } else if (this.positionX == 0 && this.positionY == 14 && this.getDirection() == LEFT) {
+    //         this.setPosition(limitUpperAxisX, limitUpperAxisY);
+    //     }
+    // }
+
     
 }

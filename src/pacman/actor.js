@@ -122,4 +122,13 @@ export class Actor {
         let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length - 1)));
         this.setDirection(arrayDirections[indexDirection]);
     }
+
+    checkLimitsMap(limitUpperAxisX,limitUpperAxisY ){
+        if (this.positionX == limitUpperAxisX && this.pacman.positionY == limitUpperAxisY && this.getDirection() == RIGHT) {
+            this.setPosition(0, 14);
+        } else if (this.positionX == 0 && this.positionY == 14 && this.getDirection() == LEFT) {
+            this.setPosition(limitUpperAxisX, limitUpperAxisY);
+        }
+    }
+
 }

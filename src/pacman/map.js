@@ -87,16 +87,9 @@ export class Map {
             this.apple.notEaten = false;
             this.pacman.score += 700;
         }
-        if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {
-            this.pacman.setPosition(0, 14);
-        } else if (this.pacman.positionX == 0 && this.pacman.positionY == 14 && this.pacman.direction == LEFT) {
-            this.pacman.setPosition(27, 14);
-        }
-        if (this.ghost.positionX == 27 && this.ghost.positionY == 14 && this.ghost.direction == RIGHT) {
-            this.ghost.setPosition(0, 14);
-        } else if (this.ghost.positionX == 0 && this.ghost.positionY == 14 && this.ghost.direction == LEFT) {
-            this.ghost.setPosition(27, 14);
-        }
+              
+        this.pacman.checkLimitsMap(27,14);
+        this.ghost.checkLimitsMap(27,14);
         this.pacman.movePacman();
         if (this.pacman.edible) {
             if (this.ghost.eat(this.pacman.positionX, this.pacman.positionY)) {
