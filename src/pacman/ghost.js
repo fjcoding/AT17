@@ -6,6 +6,4 @@ export class Ghost extends Actor {
         this.direction = UP;
         this.edible = false;
     }
-
-    
 }

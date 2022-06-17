@@ -32,18 +32,18 @@ export class Actor {
 
     movePacman() {
         switch (this.direction) {
-            case LEFT:
-                this.positionX--;
-                break;
-            case UP:
-                this.positionY--;
-                break;
-            case RIGHT:
-                this.positionX++;
-                break;
-            case DOWN:
-                this.positionY++;
-                break;
+        case LEFT:
+            this.positionX--;
+            break;
+        case UP:
+            this.positionY--;
+            break;
+        case RIGHT:
+            this.positionX++;
+            break;
+        case DOWN:
+            this.positionY++;
+            break;
         }
     }
 
@@ -68,7 +68,6 @@ export class Actor {
     * @param direction - the direction the "actor" is currently facing.
     * @returns an array of directions that are free to move to.
     */
-
     listFreeDirections(map, routeFree) {
         let freeDirection = [];
         let oppositeDirection = this.oppositeDirection();
@@ -104,9 +103,9 @@ export class Actor {
     oppositeDirection() {
         let oppositeDirection = LEFT;
         switch (this.direction) {
-            case LEFT: oppositeDirection = RIGHT; break;
-            case UP: oppositeDirection = DOWN; break;
-            case DOWN: oppositeDirection = UP; break;
+        case LEFT: oppositeDirection = RIGHT; break;
+        case UP: oppositeDirection = DOWN; break;
+        case DOWN: oppositeDirection = UP; break;
         }
         return oppositeDirection;
     }
@@ -121,7 +120,6 @@ export class Actor {
     selectFreeDirection(map) {
         let arrayDirections = [].concat(this.listFreeDirections(map, 1), this.listFreeDirections(map, 2));
         let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length - 1)));
-        this.setDirection( arrayDirections[indexDirection]);
+        this.setDirection(arrayDirections[indexDirection]);
     }
-
 }

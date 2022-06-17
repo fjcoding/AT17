@@ -25,6 +25,6 @@ export class Pacman extends Actor {
             newDireccion = arrayDirections[indexDirection];
         }
         // return newDireccion;
-        this.setDirection( newDireccion);
+        this.setDirection(newDireccion);
     }
 }

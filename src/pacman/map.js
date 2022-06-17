@@ -1,4 +1,4 @@
-import { RIGHT, LEFT, UP, DOWN } from './actor.js';
+import { RIGHT, LEFT } from './actor.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
@@ -76,10 +76,6 @@ export class Map {
     }
 
     redrawMap() {
-        
-        
-        // this.pacman.direction = this.pacman.selectFreeDirection(this.map);
-        // this.ghost.direction = this.ghost.selectFreeDirection(this.map);
         this.pacman.selectFreeDirection(this.map);
         this.ghost.selectFreeDirection(this.map);
         if (this.getValue(this.pacman.positionX, this.pacman.positionY) == 1) {

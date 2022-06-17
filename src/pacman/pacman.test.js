@@ -72,3 +72,70 @@ test('the function resetPosition change the pacman position to its initial posit
     expect(pacman.positionX).toBe(2);
     expect(pacman.positionY).toBe(26);
 });
+
+
+test('The function selectFreeDirection return an direction that are free(dots) to move to, routeFree=1', () => {
+    let matrixA = [
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 0]
+    ];
+    let matrixB = [
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 0, 0]
+    ];
+    const pacmanA = new Pacman(1, 1);
+    pacmanA.selectFreeDirection(matrixA);
+    const pacmanB = new Pacman(1, 1);
+    pacmanB.selectFreeDirection(matrixB);
+
+    pacmanA.setDirection(UP);
+    expect(pacmanA.getDirection()).toBe(UP);
+    pacmanA.setDirection(DOWN);
+    expect(pacmanA.getDirection()).toBe(DOWN);
+    pacmanB.setDirection(LEFT);
+    expect(pacmanB.getDirection()).toBe(LEFT);
+    pacmanB.setDirection(RIGHT);
+    expect(pacmanB.getDirection()).toBe(RIGHT);
+
+    pacmanA.setPosition(1, 0);
+    pacmanA.setDirection(DOWN);
+    expect(pacmanA.getDirection()).toBe(DOWN);
+    pacmanA.setPosition(1, 2);
+    pacmanA.setDirection(UP);
+    expect(pacmanA.getDirection()).toBe(UP);
+});
+
+test('The function selectFreeDirection return an direction that are free(void) to move to, routeFree=2', () => {
+    let matrixA = [
+        [0, 2, 0],
+        [0, 2, 0],
+        [0, 2, 0]
+    ];
+    let matrixB = [
+        [0, 0, 0],
+        [2, 2, 2],
+        [0, 0, 0]
+    ];
+    const pacmanA = new Pacman(1, 1);
+    pacmanA.selectFreeDirection(matrixA)
+    const pacmanB = new Pacman(1, 1);
+    pacmanB.selectFreeDirection(matrixB)
+    pacmanA.setPosition(1, 0);
+    pacmanA.setDirection(UP);
+    expect(pacmanA.getDirection()).toBe(UP);
+    pacmanA.setDirection(DOWN);
+    expect(pacmanA.getDirection()).toBe(DOWN);
+    pacmanB.setDirection(LEFT);
+    expect(pacmanB.getDirection()).toBe(LEFT);
+    pacmanB.setDirection(RIGHT);
+    expect(pacmanB.getDirection()).toBe(RIGHT);
+
+    pacmanA.setPosition(1, 0);
+    pacmanA.setDirection(DOWN);
+    expect(pacmanA.getDirection()).toBe(DOWN);
+    pacmanA.setPosition(1, 2);
+    pacmanA.setDirection(UP);
+    expect(pacmanA.getDirection()).toBe(UP);
+});
