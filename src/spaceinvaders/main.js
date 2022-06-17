@@ -3,6 +3,7 @@ import { Scenario } from './scenario.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
+import { Bullet } from './bullet.js';
 
 let row = 20;
 let col = 20;
@@ -12,6 +13,7 @@ let posRowAliens = 1;
 let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
+let bullets = [];
 let score = ' SCORE:  00000';
 let tab = '                   ';
 let lives = ' Lives: X X X';
@@ -21,6 +23,7 @@ let flagAlien = true;
 const posInitial = 1;
 
 let countForUpdateAlien = 0;
+let countForUpdateFrecuenceBullet = 0;
 
 let board = new Scenario(row, col);
 
@@ -32,9 +35,10 @@ function run() {
     process.stdout.write(`\r${score}`);
     let boardFill = board.getBoard();
     initAliens(boardFill);
-    aliensInBoard();
+    aliensInBoard(boardFill);
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
+    bulletinBoard(posXPlayer, posYPlayer,  boardFill);
     let block = new Block(boardFill);
     block.putDinamicBlocks(3, boardFill);
     process.stdout.write(board.print());
@@ -55,6 +59,17 @@ function initAliens(content) {
     }
 
     return aliens;
+}
+
+function bulletinBoard(posXPlayer, posYPlayer, content) {
+    if (countForUpdateFrecuenceBullet == 3) {
+        bullets.push(new Bullet(posXPlayer, posYPlayer, content));
+        fireBullet();
+        countForUpdateFrecuenceBullet = 0;
+    } else {
+        countForUpdateFrecuenceBullet ++;
+        fireBullet();
+    }
 }
 
 function aliensInBoard() {
@@ -94,6 +109,17 @@ function updateAliensCol() {
     aliens.forEach((alien) => {
         alien.moveAlien(posRowAliens, stepsAlien, flagAlien);
     });
+}
+
+
+function fireBullet() {
+    for (let i = 0; i < bullets.length; i++) {
+        if (bullets[i].getPosX() == row - 1) {
+            bullets.splice(i, 1);
+        } else {
+            bullets[i].moveBullet();
+        }
+    }
 }
 
 
