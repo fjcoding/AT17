@@ -5,8 +5,8 @@ import { Alien } from './enemy.js';
 import { Block } from './block.js';
 import { Bullet } from './bullet.js';
 
-let row = 20;
-let col = 20;
+let row = 30;
+let col = 22;
 let posColAliens = 0;
 let stepsAlien = 0;
 let posRowAliens = 1;
