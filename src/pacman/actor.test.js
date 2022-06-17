@@ -7,7 +7,7 @@ test('This function proof the cornes in the map ', () => {
     expect(actor.oppositeDirection()).toBe(LEFT);
     actor.setDirection(LEFT);
     expect(actor.oppositeDirection()).toBe(RIGHT);
-    
+
     actor.setDirection(UP);
     expect(actor.oppositeDirection()).toBe(DOWN);
     actor.setDirection(DOWN);

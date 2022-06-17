@@ -119,9 +119,9 @@ test('The function selectFreeDirection return an direction that are free(void) t
         [0, 0, 0]
     ];
     const pacmanA = new Pacman(1, 1);
-    pacmanA.selectFreeDirection(matrixA)
+    pacmanA.selectFreeDirection(matrixA);
     const pacmanB = new Pacman(1, 1);
-    pacmanB.selectFreeDirection(matrixB)
+    pacmanB.selectFreeDirection(matrixB);
     pacmanA.setPosition(1, 0);
     pacmanA.setDirection(UP);
     expect(pacmanA.getDirection()).toBe(UP);
