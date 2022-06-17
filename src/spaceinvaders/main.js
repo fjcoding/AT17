@@ -14,10 +14,11 @@ let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
 let bullets = [];
-let score = ' SCORE:  00000';
-let tab = '                   ';
-let lives = ' Lives: X X X';
-score += tab + lives + '\n';
+let sc = 0;
+//let score = ' SCORE: 0';
+//let tab = '                   ';
+//let lives = ' Lives: X X X';
+//score += tab + lives + '\n';
 let flag = true;
 let flagAlien = true;
 const posInitial = 1;
@@ -26,28 +27,29 @@ let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
 
 let board = new Scenario(row, col);
-
+board.initBoard('   ');
+initAliens(board.content);
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard('   ');
     board.putBorder();
-    process.stdout.write(`\r${score}`);
+    process.stdout.write(`\r${sc}` + '\n');
     let boardFill = board.getBoard();
-    initAliens(boardFill);
     aliensInBoard(boardFill);
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
-    bulletinBoard(posXPlayer, posYPlayer,  boardFill);
     let block = new Block(boardFill);
     block.putDinamicBlocks(3, boardFill);
+    bulletinBoard(posXPlayer, posYPlayer,  boardFill);
+
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
 }
 
 console.clear();
-setInterval(run, 300);
+setInterval(run, 200);
 
 
 function initAliens(content) {
@@ -62,7 +64,7 @@ function initAliens(content) {
 }
 
 function bulletinBoard(posXPlayer, posYPlayer, content) {
-    if (countForUpdateFrecuenceBullet == 3) {
+    if (countForUpdateFrecuenceBullet == 4) {
         bullets.push(new Bullet(posXPlayer, posYPlayer, content));
         fireBullet();
         countForUpdateFrecuenceBullet = 0;
@@ -73,12 +75,12 @@ function bulletinBoard(posXPlayer, posYPlayer, content) {
 }
 
 function aliensInBoard() {
-    if (countForUpdateAlien == 10) {
+    if (countForUpdateAlien == 50) {
         verifyMoveAliens();
         countForUpdateAlien = 0;
     } else {
         countForUpdateAlien ++;
-        updateAliensCol();
+        printAliensCol();
     }
 }
 
@@ -105,16 +107,32 @@ function verifyMoveAliens() {
     updateAliensCol();
 }
 
-function updateAliensCol() {
-    aliens.forEach((alien) => {
-        alien.moveAlien(posRowAliens, stepsAlien, flagAlien);
-    });
+function updateAliensCol(bullet) {
+    for (let i = 0; i < aliens.length; i++) {
+        if (bullet != undefined) {
+            if (aliens[i].getPosX() == bullet.getPosX() + 1 && aliens[i].getPosY() == bullet.getPosY()) {
+                aliens.splice(i, 1);
+                sc ++;
+                return true;
+            }
+        } else {
+            aliens[i].moveAlien(posRowAliens, stepsAlien, flagAlien);
+        }
+    }
+    return false;
+}
+
+function printAliensCol() {
+    aliens.forEach(alien => alien.printAlien());
 }
 
 
 function fireBullet() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() == row - 1) {
+        if (bullets[i].getPosX() == row - 1 || updateAliensCol(bullets[i]) ||
+        board.getBoard()[bullets[i].getPosX()][bullets[i].getPosY()]  == ' ━ ' ||
+         board.getBoard()[bullets[i].getPosX()][bullets[i].getPosY()]  == ' ◢ ' ||
+          board.getBoard()[bullets[i].getPosX()][bullets[i].getPosY()]  == ' ◣ ') {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBullet();

@@ -10,16 +10,28 @@ export class Bullet {
         return this.content;
     }
 
+    setBulletAlien(x, y) {
+        this.content[x][y] = ' | ';
+        return this.content;
+    }
+
     getPosX() {
         return this.x;
     }
 
-    setNullBullet() {
-        this.x = 0;
-        this.y = 0;
+    getPosY() {
+        return this.y;
+    }
+
+    getPosXAlien() {
+        return this.x;
     }
 
     moveBullet() {
         this.setBullet(this.x++, this.y);
+    }
+
+    moveBulletAlien() {
+        this.setBullet(this.x--, this.y);
     }
 }
