@@ -21,10 +21,10 @@ export class Map {
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(14, 11);
         this.apple = new Apple(15, 29);
-        this.superDot1 = new superDot(2, 29);
-        this.superDot2 = new superDot(1, 28);
-        this.superDot3 = new superDot(2, 5);
-        this.superDot4 = new superDot(25, 5);
+        this.superDot1 = new superDot(1, 26);
+        this.superDot2 = new superDot(26, 26);
+        this.superDot3 = new superDot(1, 8);
+        this.superDot4 = new superDot(26, 8);
     }
 
     changeValue(positionX, positionY, value) {
@@ -60,52 +60,51 @@ export class Map {
                         } else if ((this.map[i][k] == 4)) {
                             arrText += ' ' + 'O' + ' ';
                         }
-                    }
-                    if (positionYGhost == i && positionXGhost == k) {
-                        arrText = '';
-                        arrText += ' ' + GHOST + ' ';
-                    }
-                    if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
-                        arrText = '';
-                        arrText += ' ' + APPLE;
-                    }
-                    if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == false) {
-                        arrText = '';
-                        arrText += SPACE + '  ';
-                    }
-                    if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
-                        arrText = '';
-                        arrText += ' ' + SUPERDOT + ' ';
-                    }
-                    if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == false) {
-                        arrText = '';
-                        arrText += SPACE + '  ';
-                    }
-                    if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == true) {
-                        arrText = '';
-                        arrText += ' ' + SUPERDOT + ' ';
-                    }
-                    if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == false) {
-                        arrText = '';
-                        arrText += SPACE + '  ';
-                    }
-                    if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == true) {
-                        arrText = '';
-                        arrText += ' ' + SUPERDOT + ' ';
-                    }
-                    if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == false) {
-                        arrText = '';
-                        arrText += SPACE + '  ';
-                    }
-                    if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == true) {
-                        arrText = '';
-                        arrText += ' ' + SUPERDOT + ' ';
-                    }
-                    if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
-                        arrText = '';
-                        arrText += SPACE + '  ';
-                    }
-                    
+                        if (positionYGhost == i && positionXGhost == k) {
+                            arrText = '';
+                            arrText += ' ' + GHOST + ' ';
+                        }  
+                        if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
+                            arrText = '';
+                            arrText += ' ' + APPLE;
+                        }
+                        if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == false) {
+                            arrText = '';
+                            arrText += SPACE + '  ';
+                        }
+                        if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
+                            arrText = '';
+                            arrText += ' ' + SUPERDOT + ' ';
+                        }
+                        if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == false) {
+                            arrText = '';
+                            arrText += SPACE + '  ';
+                        }
+                        if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == true) {
+                            arrText = '';
+                            arrText += ' ' + SUPERDOT + ' ';
+                        }
+                        if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == false) {
+                            arrText = '';
+                            arrText += SPACE + '  ';
+                        }
+                        if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == true) {
+                            arrText = '';
+                            arrText += ' ' + SUPERDOT + ' ';
+                        }
+                        if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == false) {
+                            arrText = '';
+                            arrText += SPACE + '  ';
+                        }
+                        if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == true) {
+                            arrText = '';
+                            arrText += ' ' + SUPERDOT + ' ';
+                        }
+                        if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
+                            arrText = '';
+                            arrText += SPACE + '  ';
+                        }                        
+                    }                                                                              
                 }
                 process.stdout.write(arrText);
                 arrText = '';
