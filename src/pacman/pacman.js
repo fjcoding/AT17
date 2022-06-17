@@ -1,10 +1,15 @@
 import { Actor } from './actor.js';
+const DOT_VALUE=1;
 
 export class Pacman extends Actor {
     constructor(posX, posY) {
         super(posX, posY);
         this.score = 0;
         this.life = 2;
+    }
+
+    setScore(score){
+        this.score=score;
     }
 
     /**
@@ -24,7 +29,14 @@ export class Pacman extends Actor {
             let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length - 1)));
             newDireccion = arrayDirections[indexDirection];
         }
-        // return newDireccion;
         this.setDirection(newDireccion);
     }
+
+    eatFoot(value){
+        if(value > 0){
+            this.setScore(this.score+value);
+        }
+    }
+
+    
 }

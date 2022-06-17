@@ -11,6 +11,8 @@ const DOT = '•';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
 const APPLE = '\uD83C\uDF4E';
+const WALL = 0;
+const DOT_VALUE = 1;
 export class Map {
     constructor(map) {
         this.map = map;
@@ -77,11 +79,9 @@ export class Map {
 
     redrawMap() {
         this.pacman.selectFreeDirection(this.map);
-        this.ghost.selectFreeDirection(this.map);
-        if (this.getValue(this.pacman.positionX, this.pacman.positionY) == 1) {
-            this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
-            this.pacman.score += 10;
-        }
+        this.ghost.selectFreeDirection(this.map);    
+        this.checkContentsCell(this.pacman.positionX,this.pacman.positionY);
+
         if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
             this.changeValue(this.apple.positionX, this.apple.positionY, 2);
             this.apple.notEaten = false;
@@ -122,4 +122,16 @@ export class Map {
         process.stdout.write('\n');
         return this.map;
     }
+
+    checkContentsCell(positionX,positionY){
+        if (this.getValue(positionX, positionY) == DOT_VALUE) {
+            this.pacman.eatFoot(10) ;
+            this.changeValue(positionX, positionY, 2);
+        }
+
+    }
+    
+
+
+
 }
