@@ -34,7 +34,7 @@ function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard('   ');
     board.putBorder();
-    process.stdout.write(sc + "-");
+    process.stdout.write(sc + '-');
     let boardFill = board.getBoard();
     aliensInBoard(boardFill);
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
@@ -129,7 +129,7 @@ function printAliensCol() {
 
 function fireBullet() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() == row - 1 || updateAliensCol(bullets[i]) ) {
+        if (bullets[i].getPosX() == row - 1 || updateAliensCol(bullets[i])) {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBullet();
