@@ -63,7 +63,7 @@ export class Map {
                         if (positionYGhost == i && positionXGhost == k) {
                             arrText = '';
                             arrText += ' ' + GHOST + ' ';
-                        }  
+                        }
                         if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
                             arrText = '';
                             arrText += ' ' + APPLE;
@@ -103,8 +103,8 @@ export class Map {
                         if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
                             arrText = '';
                             arrText += SPACE + '  ';
-                        }                        
-                    }                                                                              
+                        }
+                    }
                 }
                 process.stdout.write(arrText);
                 arrText = '';
@@ -128,22 +128,22 @@ export class Map {
         if (this.superDot1.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot1.getnotEaten()) {
             this.changeValue(this.superDot1.positionX, this.superDot1.positionY, 2);
             this.superDot1.notEaten = false;
-            //this.pacman.score += 700; should return a flag to make blue the gosth 
+            //this.pacman.score += 700; should return a flag to make blue the gosth
         }
         if (this.superDot2.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot2.getnotEaten()) {
             this.changeValue(this.superDot2.positionX, this.superDot2.positionY, 2);
             this.superDot2.notEaten = false;
-            //this.pacman.score += 700; should return a flag to make blue the gosth 
+            //this.pacman.score += 700; should return a flag to make blue the gosth
         }
         if (this.superDot3.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot3.getnotEaten()) {
             this.changeValue(this.superDot3.positionX, this.superDot3.positionY, 2);
             this.superDot1.notEaten = false;
-            //this.pacman.score += 700; should return a flag to make blue the gosth 
+            //this.pacman.score += 700; should return a flag to make blue the gosth
         }
         if (this.superDot4.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot4.getnotEaten()) {
             this.changeValue(this.superDot4.positionX, this.superDot4.positionY, 2);
             this.superDot4.notEaten = false;
-            //this.pacman.score += 700; should return a flag to make blue the gosth 
+            //this.pacman.score += 700; should return a flag to make blue the gosth
         }
         if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {
             this.pacman.setPosition(0, 14);
