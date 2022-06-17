@@ -2,12 +2,14 @@ import { RIGHT, LEFT, UP, DOWN } from './actor.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
+import { superDot } from './superdot.js';
 const CLEAR = '\x1Bc';
 const PACMAN = '\u15E7';
 // const GHOST = '\u2126';
 const GHOST = '\u15E3';
 const BLOCK = '\u2592';
 const DOT = '•';
+const SUPERDOT = '\u2B24';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
 const APPLE = '\uD83C\uDF4E';
@@ -19,6 +21,10 @@ export class Map {
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(14, 11);
         this.apple = new Apple(15, 29);
+        this.superDot1 = new superDot(2, 29);
+        this.superDot2 = new superDot(1, 28);
+        this.superDot3 = new superDot(2, 5);
+        this.superDot4 = new superDot(25, 5);
     }
 
     changeValue(positionX, positionY, value) {
@@ -67,6 +73,39 @@ export class Map {
                         arrText = '';
                         arrText += SPACE + '  ';
                     }
+                    if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
+                        arrText = '';
+                        arrText += ' ' + SUPERDOT + ' ';
+                    }
+                    if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
+                    }
+                    if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == true) {
+                        arrText = '';
+                        arrText += ' ' + SUPERDOT + ' ';
+                    }
+                    if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
+                    }
+                    if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == true) {
+                        arrText = '';
+                        arrText += ' ' + SUPERDOT + ' ';
+                    }
+                    if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
+                    }
+                    if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == true) {
+                        arrText = '';
+                        arrText += ' ' + SUPERDOT + ' ';
+                    }
+                    if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
+                        arrText = '';
+                        arrText += SPACE + '  ';
+                    }
+                    
                 }
                 process.stdout.write(arrText);
                 arrText = '';
@@ -86,6 +125,26 @@ export class Map {
             this.changeValue(this.apple.positionX, this.apple.positionY, 2);
             this.apple.notEaten = false;
             this.pacman.score += 700;
+        }
+        if (this.superDot1.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot1.getnotEaten()) {
+            this.changeValue(this.superDot1.positionX, this.superDot1.positionY, 2);
+            this.superDot1.notEaten = false;
+            //this.pacman.score += 700; should return a flag to make blue the gosth 
+        }
+        if (this.superDot2.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot2.getnotEaten()) {
+            this.changeValue(this.superDot2.positionX, this.superDot2.positionY, 2);
+            this.superDot2.notEaten = false;
+            //this.pacman.score += 700; should return a flag to make blue the gosth 
+        }
+        if (this.superDot3.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot3.getnotEaten()) {
+            this.changeValue(this.superDot3.positionX, this.superDot3.positionY, 2);
+            this.superDot1.notEaten = false;
+            //this.pacman.score += 700; should return a flag to make blue the gosth 
+        }
+        if (this.superDot4.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot4.getnotEaten()) {
+            this.changeValue(this.superDot4.positionX, this.superDot4.positionY, 2);
+            this.superDot4.notEaten = false;
+            //this.pacman.score += 700; should return a flag to make blue the gosth 
         }
         if (this.pacman.positionX == 27 && this.pacman.positionY == 14 && this.pacman.direction == RIGHT) {
             this.pacman.setPosition(0, 14);
