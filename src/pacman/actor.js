@@ -124,7 +124,7 @@ export class Actor {
     }
 
     checkLimitsMap(limitUpperAxisX, limitUpperAxisY) {
-        if (this.positionX == limitUpperAxisX && this.pacman.positionY == limitUpperAxisY && this.getDirection() == RIGHT) {
+        if (this.positionX == limitUpperAxisX && this.positionY == limitUpperAxisY && this.getDirection() == RIGHT) {
             this.setPosition(0, limitUpperAxisY);
         } else if (this.positionX == 0 && this.positionY == limitUpperAxisY && this.getDirection() == LEFT) {
             this.setPosition(limitUpperAxisX, limitUpperAxisY);
