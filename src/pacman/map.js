@@ -1,4 +1,4 @@
-import { RIGHT, LEFT, UP, DOWN } from './pacman.js';
+import { RIGHT, LEFT, UP, DOWN } from './actor.js';
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
@@ -76,8 +76,12 @@ export class Map {
     }
 
     redrawMap() {
-        this.pacman.direction = this.pacman.selectDirection(this.map);
-        this.ghost.direction = this.ghost.getGhostRoute(this.map);
+        
+        
+        // this.pacman.direction = this.pacman.selectFreeDirection(this.map);
+        // this.ghost.direction = this.ghost.selectFreeDirection(this.map);
+        this.pacman.selectFreeDirection(this.map);
+        this.ghost.selectFreeDirection(this.map);
         if (this.getValue(this.pacman.positionX, this.pacman.positionY) == 1) {
             this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
             this.pacman.score += 10;
@@ -122,89 +126,4 @@ export class Map {
         process.stdout.write('\n');
         return this.map;
     }
-
-
-    // /**
-    // * It returns an array of directions that are free to move to
-    // * @param positionX - The x coordinate of the current position.
-    // * @param positionY - The Y coordinate of the current position.
-    // * @param routeFree - The character that represents a free route.
-    // * @param direction - the direction the "actor" is currently facing.
-    // * @returns an array of directions that are free to move to.
-    // */
-
-    // getFreeDirection(positionX, positionY, routeFree, direction) {
-    //     let freeDirection = [];
-    //     let oppositeDirection = this.oppositeDirection(direction);
-    //     if (positionX == this.columns - 1) {
-    //         freeDirection.push(RIGHT);
-    //     } else if (this.map[positionY][positionX + 1] == routeFree && RIGHT != oppositeDirection) {
-    //         freeDirection.push(RIGHT);
-    //     }
-    //     if (positionY > 0) {
-    //         if (this.map[positionY - 1][positionX] == routeFree && UP != oppositeDirection) {
-    //             freeDirection.push(UP);
-    //         }
-    //     }
-    //     if (positionY < this.rows - 1) {
-    //         if (this.map[positionY + 1][positionX] == routeFree && DOWN != oppositeDirection) {
-    //             freeDirection.push(DOWN);
-    //         }
-    //     }
-    //     if (positionX == 0) {
-    //         freeDirection.push(LEFT);
-    //     } else if (this.map[positionY][positionX - 1] == routeFree && LEFT !== oppositeDirection) {
-    //         freeDirection.push(LEFT);
-    //     }
-    //     return freeDirection;
-    // }
-
-    // /**
-    //  * If the direction is left, the opposite direction is right. If the direction is up, the opposite
-    //  * direction is down. If the direction is down, the opposite direction is up
-    //  * @param direction - The direction the "actor" is currently moving in.
-    //  * @returns The opposite direction to the input direction.
-    //  */
-    // oppositeDirection(direction) {
-    //     let oppositeDirection = LEFT;
-    //     switch (direction) {
-    //     case LEFT: oppositeDirection = RIGHT; break;
-    //     case UP: oppositeDirection = DOWN; break;
-    //     case DOWN: oppositeDirection = UP; break;
-    //     }
-    //     return oppositeDirection;
-    // }
-
-    // /**
-    //  * It returns a random direction from an array of directions that are free for pacman
-    //  * @param positionX - The X position of the pacman.
-    //  * @param positionY - The Y position of the pacman.
-    //  * @param direction - The direction the pacman is currently moving in.
-    //  * @returns the direction of the next movement of the pacman.
-    //  */
-    // getPacmanRoute(positionX, positionY, direction) {
-    //     let arrayDirections = this.getFreeDirection(positionX, positionY, 1, direction);
-    //     if (arrayDirections.length == 0) {
-    //         arrayDirections = this.getFreeDirection(positionX, positionY, 2, direction);
-    //     }
-    //     let newDireccion = arrayDirections[0];
-    //     if (arrayDirections.length > 1) {
-    //         let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length - 1)));
-    //         newDireccion = arrayDirections[indexDirection];
-    //     }
-    //     return newDireccion;
-    // }
-
-    // /**
-    //  * It returns a random direction from the array of free directions for the ghost
-    //  * @param positionX - The x position of the ghost
-    //  * @param positionY - The Y position of the ghost.
-    //  * @param direction - The direction the ghost is currently moving in.
-    //  * @returns the direction of the ghost.
-    //  */
-    // getGhostRoute(positionX, positionY, direction) {
-    //     let arrayDirections = [].concat(this.getFreeDirection(positionX, positionY, 1, direction), this.getFreeDirection(positionX, positionY, 2, direction));
-    //     let indexDirection = Math.floor(Math.random() * (1 + (arrayDirections.length - 1)));
-    //     return arrayDirections[indexDirection];
-    // }
 }
