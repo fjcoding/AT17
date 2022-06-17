@@ -3,6 +3,7 @@ import { Scenario } from './scenario.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
+import { Boss } from './boss.js';
 
 let row = 20;
 let col = 20;
@@ -10,16 +11,19 @@ let posColAliens = 0;
 let stepsAlien = 0;
 let posRowAliens = 1;
 let posXPlayer = 1;
-let posYPlayer = 1;
+let posYPlayer = (col/2);
+let posXBoss = row;
+let posYBoss = (col/2);
 let aliens = [];
 let score = ' SCORE:  00000';
 let tab = '                   ';
 let lives = ' Lives: X X X';
 score += tab + lives + '\n';
 let flag = true;
+let flagBoss = true;
 let flagAlien = true;
 const posInitial = 1;
-
+let element = ' X ';
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
@@ -30,14 +34,19 @@ function run() {
     let boardFill = board.getBoard();
     initAliens(boardFill);
     verifyMoveAliens();
+    let boss = new Boss(posXBoss, posYBoss,  boardFill, element, flag);
+    element = boss.changeElement();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
-    player.setPlayer(boardFill, ' W ');
+    //player.setPlayer(boardFill, ' W ');
+    //boss.setPlayer(boardFill, ' X ')
     let block = new Block(boardFill);
     // block.setBlock(2, 3, 3);
     block.putDinamicBlocks(3, boardFill);
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
+    posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial)
+    flagBoss = boss.changeFlag();
 }
 
 console.clear();
