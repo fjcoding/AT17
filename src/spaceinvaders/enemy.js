@@ -7,12 +7,22 @@ export class Alien {
     }
 
     setAlien(x, y) {
+        this.y = y;
+        this.x = x;
         this.content[x][y] = ' A ';
         return this.content;
     }
 
+    getPosX() {
+        return this.x;
+    }
+
+    getPosY() {
+        return this.y;
+    }
+
     printAlien() {
-        return this.content;
+        this.content[this.x][this.y] = ' A ';
     }
 
     moveAlien(banderaRow, banderaCol, flag) {
