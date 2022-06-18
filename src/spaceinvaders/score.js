@@ -27,8 +27,6 @@ export class Score {
 
     setPoints(points) {
         this.points = points;
-
-        return this.points;
     }
 
     printScore() {
@@ -46,13 +44,11 @@ export class Score {
     }
 
     updatePointsArray() {
-        //codigo para actualizar el array de core
+        //code to update data on points array
     }
 
     updateLivesArray() {
-        //codigo para actualizar el array de vida
-
-        //codigo para imprimir el score
+        //Code to update data on lives array
 
     }
 }
