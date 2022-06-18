@@ -17,15 +17,15 @@ export class Alien {
 
 
     setDirectionRight() {
-        this.dierction = RIGHT;
+        this.direction = RIGHT;
     }
 
     setDirectionLeft() {
-        this.dierction = LEFT;
+        this.direction = LEFT;
     }
 
     updateAlien(banderaRow, banderaCol) {
-        if (this.dierction == LEFT) {
+        if (this.direction == LEFT) {
             this.setAlien(this.x - banderaRow, this.y + banderaCol);
         }
     }
