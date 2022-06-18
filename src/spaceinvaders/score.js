@@ -1,19 +1,22 @@
 export class Score {
-    constructor() {
+    constructor(dimension) {
         this.arrayScore = ['S', 'C', 'O', 'R', 'E', ':', ' ', '0', '0', '0', '0', '0'];
         this.arraySpace = [];
         this.arrayLives = ['L', 'I', 'V', 'E', 'S', ':', ' ', 'X', ' ', 'X', ' ', 'X'];
+        this.dimension = dimension;
+        this.arraySpace = this.putSpaceScore(this.dimension);
     }
 
-    initScore(dimension) {
+    initScore() {
         this.points = 0;
         this.lives = 3;
-        this.arraySpace = this.putSpaceScore(dimension);
+        return this.arraySpace;
     }
 
     putSpaceScore(dimension) {
-        for (let size = 0; size <= dimension - (this.arrayScore.length + this.arrayLives.length); size++) {
-            this.arraySpace.push(' ');
+        console.log(dimension - (this.arrayScore.length + this.arrayLives.length));
+        for (let size = 0; size < (dimension) - (4 + 4); size++) {
+            this.arraySpace.push('   ');
         }
         return this.arraySpace;
     }
@@ -39,7 +42,7 @@ export class Score {
         for (let i = 0; i < this.arrayLives.length; i++) {
             printed += this.arrayLives[i];
         }
-        return printed;
+        return printed + '\n';
     }
 
     updatePointsArray() {

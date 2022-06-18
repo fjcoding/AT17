@@ -4,6 +4,7 @@ import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
 import { Bullet } from './bullet.js';
+import { Score } from './score.js';
 
 let row = 30;
 let col = 22;
@@ -14,11 +15,8 @@ let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
 let bullets = [];
-let sc = 0;
-//let score = ' SCORE: 0';
-//let tab = '                   ';
-//let lives = ' Lives: X X X';
-//score += tab + lives + '\n';
+
+let scoreGame = new Score(col);
 let flag = true;
 let flagAlien = true;
 const posInitial = 1;
@@ -34,7 +32,8 @@ function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard('   ');
     board.putBorder();
-    process.stdout.write(sc + '-');
+    scoreGame.initScore();
+    process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
     aliensInBoard(boardFill);
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
@@ -112,7 +111,7 @@ function updateAliensCol(bullet) {
         if (bullet != undefined) {
             if (aliens[i].getPosX() == bullet.getPosX() + 1 && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
-                sc += 100;
+                //sc += 100; aqui se agrega la funcion añadir puntuacion
                 return true;
             }
         } else {
