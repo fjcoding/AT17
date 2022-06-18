@@ -46,7 +46,7 @@ function run() {
 }
 
 console.clear();
-setInterval(run, 200);
+setInterval(run, 300);
 
 
 function initAliens(content) {
@@ -84,6 +84,7 @@ function aliensInBoard() {
 function verifyMoveAliens() {
     if (posRowAliens > 4) {
         restore();
+        scoreGame.deleteLives();
         posRowAliens = 1;
     }
     if (posColAliens == 1) {

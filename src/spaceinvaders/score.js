@@ -27,6 +27,11 @@ export class Score {
         this.updatePointsArray(points);
     }
 
+    deleteLives() {
+        this.lives = this.lives - 1;
+        this.updateLivesArray();
+    }
+
     printScore() {
         let printed = '  ';
         for (let i = 0; i < this.arrayScore.length; i++) {
@@ -52,7 +57,11 @@ export class Score {
     }
 
     updateLivesArray() {
-        //Code to update data on lives array
-
+        for (let i = this.arrayLives.length - 1; i >= 0; i--) {
+            if (this.arrayLives[i] == 'X') {
+                this.arrayLives[i] = ' ';
+                i = -1;
+            }
+        }
     }
 }
