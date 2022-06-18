@@ -3,6 +3,8 @@ export class Alien {
     constructor(x, y, content) {
         this.x = x;
         this.y = y;
+        this.a = this.x;
+        this.b = this.y;
         this.content = content;
     }
 
@@ -11,6 +13,12 @@ export class Alien {
         this.x = x;
         this.content[x][y] = ' A ';
         return this.content;
+    }
+
+    restoreLocation() {
+        this.y = this.b;
+        this.x = this.a;
+        this.content[this.x][this.y] = ' A ';
     }
 
     getPosX() {
