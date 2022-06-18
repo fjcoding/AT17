@@ -16,15 +16,16 @@ export class Score {
             this.arraySpace.push(' ');
         }
         return this.arraySpace;
-    }
-
+    }       
+    
     getPoints() {
         return this.points;
     }
 
     setPoints(points) {
         this.points = points;
-        return this.getPoints;
+
+        return this.points;
     }
 
     printScore() {
@@ -47,5 +48,15 @@ export class Score {
 
     updateLivesArray() {
         //codigo para actualizar el array de vida
+
+        //codigo para imprimir el score
+
     }
+
+    updatePointsArray() {
+
+        //codigo para actualizar el array de core
+
+    }
+
 }
