@@ -32,7 +32,6 @@ function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard('   ');
     board.putBorder();
-    scoreGame.initScore();
     process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
     aliensInBoard();
@@ -47,7 +46,7 @@ function run() {
 }
 
 console.clear();
-setInterval(run, 500);
+setInterval(run, 200);
 
 
 function initAliens(content) {
@@ -111,7 +110,8 @@ function updateAliensCol(bullet) {
         if (bullet != undefined) {
             if (aliens[i].getPosX() == bullet.getPosX() + 1 && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
-                //sc += 100;
+                let oldPoints = scoreGame.getPoints();
+                scoreGame.setPoints(oldPoints + 100);
                 return true;
             }
         } else {
