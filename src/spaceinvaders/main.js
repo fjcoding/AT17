@@ -35,20 +35,19 @@ function run() {
     scoreGame.initScore();
     process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
-    aliensInBoard(boardFill);
+    aliensInBoard();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
     let block = new Block(boardFill);
     block.putDinamicBlocks(3, boardFill);
-    bulletinBoard(posXPlayer, posYPlayer,  boardFill);
-
+    bulletInBoard(posXPlayer, posYPlayer,  boardFill);
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
 }
 
 console.clear();
-setInterval(run, 200);
+setInterval(run, 500);
 
 
 function initAliens(content) {
@@ -62,7 +61,7 @@ function initAliens(content) {
     return aliens;
 }
 
-function bulletinBoard(posXPlayer, posYPlayer, content) {
+function bulletInBoard(posXPlayer, posYPlayer, content) {
     if (countForUpdateFrecuenceBullet == 1) {
         bullets.push(new Bullet(posXPlayer, posYPlayer, content));
         fireBullet();
@@ -74,7 +73,7 @@ function bulletinBoard(posXPlayer, posYPlayer, content) {
 }
 
 function aliensInBoard() {
-    if (countForUpdateAlien == 50) {
+    if (countForUpdateAlien == 10) {
         verifyMoveAliens();
         countForUpdateAlien = 0;
     } else {
@@ -84,7 +83,8 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
-    if (posRowAliens > row - Math.floor(row / 3)) {
+    if (posRowAliens > 4) {
+        restore();
         posRowAliens = 1;
     }
     if (posColAliens == 1) {
@@ -111,7 +111,7 @@ function updateAliensCol(bullet) {
         if (bullet != undefined) {
             if (aliens[i].getPosX() == bullet.getPosX() + 1 && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
-                //sc += 100; aqui se agrega la funcion añadir puntuacion
+                //sc += 100;
                 return true;
             }
         } else {
@@ -125,10 +125,14 @@ function printAliensCol() {
     aliens.forEach(alien => alien.printAlien());
 }
 
+function restore() {
+    aliens.forEach(alien => alien.restoreLocation());
+}
+
 
 function fireBullet() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() == row - 1 || updateAliensCol(bullets[i])) {
+        if (bullets[i].getPosX() == row + 1 || updateAliensCol(bullets[i])) {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBullet();
