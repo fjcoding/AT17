@@ -16,8 +16,8 @@ export class Score {
             this.arraySpace.push(' ');
         }
         return this.arraySpace;
-    }       
-    
+    }
+
     getPoints() {
         return this.points;
     }
@@ -52,11 +52,4 @@ export class Score {
         //codigo para imprimir el score
 
     }
-
-    updatePointsArray() {
-
-        //codigo para actualizar el array de core
-
-    }
-
 }
