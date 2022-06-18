@@ -15,6 +15,3 @@ test('The function getValue has to return the value of a map position.', ()=>{
     expect(map.getValue(0, 0)).toBe(0);
 });
 
-test('The function printLenght has to return the size of a column of the map.', ()=>{
-    expect(map.printLenght(1)).toBe(3);
-});

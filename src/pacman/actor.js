@@ -17,6 +17,14 @@ export class Actor {
         this.direction = newDirection;
     }
 
+    getInitialPositionX() {
+        return this.initialPositionX;
+    }
+
+    getInitialPositionY() {
+        return this.initialPositionY;
+    }
+
     getDirection() {
         return this.direction;
     }
@@ -26,11 +34,15 @@ export class Actor {
         this.positionY = posY;
     }
 
+    getEdible() {
+        return this.edible;
+    }
+
     changeEdible() {
         this.edible = !this.edible;
     }
 
-    movePacman() {
+    move() {
         switch (this.direction) {
         case LEFT:
             this.positionX--;

@@ -19,31 +19,31 @@ test('the function getdirection return the direction property for a Pacman objec
     expect(pacman.getDirection()).toBe(RIGHT);
 });
 
-test('the function movePacman decrease by one the positionX property for a Pacman object when the direction is LEFT', () => {
+test('the function move decrease by one the positionX property for a Pacman object when the direction is LEFT', () => {
     let pacman = new Pacman (2, 29);
     pacman.setDirection(LEFT);
-    pacman.movePacman();
+    pacman.move();
     expect(pacman.positionX).toBe(1);
 });
 
-test('the function movePacman increase by one the positionX property for a Pacman object when the direction is RIGHT', () => {
+test('the function move increase by one the positionX property for a Pacman object when the direction is RIGHT', () => {
     let pacman = new Pacman (2, 29);
     pacman.setDirection(RIGHT);
-    pacman.movePacman();
+    pacman.move();
     expect(pacman.positionX).toBe(3);
 });
 
-test('the function movePacman decrease by one the positionY property for a Pacman object when the direction is UP', () => {
+test('the function move decrease by one the positionY property for a Pacman object when the direction is UP', () => {
     let pacman = new Pacman (2, 26);
     pacman.setDirection(UP);
-    pacman.movePacman();
+    pacman.move();
     expect(pacman.positionY).toBe(25);
 });
 
-test('the function movePacman increase by one the positionY property for a Pacman object when the direction is DOWN', () => {
+test('the function move increase by one the positionY property for a Pacman object when the direction is DOWN', () => {
     let pacman = new Pacman (2, 26);
     pacman.setDirection(DOWN);
-    pacman.movePacman();
+    pacman.move();
     expect(pacman.positionY).toBe(27);
 });
 
@@ -139,3 +139,27 @@ test('The function selectFreeDirection return an direction that are free(void) t
     pacmanA.setDirection(UP);
     expect(pacmanA.getDirection()).toBe(UP);
 });
+
+test('the getLife function returns the value of the pacman is life', () => {
+    let pacman = new Pacman (2, 26);
+    expect(pacman.getLife()).toBe(2);
+});
+
+test('the setLife function changes the value of pacman is life ', () => {
+    let pacman = new Pacman (2, 26);
+    pacman.setLife(5);
+    expect(pacman.getLife()).toBe(5);
+});
+
+test('the setLife function changes the value of pacman is life ', () => {
+    let pacman = new Pacman (2, 26);
+    pacman.setScore(50000);
+    expect(pacman.score).toBe(50000);
+});
+
+test('the setLife function changes the value of pacman is life ', () => {
+    let pacman = new Pacman (2, 26);
+    pacman.eatFoot(9000);
+    expect(pacman.score).toBe(9000);
+});
+

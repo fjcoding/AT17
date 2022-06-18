@@ -97,3 +97,8 @@ test('The function listFreeDirections return an array of directions that are fre
     actor.setDirection(RIGHT);
     expect(actor.listFreeDirections(matrixB, 2).sort()).toEqual([RIGHT].sort());
 });
+
+test('The getInitialPositionX, getInitialPositionY functions return the value of the initial positions in x,y of actor', () => {
+    expect(actor.getInitialPositionX()).toBe(1);
+    expect(actor.getInitialPositionY()).toBe(1);
+});
