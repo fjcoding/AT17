@@ -40,4 +40,4 @@ function run() {
     gameBoard.map = gameBoard.redrawMap();
 }
 
-setInterval(run, 600);
+setInterval(run, 300);

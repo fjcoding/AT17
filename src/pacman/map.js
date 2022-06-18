@@ -13,6 +13,9 @@ const SPACE = ' ';
 const CRASH = '\u1F4A5';
 const APPLE = '\uD83C\uDF4E';
 const DOT_VALUE = 1;
+const WALL = 2;
+const LIMIT_AXIS_X = 27;
+const LIMIT_AXIS_Y = 14;
 export class Map {
     constructor(map) {
         this.map = map;
@@ -143,38 +146,28 @@ export class Map {
             this.superDot4.notEaten = false;
             //should return a flag to make gosth blue
         }
-        this.pacman.checkLimitsMap(27, 14);
-        this.ghost.checkLimitsMap(27, 14);
-        this.pacman.movePacman();
-        if (this.pacman.edible) {
-            if (this.ghost.eat(this.pacman.positionX, this.pacman.positionY)) {
-                this.pacman.resetToInitialPosition();
-                this.ghost.resetToInitialPosition();
-                this.pacman.life -= 1;
-                if (this.pacman.life < 0) {
-                    clearInterval();
-                    process.stdout.write('GAMEOVER');
-                }
-            } else {
-                this.ghost.movePacman();
-            }
+        this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.ghost.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.pacman.move();
+        this.ghost.checkAttack(this.pacman);
+        if (this.pacman.getLife() < 0) {
+            clearInterval();
+            process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAMEOVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
+            process.exit();
+        } else {
+            this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
+            process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            process.stdout.write('   LIFE: ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
+            // process.stdout.write('Pacman: ' + this.pacman.positionX + ' , ' + this.pacman.positionY + '\n');
+            // process.stdout.write('Ghost: ' + this.ghost.positionX + ' , ' + this.ghost.positionY + '\n');
         }
-        this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
-        process.stdout.write('Score: ' + this.pacman.score);
-        process.stdout.write('\n');
-        process.stdout.write('Life: ' + this.pacman.life);
-        process.stdout.write('\n');
-        process.stdout.write('Pacman: ' + this.pacman.positionX + ' , ' + this.pacman.positionY);
-        process.stdout.write('\n');
-        process.stdout.write('Ghost: ' + this.ghost.positionX + ' , ' + this.ghost.positionY);
-        process.stdout.write('\n');
         return this.map;
     }
 
     checkContentsCell(positionX, positionY) {
         if (this.getValue(positionX, positionY) == DOT_VALUE) {
             this.pacman.eatFoot(10);
-            this.changeValue(positionX, positionY, 2);
+            this.changeValue(positionX, positionY, WALL);
         }
     }
 }

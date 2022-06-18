@@ -18,10 +18,10 @@ export class Pacman extends Actor {
     * @param direction - The direction the pacman is currently moving in.
     * @returns the direction of the next movement of the pacman.
     */
-    selecFreeDirection(map) {
-        let arrayDirections = this.freeDirections(map, 1);
+    selectFreeDirection(map) {
+        let arrayDirections = this.listFreeDirections(map, 1);
         if (arrayDirections.length == 0) {
-            arrayDirections = this.freeDirections(map, 2);
+            arrayDirections = this.listFreeDirections(map, 2);
         }
         let newDireccion = arrayDirections[0];
         if (arrayDirections.length > 1) {
@@ -35,5 +35,13 @@ export class Pacman extends Actor {
         if (value > 0) {
             this.setScore(this.score + value);
         }
+    }
+
+    getLife() {
+        return this.life;
+    }
+
+    setLife(life) {
+        this.life = life;
     }
 }
