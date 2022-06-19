@@ -13,12 +13,25 @@ export class Player {
         return content;
     }
 
+    getPosX() {
+        return this.x;
+    }
+
+    getPosY() {
+        return this.y;
+    }
+
     walkToRight() {
         this.y += 1;
     }
 
     walkToLeft() {
         this.y -= 1;
+    }
+
+
+    stop () {
+        return this.y;
     }
 
     changeFlag() {
