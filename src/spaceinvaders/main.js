@@ -20,20 +20,19 @@ let lastLeftPosition = col - 1;
 
 let scoreGame = new Score(col);
 let flag = true;
-let flagAlienCol = true;
-let flagAlienRow = true;
+let flagAlien = true;
 const posInitial = 1;
 
 let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
 
 let board = new Scenario(row, col);
-board.initBoard(' . ');
+board.initBoard('   ');
 initAliens(board.content);
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
-    board.initBoard(' . ');
+    board.initBoard('   ');
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
@@ -119,7 +118,6 @@ function verifyMoveAliens() {
         validateLeft();
     }
     updateAliensCol();
-    flagAlienRow = true;
 }
 
 function updateAliensCol(bullet) {
@@ -172,7 +170,7 @@ function restore() {
 
 function fireBulletPlayer() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() > row - 1 || updateAliensCol(bullets[i])) {
+        if (bullets[i].getPosX() == row + 1 || updateAliensCol(bullets[i])) {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBulletPlayer();
