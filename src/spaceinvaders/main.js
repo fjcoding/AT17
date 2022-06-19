@@ -9,7 +9,7 @@ let row = 30;
 let col = 22;
 let posColAliens = 0;
 let stepsAlien = 0;
-let posRowAliens = 1;
+let posRowAliens = 0;
 let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
@@ -21,19 +21,20 @@ let bullets = [];
 //let lives = ' Lives: X X X';
 //score += tab + lives + '\n';
 let flag = true;
-let flagAlien = true;
+let flagAlienCol = true;
+let flagAlienRow = true;
 const posInitial = 1;
 
 let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
 
 let board = new Scenario(row, col);
-board.initBoard('   ');
+board.initBoard(' . ');
 initAliens(board.content);
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
-    board.initBoard('   ');
+    board.initBoard(' . ');
     board.putBorder();
     // process.stdout.write(sc + '-');
     let boardFill = board.getBoard();
@@ -64,7 +65,7 @@ function initAliens(content) {
 }
 
 function bulletInBoard(posXPlayer, posYPlayer, content) {
-    if (countForUpdateFrecuenceBullet == 1) {
+    if (countForUpdateFrecuenceBullet == 3) {
         bullets.push(new Bullet(posXPlayer, posYPlayer, content));
         fireBullet();
         countForUpdateFrecuenceBullet = 0;
@@ -75,7 +76,7 @@ function bulletInBoard(posXPlayer, posYPlayer, content) {
 }
 
 function aliensInBoard() {
-    if (countForUpdateAlien == 10) {
+    if (countForUpdateAlien == 1) {
         verifyMoveAliens();
         countForUpdateAlien = 0;
     } else {
@@ -85,39 +86,38 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
-    if (posRowAliens > 4) {
+    if (posRowAliens > row - Math.floor(row/3)) {
         restore();
         posRowAliens = 1;
     }
     if (posColAliens == 1) {
         posRowAliens ++;
-        flagAlien = false;
-        stepsAlien = -1;
-    } else if (posColAliens == -1) {
+        flagAlienRow = false;
+        flagAlienCol = false;
+    } else if (posColAliens == -2) {
         posRowAliens ++;
-        flagAlien = true;
-        stepsAlien = -1;
-    } if (flagAlien) {
+        flagAlienCol = true;
+        flagAlienRow = false;
+    } if (flagAlienCol) {
         posColAliens ++;
-        stepsAlien ++;
     } else {
         posColAliens --;
-        stepsAlien ++;
     }
 
     updateAliensCol();
+    flagAlienRow = true;
 }
 
 function updateAliensCol(bullet) {
     for (let i = 0; i < aliens.length; i++) {
         if (bullet != undefined) {
-            if (aliens[i].getPosX() == bullet.getPosX() + 1 && aliens[i].getPosY() == bullet.getPosY()) {
+            if (aliens[i].getPosX() == bullet.getPosX()  && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
                 //sc += 100;
                 return true;
             }
         } else {
-            aliens[i].moveAlien(posRowAliens, stepsAlien, flagAlien);
+            aliens[i].moveAlien(flagAlienCol, flagAlienRow);
         }
     }
     return false;
@@ -134,7 +134,7 @@ function restore() {
 
 function fireBullet() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() == row + 1 || updateAliensCol(bullets[i])) {
+        if (bullets[i].getPosX() > row - 1 || updateAliensCol(bullets[i]) ) {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBullet();

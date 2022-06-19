@@ -29,6 +29,7 @@ export class Bullet {
 
     moveBullet() {
         this.setBullet(this.x++, this.y);
+        //this.x = this.x +1 ;
     }
 
     moveBulletAlien() {
