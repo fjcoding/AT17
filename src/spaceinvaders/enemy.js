@@ -8,10 +8,20 @@ export class Alien {
         this.content = content;
     }
 
-    setAlien(x, y) {
-        this.y = y;
-        this.x = x;
-        this.content[x][y] = ' A ';
+    setAlien(flagCol, flagRow) {
+        if (flagCol && flagRow) {
+            this.y = this.y + 1;
+            this.content[this.x][this.y] = ' A ';
+        } else if (flagCol && !flagRow) {
+            this.x = this.x - 1;
+            this.content[this.x][this.y] = ' A ';
+        } else if (!flagCol && flagRow) {
+            this.y = this.y - 1;
+            this.content[this.x][this.y] = ' A ';
+        } else if (!flagCol && !flagRow) {
+            this.x = this.x - 1;
+            this.content[this.x][this.y] = ' A ';
+        }
         return this.content;
     }
 
@@ -31,6 +41,7 @@ export class Alien {
 
     printAlien() {
         this.content[this.x][this.y] = ' A ';
+        return this.content;
     }
 
     moveAlienDown(row) {
