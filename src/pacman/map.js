@@ -2,6 +2,7 @@ import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
 import { superDot } from './superdot.js';
+import { Screen } from './screen.js';
 const CLEAR = '\x1Bc';
 const BLOCK = '\x1b[44m\u2592\x1b[49m';
 const DOT = '\x1b[95m•\x1b[39m';
@@ -12,6 +13,7 @@ const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
 const LIMIT_AXIS_Y = 14;
+const HEARD = '\x1b[91m♥\x1b[39m'
 export class Map {
     constructor(map) {
         this.map = map;
@@ -24,6 +26,7 @@ export class Map {
         this.superDot2 = new superDot(26, 26);
         this.superDot3 = new superDot(1, 8);
         this.superDot4 = new superDot(26, 8);
+        this.screen = new Screen();
         this.countGameOver = 0;
     }
 
@@ -150,12 +153,13 @@ export class Map {
         if (this.pacman.getLife() < 0) {
             this.countGameOver += 1;
             clearInterval();
-            process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAME OVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
+            this.screen.printGameOver();
+            // process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAME OVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
             process.exit();
         } else {
             this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-            process.stdout.write('   LIFE: ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
+            process.stdout.write('   LIFE: '+HEARD +' '+ this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
         }
         return this.map;
     }
