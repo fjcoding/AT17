@@ -9,7 +9,6 @@ import { Score } from './score.js';
 let row = 30;
 let col = 22;
 let posColAliens = 0;
-let stepsAlien = 0;
 let posRowAliens = 0;
 let posXPlayer = 1;
 let posYPlayer = 1;
@@ -83,7 +82,7 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
-    if (posRowAliens > row - Math.floor(row/3)) {
+    if (posRowAliens > row - Math.floor(row / 3)) {
         restore();
         scoreGame.deleteLives();
         posRowAliens = 1;
@@ -133,7 +132,7 @@ function restore() {
 
 function fireBullet() {
     for (let i = 0; i < bullets.length; i++) {
-        if (bullets[i].getPosX() > row - 1 || updateAliensCol(bullets[i]) ) {
+        if (bullets[i].getPosX() > row - 1 || updateAliensCol(bullets[i])) {
             bullets.splice(i, 1);
         } else {
             bullets[i].moveBullet();
