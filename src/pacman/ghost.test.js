@@ -20,7 +20,6 @@ test('The function checkAttack check if you can attack the pacman', ()=>{
     gost.setPosition(1, 1);
     let pacman = new Pacman(1, 2);
     pacman.setPosition(1, 1);
-    console.log(pacman.life);
     gost.checkAttack(pacman);
     expect(pacman.getLife()).toBe(1);
     expect(pacman.getInitialPositionY()).toBe(2);
