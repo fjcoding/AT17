@@ -18,6 +18,7 @@ let aliens = [];
 let bullets = [];
 let bulletsAlien = [];
 let player;
+let boss;
 let lastRightPosition = 2;
 let lastLeftPosition = col - 1;
 
@@ -35,6 +36,7 @@ let board = new Scenario(row, col);
 board.initBoard('   ');
 initAliens(board.content);
 let boardFill;
+let oldPoints;
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
@@ -42,11 +44,10 @@ function run() {
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
     boardFill = board.getBoard();
-    let boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
+    boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
     element = boss.changeElement(flagBoss, col);
     aliensInBoard();
     player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
-    player.setPlayer(boardFill, ' W ');
     let block = new Block(boardFill);
     block.putDinamicBlocks(3, boardFill);
     bulletInBoardPlayer(posXPlayer, posYPlayer,  boardFill);
@@ -55,6 +56,7 @@ function run() {
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
     posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
+    element = boss.changeElement(flagBoss, col);
     flagBoss = boss.changeFlag();
 }
 
@@ -146,7 +148,7 @@ function updateAliensCol(bullet) {
         if (bullet != undefined) {
             if (aliens[i].getPosX() == bullet.getPosX() && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
-                let oldPoints = scoreGame.getPoints();
+                oldPoints = scoreGame.getPoints();
                 scoreGame.setPoints(oldPoints + 100);
                 return true;
             }
@@ -191,6 +193,12 @@ function restore() {
 
 function fireBulletPlayer() {
     for (let i = 0; i < bullets.length; i++) {
+        if (board.getBoard()[bullets[i].getPosX()][bullets[i].getPosY()] == ' $ ') {
+            oldPoints = scoreGame.getPoints();
+            scoreGame.setPoints(oldPoints + 500);
+            boss.noBonus();
+            boss.changeElement();
+        }
         if (bullets[i].getPosX() == row + 1 || updateAliensCol(bullets[i])) {
             bullets.splice(i, 1);
         } else {
