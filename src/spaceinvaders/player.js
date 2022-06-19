@@ -29,6 +29,11 @@ export class Player {
         this.y -= 1;
     }
 
+
+    stop () {
+        return this.y;
+    }
+
     changeFlag() {
         return this.flag;
     }
@@ -38,11 +43,19 @@ export class Player {
             this.walkToRight();
             if (this.y == col) {
                 this.flag = false;
+            } else {
+                if (Math.random() > 0.75) {
+                    this.flag = false;
+                }
             }
         } else if (flag == false && this.y > 0) {
             this.walkToLeft();
             if (this.y == posInitial) {
                 this.flag = true;
+            } else {
+                if (Math.random() > 0.75) {
+                    this.flag = true;
+                }
             }
         }
         return this.y;
