@@ -58,19 +58,11 @@ function run() {
     posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
     element = boss.changeElement(flagBoss, col);
     flagBoss = boss.changeFlag();
-
     if (aliens.length == 0) {
         clearInterval();
         process.stdout.write(wonGame());
         process.exit();
     }
-
-    if (aliens[aliens.length - 1].getPosX() == 2) {
-        clearInterval();
-        process.stdout.write(gameOver());
-        process.exit();
-    }
-
     if (scoreGame.getLives() == 0) {
         clearInterval();
         process.stdout.write(gameOver());
@@ -143,6 +135,12 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
+    if (aliens[aliens.length - 1].getPosX() == 2) {
+        restore();
+        scoreGame.deleteLives();
+        posRowAliens = 1;
+        restorePlayer();
+    }
     lastRightPosition = 2;
     lastLeftPosition = col - 1;
     if (flagAlien) {
@@ -233,8 +231,14 @@ function restorePlayer() {
     posYPlayer = 1;
     flag = true;
     player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
-    // player.setPlayer(boardFill, ' W ');
 }
+
+function restore() {
+    aliens.forEach((alien) => {
+        alien.restoreLocation();
+    });
+}
+
 function deletePlayer(bullet) {
     if (player.getPosX() == bullet.getPosX() - 1 && player.getPosY() == bullet.getPosY()) {
         return true;
