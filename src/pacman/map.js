@@ -13,7 +13,7 @@ const SPACE = ' ';
 const CRASH = '\u1F4A5';
 const APPLE = '\uD83C\uDF4E';
 const DOT_VALUE = 1;
-const WALL = 2;
+const VOID = 2;
 const LIMIT_AXIS_X = 27;
 const LIMIT_AXIS_Y = 14;
 export class Map {
@@ -28,6 +28,7 @@ export class Map {
         this.superDot2 = new superDot(26, 26);
         this.superDot3 = new superDot(1, 8);
         this.superDot4 = new superDot(26, 8);
+        this.countGameOver = 0;
     }
 
     changeValue(positionX, positionY, value) {
@@ -151,15 +152,14 @@ export class Map {
         this.pacman.move();
         this.ghost.checkAttack(this.pacman);
         if (this.pacman.getLife() < 0) {
+            this.countGameOver += 1;
             clearInterval();
-            process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAMEOVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
+            process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAME OVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
             process.exit();
         } else {
             this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
             process.stdout.write('   LIFE: ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
-            // process.stdout.write('Pacman: ' + this.pacman.positionX + ' , ' + this.pacman.positionY + '\n');
-            // process.stdout.write('Ghost: ' + this.ghost.positionX + ' , ' + this.ghost.positionY + '\n');
         }
         return this.map;
     }
@@ -167,7 +167,7 @@ export class Map {
     checkContentsCell(positionX, positionY) {
         if (this.getValue(positionX, positionY) == DOT_VALUE) {
             this.pacman.eatFoot(10);
-            this.changeValue(positionX, positionY, WALL);
+            this.changeValue(positionX, positionY, VOID);
         }
     }
 }

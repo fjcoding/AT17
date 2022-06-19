@@ -1,6 +1,6 @@
 import { Map } from './map.js';
 
-let mapPacman = [
+export let mapPacman = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
     [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
@@ -40,4 +40,4 @@ function run() {
     gameBoard.map = gameBoard.redrawMap();
 }
 
-setInterval(run, 300);
+setInterval(run, 100);
