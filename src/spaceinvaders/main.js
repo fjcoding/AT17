@@ -55,8 +55,25 @@ function run() {
     flag = player.changeFlag();
     posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
     flagBoss = boss.changeFlag();
-}
 
+    if (aliens.length == 0) {
+        clearInterval();
+        process.stdout.write(wonGame());
+        process.exit();
+    }
+
+    if (aliens[aliens.length - 1].getPosX() == 2) {
+        clearInterval();
+        process.stdout.write(gameOver());
+        process.exit();
+    }
+
+    if (scoreGame.getLives() == 0) {
+        clearInterval();
+        process.stdout.write(gameOver());
+        process.exit();
+    }
+}
 console.clear();
 setInterval(run, 400);
 
@@ -113,12 +130,13 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
+    /*
     if (aliens[aliens.length - 1].getPosX() == 2) {
         restore();
         scoreGame.deleteLives();
         posRowAliens = 1;
     }
-
+    */
     lastRightPosition = 2;
     lastLeftPosition = col - 1;
     if (flagAlien) {
@@ -173,9 +191,6 @@ function printAliensCol() {
     aliens.forEach(alien => alien.printAlien());
 }
 
-function restore() {
-    aliens.forEach(alien => alien.restoreLocation());
-}
 
 function fireBulletPlayer() {
     for (let i = 0; i < bullets.length; i++) {
@@ -202,4 +217,13 @@ function deletePlayer(bullet) {
     } else {
         return false;
     }
+}
+
+function wonGame() {
+    return '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n'
+    + '          ************* WONNNNN  **************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n';
+}
+function gameOver() {
+    return '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n'
+    + '          ********** GAME OVER **************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n';
 }
