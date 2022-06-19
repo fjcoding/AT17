@@ -5,6 +5,7 @@ export class Pacman extends Actor {
         super(posX, posY);
         this.score = 0;
         this.life = 2;
+        this.icon = '\u15E7';
     }
 
     setScore(score) {
@@ -43,5 +44,9 @@ export class Pacman extends Actor {
 
     setLife(life) {
         this.life = life;
+    }
+
+    getIconWithColor() {
+        return '\x1b[93m' + this.icon + '\x1b[39m';
     }
 }

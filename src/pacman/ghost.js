@@ -5,6 +5,7 @@ export class Ghost extends Actor {
         super(posX, posY);
         this.direction = UP;
         this.edible = false;
+        this.icon = '\u15E3';
     }
 
     checkAttack(pacman) {
@@ -21,5 +22,9 @@ export class Ghost extends Actor {
             this.resetToInitialPosition();
             pacman.setLife(pacman.getLife() - 1);
         }
+    }
+
+    getIconWithColor() {
+        return '\x1b[97m' + this.icon + '\x1b[39m';
     }
 }
