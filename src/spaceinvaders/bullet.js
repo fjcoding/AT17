@@ -1,17 +1,17 @@
 export class Bullet {
     constructor(x, y, content) {
-        this.x = x + 1;
+        this.x = x;
         this.y = y;
         this.content = content;
     }
 
-    setBullet(x, y) {
-        this.content[x][y] = ' | ';
+    setBulletPlayer(x, y) {
+        this.content[x][y] = ' ¡ ';
         return this.content;
     }
 
     setBulletAlien(x, y) {
-        this.content[x][y] = ' | ';
+        this.content[x][y] = ' ! ';
         return this.content;
     }
 
@@ -27,12 +27,11 @@ export class Bullet {
         return this.x;
     }
 
-    moveBullet() {
-        this.setBullet(this.x++, this.y);
-        //this.x = this.x +1 ;
+    moveBulletPlayer() {
+        this.setBulletPlayer(this.x++, this.y);
     }
 
     moveBulletAlien() {
-        this.setBullet(this.x--, this.y);
+        this.setBulletAlien(this.x--, this.y);
     }
 }
