@@ -69,39 +69,8 @@ export class Map {
                         }
 
                         arrText = this.apple.setIcon(k,i,arrText);
-                        
-                        if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
-                            arrText = '';
-                            arrText += ' ' + this.superDot1.getIconWithColor() + ' ';
-                        }
-                        if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == false) {
-                            arrText = '';
-                            arrText += SPACE + '  ';
-                        }
-                        if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == true) {
-                            arrText = '';
-                            arrText += ' ' + this.superDot2.getIconWithColor() + ' ';
-                        }
-                        if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == false) {
-                            arrText = '';
-                            arrText += SPACE + '  ';
-                        }
-                        if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == true) {
-                            arrText = '';
-                            arrText += ' ' + this.superDot3.getIconWithColor() + ' ';
-                        }
-                        if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == false) {
-                            arrText = '';
-                            arrText += SPACE + '  ';
-                        }
-                        if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == true) {
-                            arrText = '';
-                            arrText += ' ' + this.superDot4.getIconWithColor() + ' ';
-                        }
-                        if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
-                            arrText = '';
-                            arrText += SPACE + '  ';
-                        }
+                        arrText = this.printSuperDots(k,i,arrText);
+                       
                     }
                 }
                 process.stdout.write(arrText);
@@ -164,5 +133,14 @@ export class Map {
             this.pacman.eatFoot(10);
             this.changeValue(positionX, positionY, VOID);
         }
+    }
+
+    printSuperDots(posX, posY, arrText){
+        let res = arrText;
+        res = this.superDot1.setIcon(posX,posY,res);
+        res = this.superDot2.setIcon(posX,posY,res);
+        res = this.superDot3.setIcon(posX,posY,res);
+        res = this.superDot4.setIcon(posX,posY,res);
+        return res;
     }
 }
