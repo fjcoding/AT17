@@ -13,7 +13,7 @@ const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
 const LIMIT_AXIS_Y = 14;
-const HEARD = '\x1b[91m♥\x1b[39m'
+const HEARD = '\x1b[91m♥\x1b[39m';
 export class Map {
     constructor(map) {
         this.map = map;
@@ -159,7 +159,7 @@ export class Map {
         } else {
             this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-            process.stdout.write('   LIFE: '+HEARD +' '+ this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
+            process.stdout.write('   LIFE: ' + HEARD + ' ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
         }
         return this.map;
     }
