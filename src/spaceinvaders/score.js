@@ -32,6 +32,10 @@ export class Score {
         this.updateLivesArray();
     }
 
+    getLives() {
+        return this.lives;
+    }
+
     printScore() {
         let printed = '  ';
         for (let i = 0; i < this.arrayScore.length; i++) {

@@ -35,6 +35,7 @@ let countForUpdateFrecuenceBullet = 0;
 let board = new Scenario(row, col);
 board.initBoard('   ');
 initAliens(board.content);
+let boardFill;
 let oldPoints;
 
 function run() {
@@ -42,8 +43,9 @@ function run() {
     board.initBoard('   ');
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
-    let boardFill = board.getBoard();
+    boardFill = board.getBoard();
     boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
+    element = boss.changeElement(flagBoss, col);
     aliensInBoard();
     player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     let block = new Block(boardFill);
@@ -56,10 +58,27 @@ function run() {
     posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
     element = boss.changeElement(flagBoss, col);
     flagBoss = boss.changeFlag();
-}
 
+    if (aliens.length == 0) {
+        clearInterval();
+        process.stdout.write(wonGame());
+        process.exit();
+    }
+
+    if (aliens[aliens.length - 1].getPosX() == 2) {
+        clearInterval();
+        process.stdout.write(gameOver());
+        process.exit();
+    }
+
+    if (scoreGame.getLives() == 0) {
+        clearInterval();
+        process.stdout.write(gameOver());
+        process.exit();
+    }
+}
 console.clear();
-setInterval(run, 400);
+setInterval(run, 500);
 
 
 function initAliens(content) {
@@ -75,13 +94,23 @@ function initAliens(content) {
 function bulletInBoardAlien() {
     if (countForUpdateFrecuenceBullet == 4) {
         let firstCol = 0;
+        let lastCol = 0;
         let aliensColInit = aliens[0].getPosY();
+        let aliensRowInit = aliens[0].getPosX();
         for (let i = 0; i < aliens.length; i++) {
             if (aliens[i].getPosY() == aliensColInit) {
                 if (board.getBoard()[aliens[i].getPosX() - 1][aliens[i].getPosY()] == ' A ') {
                     firstCol = i;
                 }
             }
+            if (aliens[i].getPosY() > aliensColInit && aliens[i].getPosX() == aliensRowInit) {
+                if (board.getBoard()[aliens[i].getPosX() - 1][aliens[i].getPosY()] == ' A ') {
+                    lastCol = i;
+                }
+            }
+        }
+        if (firstCol != lastCol) {
+            bulletsAlien.push(new Bullet(aliens[lastCol].getPosX() - 5, aliens[lastCol].getPosY(), board.getBoard()));
         }
         bulletsAlien.push(new Bullet(aliens[firstCol].getPosX() - 2, aliens[firstCol].getPosY(), board.getBoard()));
         fireBulletAlien();
@@ -114,12 +143,6 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
-    if (aliens[aliens.length - 1].getPosX() == 2) {
-        restore();
-        scoreGame.deleteLives();
-        posRowAliens = 1;
-    }
-
     lastRightPosition = 2;
     lastLeftPosition = col - 1;
     if (flagAlien) {
@@ -174,9 +197,6 @@ function printAliensCol() {
     aliens.forEach(alien => alien.printAlien());
 }
 
-function restore() {
-    aliens.forEach(alien => alien.restoreLocation());
-}
 
 function fireBulletPlayer() {
     for (let i = 0; i < bullets.length; i++) {
@@ -193,15 +213,27 @@ function fireBulletPlayer() {
         }
     }
 }
-
 function fireBulletAlien() {
     for (let i = 0; i < bulletsAlien.length; i++) {
-        if (bulletsAlien[i].getPosX() == 2 || deletePlayer(bulletsAlien[i])) {
-            bulletsAlien.splice(i, 1);
-        } else {
+        let exitPlayer = deletePlayer(bulletsAlien[i]);
+        if ((bulletsAlien[i].getPosX() == 2 && !exitPlayer) || bulletsAlien[i].getPosX() > 2) {
             bulletsAlien[i].moveBulletAlien();
+        } else if ((bulletsAlien[i].getPosX() == 2 && exitPlayer)) {
+            bulletsAlien.splice(i, 1);
+            player.element = '   ';
+            scoreGame.deleteLives();
+            restorePlayer();
+        } else if (bulletsAlien[i] == 1) {
+            bulletsAlien.splice(i, 1);
         }
     }
+}
+function restorePlayer() {
+    posXPlayer = 1;
+    posYPlayer = 1;
+    flag = true;
+    player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
+    // player.setPlayer(boardFill, ' W ');
 }
 function deletePlayer(bullet) {
     if (player.getPosX() == bullet.getPosX() - 1 && player.getPosY() == bullet.getPosY()) {
@@ -209,4 +241,13 @@ function deletePlayer(bullet) {
     } else {
         return false;
     }
+}
+
+function wonGame() {
+    return '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n'
+    + '          ************* WONNNNN  **************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n';
+}
+function gameOver() {
+    return '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n'
+    + '          ********** GAME OVER **************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n';
 }
