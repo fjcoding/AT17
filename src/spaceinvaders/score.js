@@ -2,7 +2,7 @@ export class Score {
     constructor(dimension) {
         this.arrayScore = ['S', 'C', 'O', 'R', 'E', ':', ' ', '0', '0', '0', '0', '0'];
         this.arraySpace = [];
-        this.arrayLives = ['L', 'I', 'V', 'E', 'S', ':', ' ', 'X', ' ', 'X', ' ', 'X'];
+        this.arrayLives = ['L', 'I', 'V', 'E', 'S', ':', ' ', 'X', ' ', 'X'];
         this.dimension = dimension;
         this.arraySpace = this.putSpaceScore(this.dimension);
         this.points = 0;
