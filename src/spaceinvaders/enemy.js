@@ -33,11 +33,15 @@ export class Alien {
         this.content[this.x][this.y] = ' A ';
     }
 
-    moveAlien(banderaRow, banderaCol, flag) {
+    moveAlienDown(row) {
+        this.setAlien(this.x - row, this.y);
+    }
+
+    moveAlienOneStep(flag) {
         if (flag) {
-            this.setAlien(this.x - banderaRow, this.y + banderaCol);
+            this.setAlien(this.x, this.y + 1);
         } else {
-            this.setAlien(this.x - banderaRow, this.y - banderaCol);
+            this.setAlien(this.x, this.y - 1);
         }
     }
 }
