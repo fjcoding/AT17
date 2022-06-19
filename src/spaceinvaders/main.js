@@ -143,14 +143,6 @@ function aliensInBoard() {
 }
 
 function verifyMoveAliens() {
-    /*
-    if (aliens[aliens.length - 1].getPosX() == 2) {
-        restore();
-        scoreGame.deleteLives();
-        posRowAliens = 1;
-        restorePlayer();
-    }
-    */
     lastRightPosition = 2;
     lastLeftPosition = col - 1;
     if (flagAlien) {
