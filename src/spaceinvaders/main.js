@@ -25,12 +25,12 @@ let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
 
 let board = new Scenario(row, col);
-board.initBoard(' . ');
+board.initBoard('   ');
 initAliens(board.content);
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
-    board.initBoard(' . ');
+    board.initBoard('   ');
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
@@ -87,11 +87,11 @@ function verifyMoveAliens() {
         scoreGame.deleteLives();
         posRowAliens = 1;
     }
-    if (posColAliens == 1) {
+    if (posColAliens == 3) {
         posRowAliens ++;
         flagAlienRow = false;
         flagAlienCol = false;
-    } else if (posColAliens == -2) {
+    } else if (posColAliens == -4) {
         posRowAliens ++;
         flagAlienCol = true;
         flagAlienRow = false;
@@ -139,5 +139,6 @@ function fireBullet() {
         }
     }
 }
+
 
 
