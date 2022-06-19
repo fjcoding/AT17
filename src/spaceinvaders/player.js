@@ -29,7 +29,6 @@ export class Player {
         this.y -= 1;
     }
 
-
     stop () {
         return this.y;
     }

@@ -34,13 +34,14 @@ let countForUpdateFrecuenceBullet = 0;
 let board = new Scenario(row, col);
 board.initBoard('   ');
 initAliens(board.content);
+let boardFill;
 
 function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard('   ');
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
-    let boardFill = board.getBoard();
+    boardFill = board.getBoard();
     let boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
     element = boss.changeElement(flagBoss, col);
     aliensInBoard();
@@ -58,7 +59,7 @@ function run() {
 }
 
 console.clear();
-setInterval(run, 400);
+setInterval(run, 500);
 
 
 function initAliens(content) {
@@ -74,13 +75,23 @@ function initAliens(content) {
 function bulletInBoardAlien() {
     if (countForUpdateFrecuenceBullet == 4) {
         let firstCol = 0;
+        let lastCol = 0;
         let aliensColInit = aliens[0].getPosY();
+        let aliensRowInit = aliens[0].getPosX();
         for (let i = 0; i < aliens.length; i++) {
             if (aliens[i].getPosY() == aliensColInit) {
                 if (board.getBoard()[aliens[i].getPosX() - 1][aliens[i].getPosY()] == ' A ') {
                     firstCol = i;
                 }
             }
+            if (aliens[i].getPosY() > aliensColInit && aliens[i].getPosX() == aliensRowInit) {
+                if (board.getBoard()[aliens[i].getPosX() - 1][aliens[i].getPosY()] == ' A ') {
+                    lastCol = i;
+                }
+            }
+        }
+        if (firstCol != lastCol) {
+            bulletsAlien.push(new Bullet(aliens[lastCol].getPosX() - 5, aliens[lastCol].getPosY(), board.getBoard()));
         }
         bulletsAlien.push(new Bullet(aliens[firstCol].getPosX() - 2, aliens[firstCol].getPosY(), board.getBoard()));
         fireBulletAlien();
@@ -117,6 +128,7 @@ function verifyMoveAliens() {
         restore();
         scoreGame.deleteLives();
         posRowAliens = 1;
+        restorePlayer();
     }
 
     lastRightPosition = 2;
@@ -186,15 +198,27 @@ function fireBulletPlayer() {
         }
     }
 }
-
 function fireBulletAlien() {
     for (let i = 0; i < bulletsAlien.length; i++) {
-        if (bulletsAlien[i].getPosX() == 2 || deletePlayer(bulletsAlien[i])) {
-            bulletsAlien.splice(i, 1);
-        } else {
+        let exitPlayer = deletePlayer(bulletsAlien[i]);
+        if ((bulletsAlien[i].getPosX() == 2 && !exitPlayer) || bulletsAlien[i].getPosX() > 2) {
             bulletsAlien[i].moveBulletAlien();
+        } else if ((bulletsAlien[i].getPosX() == 2 && exitPlayer)) {
+            bulletsAlien.splice(i, 1);
+            player.element = '   ';
+            scoreGame.deleteLives();
+            restorePlayer();
+        } else if (bulletsAlien[i] == 1) {
+            bulletsAlien.splice(i, 1);
         }
     }
+}
+function restorePlayer() {
+    posXPlayer = 1;
+    posYPlayer = 1;
+    flag = true;
+    player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
+    // player.setPlayer(boardFill, ' W ');
 }
 function deletePlayer(bullet) {
     if (player.getPosX() == bullet.getPosX() - 1 && player.getPosY() == bullet.getPosY()) {
