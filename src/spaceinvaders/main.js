@@ -4,6 +4,7 @@ import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
 import { Bullet } from './bullet.js';
+import { Score } from './score.js';
 
 let row = 30;
 let col = 22;
@@ -14,12 +15,8 @@ let posXPlayer = 1;
 let posYPlayer = 1;
 let aliens = [];
 let bullets = [];
-//let bulletsForAliens = [];
-//let sc = 0;
-//let score = ' SCORE: 0';
-//let tab = '                   ';
-//let lives = ' Lives: X X X';
-//score += tab + lives + '\n';
+
+let scoreGame = new Score(col);
 let flag = true;
 let flagAlienCol = true;
 let flagAlienRow = true;
@@ -36,7 +33,7 @@ function run() {
     readline.cursorTo(process.stdout, 0, 0);
     board.initBoard(' . ');
     board.putBorder();
-    // process.stdout.write(sc + '-');
+    process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
     aliensInBoard();
     let player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
@@ -50,7 +47,7 @@ function run() {
 }
 
 console.clear();
-setInterval(run, 500);
+setInterval(run, 300);
 
 
 function initAliens(content) {
@@ -88,6 +85,7 @@ function aliensInBoard() {
 function verifyMoveAliens() {
     if (posRowAliens > row - Math.floor(row/3)) {
         restore();
+        scoreGame.deleteLives();
         posRowAliens = 1;
     }
     if (posColAliens == 1) {
@@ -113,7 +111,8 @@ function updateAliensCol(bullet) {
         if (bullet != undefined) {
             if (aliens[i].getPosX() == bullet.getPosX()  && aliens[i].getPosY() == bullet.getPosY()) {
                 aliens.splice(i, 1);
-                //sc += 100;
+                let oldPoints = scoreGame.getPoints();
+                scoreGame.setPoints(oldPoints + 100);
                 return true;
             }
         } else {

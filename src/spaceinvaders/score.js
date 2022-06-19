@@ -1,18 +1,21 @@
 export class Score {
-    constructor() {
+    constructor(dimension) {
         this.arrayScore = ['S', 'C', 'O', 'R', 'E', ':', ' ', '0', '0', '0', '0', '0'];
-
-        this.arrayLives = ['L', 'I', 'V', 'E', 'S', ':', ' ', 'X', ' ', 'X', ' ', 'X'];
-
         this.arraySpace = [];
+        this.arrayLives = ['L', 'I', 'V', 'E', 'S', ':', ' ', 'X', ' ', 'X', ' ', 'X'];
+        this.dimension = dimension;
+        this.arraySpace = this.putSpaceScore(this.dimension);
+        this.points = 0;
+        this.lives = 3;
     }
 
-    initScore(dimension) {
-        this.points = 0;
 
-        this.lives = 3;
-
-        this.dimension = dimension;
+    putSpaceScore(dimension) {
+        console.log(dimension - (this.arrayScore.length + this.arrayLives.length));
+        for (let size = 0; size < (dimension) - (4 + 4); size++) {
+            this.arraySpace.push('   ');
+        }
+        return this.arraySpace;
     }
 
     getPoints() {
@@ -21,25 +24,44 @@ export class Score {
 
     setPoints(points) {
         this.points = points;
+        this.updatePointsArray(points);
+    }
 
-        return this.getPoints;
+    deleteLives() {
+        this.lives = this.lives - 1;
+        this.updateLivesArray();
     }
 
     printScore() {
-
-        //codigo para imprimir el score
-
+        let printed = '  ';
+        for (let i = 0; i < this.arrayScore.length; i++) {
+            printed += this.arrayScore[i];
+        }
+        for (let i = 0; i < this.arraySpace.length; i++) {
+            printed += this.arraySpace[i];
+        }
+        for (let i = 0; i < this.arrayLives.length; i++) {
+            printed += this.arrayLives[i];
+        }
+        return printed + '\n';
     }
 
-    updatePointsArray() {
+    updatePointsArray(points) {
+        let pos = this.arrayScore.length - 1;
 
-        //codigo para actualizar el array de core
-
+        const newPoints = points + '';
+        for (let i = newPoints.length - 1; i >= 0; i--) {
+            this.arrayScore[pos] = newPoints[i] + '';
+            pos = pos - 1;
+        }
     }
 
     updateLivesArray() {
-
-        //codigo para actualizar el array de vida
-
+        for (let i = this.arrayLives.length - 1; i >= 0; i--) {
+            if (this.arrayLives[i] == 'X') {
+                this.arrayLives[i] = ' ';
+                i = -1;
+            }
+        }
     }
 }

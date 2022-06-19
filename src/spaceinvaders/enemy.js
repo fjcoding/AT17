@@ -39,6 +39,7 @@ export class Alien {
 
     printAlien() {
         this.content[this.x][this.y] = ' A ';
+        return this.content;
     }
 
     moveAlien(flagCol, flagRow) {
