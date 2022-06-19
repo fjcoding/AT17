@@ -3,6 +3,7 @@ import { Scenario } from './scenario.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
+import { Boss } from './boss.js';
 import { Bullet } from './bullet.js';
 import { Score } from './score.js';
 
@@ -10,7 +11,9 @@ let row = 30;
 let col = 22;
 let posRowAliens = 1;
 let posXPlayer = 1;
-let posYPlayer = 1;
+let posYPlayer = (col / 2);
+let posXBoss = row;
+let posYBoss = (col / 2);
 let aliens = [];
 let bullets = [];
 let bulletsAlien = [];
@@ -20,8 +23,10 @@ let lastLeftPosition = col - 1;
 
 let scoreGame = new Score(col);
 let flag = true;
+let flagBoss = true;
 let flagAlien = true;
 const posInitial = 1;
+let element = ' $ ';
 
 let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
@@ -36,6 +41,8 @@ function run() {
     board.putBorder();
     process.stdout.write(scoreGame.printScore());
     let boardFill = board.getBoard();
+    let boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
+    element = boss.changeElement(flagBoss, col);
     aliensInBoard();
     player = new Player(posXPlayer, posYPlayer,  boardFill, ' W ', flag);
     player.setPlayer(boardFill, ' W ');
@@ -46,6 +53,8 @@ function run() {
     process.stdout.write(board.print());
     posYPlayer = player.changeDirection(flag, col, posInitial);
     flag = player.changeFlag();
+    posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
+    flagBoss = boss.changeFlag();
 }
 
 console.clear();
