@@ -3,15 +3,11 @@ import { Ghost } from './ghost.js';
 import { Apple } from './apple.js';
 import { superDot } from './superdot.js';
 const CLEAR = '\x1Bc';
-const PACMAN = '\u15E7';
-// const GHOST = '\u2126';
-const GHOST = '\u15E3';
-const BLOCK = '\u2592';
-const DOT = '•';
-const SUPERDOT = '\u2B24';
+const BLOCK = '\x1b[44m\u2592\x1b[49m';
+const DOT = '\x1b[95m•\x1b[39m';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
-const APPLE = '\uD83C\uDF4E';
+const APPLE = '\x1b[93m\uD83C\uDF4E\x1b[39m';
 const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
@@ -53,7 +49,7 @@ export class Map {
                 } else {
                     if (positionYPacman == i && positionXPacman == k) {
                         //arrText += GHOST + '  ';
-                        arrText += ' ' + PACMAN + ' ';
+                        arrText += ' ' + this.pacman.getIconWithColor() + ' ';
                     } else {
                         if (this.map[i][k] == 0) {
                             arrText += BLOCK + BLOCK + BLOCK;
@@ -66,7 +62,7 @@ export class Map {
                         }
                         if (positionYGhost == i && positionXGhost == k) {
                             arrText = '';
-                            arrText += ' ' + GHOST + ' ';
+                            arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
                         if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
                             arrText = '';
@@ -78,7 +74,7 @@ export class Map {
                         }
                         if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
                             arrText = '';
-                            arrText += ' ' + SUPERDOT + ' ';
+                            arrText += ' ' + this.superDot1.getIconWithColor() + ' ';
                         }
                         if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == false) {
                             arrText = '';
@@ -86,7 +82,7 @@ export class Map {
                         }
                         if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == true) {
                             arrText = '';
-                            arrText += ' ' + SUPERDOT + ' ';
+                            arrText += ' ' + this.superDot2.getIconWithColor() + ' ';
                         }
                         if (this.superDot2.getPositionY() == i && this.superDot2.getPositionX() == k && this.superDot2.getnotEaten() == false) {
                             arrText = '';
@@ -94,7 +90,7 @@ export class Map {
                         }
                         if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == true) {
                             arrText = '';
-                            arrText += ' ' + SUPERDOT + ' ';
+                            arrText += ' ' + this.superDot3.getIconWithColor() + ' ';
                         }
                         if (this.superDot3.getPositionY() == i && this.superDot3.getPositionX() == k && this.superDot3.getnotEaten() == false) {
                             arrText = '';
@@ -102,7 +98,7 @@ export class Map {
                         }
                         if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == true) {
                             arrText = '';
-                            arrText += ' ' + SUPERDOT + ' ';
+                            arrText += ' ' + this.superDot4.getIconWithColor() + ' ';
                         }
                         if (this.superDot4.getPositionY() == i && this.superDot4.getPositionX() == k && this.superDot4.getnotEaten() == false) {
                             arrText = '';
