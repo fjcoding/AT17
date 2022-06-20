@@ -14,6 +14,7 @@ const VOID = 2;
 const LIMIT_AXIS_X = 27;
 const LIMIT_AXIS_Y = 14;
 const HEARD = '\u2665';
+export let TEST = false;
 export class Map {
     constructor(map) {
         this.map = map;
@@ -130,10 +131,12 @@ export class Map {
 
     redrawMap() {
         this.pacman.selectFreeDirection(this.map);
-        this.ghost.selectFreeDirection(this.map);
 
-        this.ghost2.selectFreeDirection(this.map);
-        this.ghost3.selectFreeDirection(this.map);
+        if (!TEST) {
+            this.ghost2.selectFreeDirection(this.map);
+            this.ghost3.selectFreeDirection(this.map);
+        }
+        this.ghost.selectFreeDirection(this.map);
 
         this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
 
@@ -163,16 +166,20 @@ export class Map {
             //should return a flag to make gosth blue
         }
         this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+
+        if (!TEST) {
+            this.ghost2.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+            this.ghost3.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        }
         this.ghost.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
 
-        this.ghost2.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
-        this.ghost3.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
-
         this.pacman.move();
-        this.ghost.checkAttack(this.pacman);
 
-        this.ghost2.checkAttack(this.pacman);
-        this.ghost3.checkAttack(this.pacman);
+        if (!TEST) {
+            this.ghost2.checkAttack(this.pacman);
+            this.ghost3.checkAttack(this.pacman);
+        }
+        this.ghost.checkAttack(this.pacman);
 
         if (this.pacman.getLife() < 0) {
             this.countGameOver += 1;
@@ -192,5 +199,13 @@ export class Map {
             this.pacman.eatFoot(10);
             this.changeValue(positionX, positionY, VOID);
         }
+    }
+
+    getTest() {
+        return TEST;
+    }
+
+    setTest(value) {
+        TEST =  value;
     }
 }
