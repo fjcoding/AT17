@@ -11,7 +11,7 @@ export class superDot {
     }
 
     getIconWithColor() {
-        return this.colorize(this.icon,this.genRandom());
+        return this.colorize(this.icon, this.genRandom());
     }
 
     getPositionY() {
@@ -34,12 +34,12 @@ export class superDot {
             return false;
         }
     }
-    genRandom(){
+
+    genRandom() {
         return Math.floor(Math.random() * 7);
     }
 
-    colorize(output,color) {
-
+    colorize(output, color) {
         if (color == 0) {
             return ['\x1b[', 91, 'm', output, '\x1b[', 39, 'm'].join('');
         }
