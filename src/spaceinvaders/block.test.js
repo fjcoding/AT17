@@ -1,5 +1,5 @@
 import { Block } from './block.js';
-import { Scenario} from './scenario.js';
+import { Stage} from './Stage.js';
 
 test('SetBlock is the function that put a new block in board', () => {
     let content = [];
@@ -10,7 +10,7 @@ test('SetBlock is the function that put a new block in board', () => {
         [ ' . ', ' . ', ' . ', ' . ' ]
     ];
 
-    let board = new Scenario(2, 2, content);
+    let board = new Stage(2, 2, content);
     board.initBoard(' . ');
     let block = new Block(board.content);
     block.setBlock(1, 2, 1);
@@ -20,7 +20,7 @@ test('SetBlock is the function that put a new block in board', () => {
 test('CheckDimentionBoard check if the dimension of columns in board is enough to put a block, in this case will return false', () => {
     let content = [];
 
-    let board = new Scenario(2, 2, content);
+    let board = new Stage(2, 2, content);
     board.initBoard(' . ');
 
     let block = new Block(board.content);
@@ -30,7 +30,7 @@ test('CheckDimentionBoard check if the dimension of columns in board is enough t
 test('CheckDimentionBoard check if the dimension of columns in board is enough to put a block, in this case will return true', () => {
     let content = [];
 
-    let board = new Scenario(10, 10, content);
+    let board = new Stage(10, 10, content);
     board.initBoard(' . ');
 
     let block = new Block(board.content);
@@ -55,7 +55,7 @@ test('putDinamicBlocks put diferent number of block in case to have the dimensio
         [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ']
     ];
 
-    let board = new Scenario(10, 6, content);
+    let board = new Stage(10, 6, content);
     board.initBoard(' . ');
 
     let block = new Block(board.content);
