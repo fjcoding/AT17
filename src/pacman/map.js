@@ -170,6 +170,12 @@ export class Map {
         this.inky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.clyde.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
     }
-
+    
+    ghostCheckAtack(){
+        this.blinky.checkAttack(this.pacman);
+        this.pinky.checkAttack(this.pacman);
+        this.inky.checkAttack(this.pacman);
+        this.clyde.checkAttack(this.pacman);
+    }
 
 }
