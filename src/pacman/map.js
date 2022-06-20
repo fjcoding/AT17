@@ -54,16 +54,10 @@ export class Map {
                         //arrText += GHOST + '  ';
                         arrText += ' ' + this.pacman.getIconWithColor() + ' ';
                     } else {
-                        if (this.map[i][k] == 0) {
-                            arrText += BLOCK + BLOCK + BLOCK;
-                        } else if ((this.map[i][k] == 1)) {
-                            arrText += ' ' + DOT + ' ';
-                        } else if ((this.map[i][k] == 2) || (this.map[i][k] == 3)) {
-                            arrText += SPACE + '  ';
-                        } else if ((this.map[i][k] == 4)) {
-                            arrText += ' ' + 'O' + ' ';
-                        }
-                        if (positionYGhost == i && positionXGhost == k) {
+                        arrText = this.printBasicIcons(i,k,arrText);
+                        
+                        if (this.ghost.getPosX() == k && this.ghost.getPosY() == i) {
+                            
                             arrText = '';
                             arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
@@ -102,7 +96,7 @@ export class Map {
         }
         if (this.superDot3.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot3.getnotEaten()) {
             this.changeValue(this.superDot3.positionX, this.superDot3.positionY, 2);
-            this.superDot1.notEaten = false;
+            this.superDot3.notEaten = false;
             //should return a flag to make gosth blue
         }
         if (this.superDot4.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot4.getnotEaten()) {
@@ -143,4 +137,19 @@ export class Map {
         res = this.superDot4.setIcon(posX,posY,res);
         return res;
     }
+
+    printBasicIcons(posX, posY, arrText){
+        let res = arrText;
+        if (this.map[posX][posY] == 0) {
+            res += BLOCK + BLOCK + BLOCK;
+        } else if ((this.map[posX][posY] == 1)) {
+            res += ' ' + DOT + ' ';
+        } else if ((this.map[posX][posY] == 2) || (this.map[posX][posY] == 3)) {
+            res += SPACE + '  ';
+        } else if ((this.map[posX][posY] == 4)) {
+            res += ' ' + 'O' + ' ';
+        }
+        return res;
+    }
+
 }
