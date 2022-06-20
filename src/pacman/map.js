@@ -13,7 +13,7 @@ const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
 const LIMIT_AXIS_Y = 14;
-const HEARD = '\x1b[91m♥\x1b[39m';
+const HEARD = '\u2665';
 export class Map {
     constructor(map) {
         this.map = map;
@@ -21,6 +21,8 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(25, 2);
+        this.ghost2 = new Ghost(1, 2);
+        this.ghost3 = new Ghost(25, 29);
         this.apple = new Apple(15, 29);
         this.superDot1 = new superDot(1, 26);
         this.superDot2 = new superDot(26, 26);
@@ -63,10 +65,20 @@ export class Map {
                         } else if ((this.map[i][k] == 4)) {
                             arrText += ' ' + 'O' + ' ';
                         }
-                        if (positionYGhost == i && positionXGhost == k) {
+                        if (this.ghost.positionY == i && this.ghost.positionX == k) {
                             arrText = '';
                             arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
+
+                        if (this.ghost2.positionY == i && this.ghost2.positionX == k) {
+                            arrText = '';
+                            arrText += ' ' + this.ghost2.getIconWithColor() + ' ';
+                        }
+                        if (this.ghost3.positionY == i && this.ghost3.positionX == k) {
+                            arrText = '';
+                            arrText += ' ' + this.ghost3.getIconWithColor() + ' ';
+                        }
+
                         if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
                             arrText = '';
                             arrText += ' ' + APPLE;
@@ -119,6 +131,10 @@ export class Map {
     redrawMap() {
         this.pacman.selectFreeDirection(this.map);
         this.ghost.selectFreeDirection(this.map);
+
+        this.ghost2.selectFreeDirection(this.map);
+        this.ghost3.selectFreeDirection(this.map);
+
         this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
 
         if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
@@ -138,7 +154,7 @@ export class Map {
         }
         if (this.superDot3.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot3.getnotEaten()) {
             this.changeValue(this.superDot3.positionX, this.superDot3.positionY, 2);
-            this.superDot1.notEaten = false;
+            this.superDot3.notEaten = false;
             //should return a flag to make gosth blue
         }
         if (this.superDot4.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot4.getnotEaten()) {
@@ -148,8 +164,16 @@ export class Map {
         }
         this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.ghost.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+
+        this.ghost2.checkLimitsMap(LIMIT_AXIS_X,LIMIT_AXIS_Y);
+        this.ghost3.checkLimitsMap(LIMIT_AXIS_X,LIMIT_AXIS_Y);
+
         this.pacman.move();
         this.ghost.checkAttack(this.pacman);
+
+        this.ghost2.checkAttack(this.pacman);
+        this.ghost3.checkAttack(this.pacman);
+
         if (this.pacman.getLife() < 0) {
             this.countGameOver += 1;
             clearInterval();
@@ -159,7 +183,7 @@ export class Map {
         } else {
             this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-            process.stdout.write('   LIFE: ' + HEARD + ' ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
+            process.stdout.write('   \x1b[91mLIFE: ' + HEARD +' '+ this.pacman.life+'\x1b[39m' + '\t\t\t\t\t\t\t\t' + '\x1b[97mSCORE: ' + this.pacman.score + '\x1b[39m\n');
         }
         return this.map;
     }
