@@ -149,6 +149,7 @@ test('Validate function walking to left get into random movement at the rigth en
     player.changeDirection(false, 3, 0, 1);
     expect(player.flag).toBe(true);
 });
+
 test('Validate function walking to left get into random movement at the left end', () => {
     let matrixEmpty = [
         [0, 0, 0],
