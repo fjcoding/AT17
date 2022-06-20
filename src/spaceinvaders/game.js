@@ -1,18 +1,23 @@
 import readline from 'readline';
 import { Stage } from './stage.js';
 import { Score } from './score.js';
+import { Block } from './block.js';
 
+const rows = 34;
+const columns = 22;
+const CharacterBoard = '   ';
+const levelPositionBlocks = 3;
 export class Game {
     constructor() {
-        let rows = 30;
-        let columns = 22;
         this.stageBoard = new Stage(rows, columns);
         this.scoreGame = new Score(columns);
+        this.blockGame = new Block(this.stageBoard.getBoard());
     }
 
     initgame() {
-        this.stageBoard.initBoard(' . ');
+        this.stageBoard.initBoard(CharacterBoard);
         this.stageBoard.putBorder();
+        this.blockGame.putDinamicBlocks(levelPositionBlocks, this.stageBoard.getBoard());
     }
 
     printGame() {
