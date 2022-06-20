@@ -42,26 +42,13 @@ export class Map {
         return this.map[i].length;
     }
 
-    printMap(positionXPacman, positionYPacman, positionXGhost, positionYGhost) {
+    printMap() {
         let arrText = '';
         process.stdout.write(CLEAR);
         for (let rows = 0; rows < this.rows; rows++) {
             for (let columns = 0; columns < this.columns; columns++) {
-                if (positionYPacman == positionXGhost && positionXPacman == positionYGhost) {
-                    arrText += ' ' + CRASH + ' ';
-                } else {
-                    if (positionYPacman == rows && positionXPacman == columns) {
-                        arrText += ' ' + this.pacman.getIconWithColor() + ' ';
-                    } else {
-                        arrText = this.printBasicIcons(rows,columns,arrText);
-                        if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
-                            arrText = '';
-                            arrText += ' ' + this.ghost.getIconWithColor() + ' ';
-                        }
-                        arrText = this.apple.setIcon(columns,rows,arrText);
-                        arrText = this.printSuperDots(columns,rows,arrText);
-                    }
-                }
+                    arrText = this.printIcons(rows,columns,arrText);
+                
                 process.stdout.write(arrText);
                 arrText = '';
             }
@@ -110,7 +97,7 @@ export class Map {
             // process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAME OVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
             process.exit();
         } else {
-            this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
+            this.printMap();
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
             process.stdout.write('   LIFE: ' + HEARD + ' ' + this.pacman.life + '\t\t\t\t\t\t\t\t' + 'SCORE: ' + this.pacman.score + '\n');
         }
@@ -144,6 +131,22 @@ export class Map {
         } else if ((this.map[posX][posY] == 4)) {
             res += ' ' + 'O' + ' ';
         }
+        return res;
+    }
+
+    printIcons(rows,columns,arrText){
+        let res = arrText;
+            if (this.pacman.getPosY() == rows && this.pacman.getPosX() == columns) {
+                res += ' ' + this.pacman.getIconWithColor() + ' ';
+            } else {
+                res = this.printBasicIcons(rows,columns,res);
+                if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
+                    res = '';
+                    res += ' ' + this.ghost.getIconWithColor() + ' ';
+                }
+                res = this.apple.setIcon(columns,rows,res);
+                res = this.printSuperDots(columns,rows,res);
+            }
         return res;
     }
 
