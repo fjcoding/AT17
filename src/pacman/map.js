@@ -17,7 +17,7 @@ export class Map {
         this.map = map;
         this.rows = map.length;
         this.columns = map[0].length;
-        this.pacman = new Pacman(14, 18);
+        this.pacman = new Pacman(13, 17);
         this.blinky = new Ghost(15, 12);
         this.pinky = new Ghost(14, 11);
         this.inky = new Ghost(13, 11);
@@ -87,7 +87,7 @@ export class Map {
             //should return a flag to make gosth blue
         }
         this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
-        this.pacman.selectFreeDirection(this.map);
+        this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
         this.ghostCheckLimitsMap();
         this.pacman.move();
         this.ghostCheckAtack();
