@@ -13,6 +13,14 @@ export class Actor {
         this.edible = true;
     }
 
+    getPosX() {
+        return this.positionX;
+    }
+
+    getPosY() {
+        return this.positionY;
+    }
+
     setDirection(newDirection) {
         this.direction = newDirection;
     }

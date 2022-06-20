@@ -60,4 +60,17 @@ export class superDot {
             return ['\x1b[', 97, 'm', output, '\x1b[', 39, 'm'].join('');
         }
     }
+
+    setIcon(posX, posY, arrText) {
+        let res = arrText;
+        if (this.getPositionX() == posX && this.getPositionY() == posY  && this.getnotEaten() == true) {
+            res = '';
+            res += ' ' + this.getIconWithColor() + ' ';
+        }
+        if (this.getPositionY() == posY && this.getPositionX() == posX && this.getnotEaten() == false) {
+            res = '';
+            res += '   ';
+        }
+        return res;
+    }
 }
