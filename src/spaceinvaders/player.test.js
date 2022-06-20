@@ -47,7 +47,7 @@ test('Test player W moves to left', () => {
 
     let player = new Player(1, 1, matrixEmpty, ' W ', false);
 
-    expect(player.changeDirection(false, 3, 0)).toBe(0);
+    expect(player.changeDirection(false, 3, 0)).toBe(1);
 });
 
 test('Test flag changes to false when arrives to the end right', () => {
@@ -69,7 +69,7 @@ test('Test flag changes to true when arrives to the end left', () => {
 
     let player = new Player(1, 1, matrixEmpty, ' W ', false);
 
-    expect(player.changeDirection(false, 3, 0)).toBe(0);
+    expect(player.changeDirection(false, 3, 0)).toBe(1);
 });
 
 test('Test flag changes to true when arrives to the end left', () => {
@@ -125,7 +125,7 @@ test('Validate function walk rigth get into random movement', () => {
 
     let player = new Player(1, 2, matrixEmpty, ' W ', true);
     player.changeDirection(true, 3, 0, 1);
-    expect(player.flag).toBe(false);
+    expect(player.flag).toBe(true);
 });
 
 test('Validate function walking to left get into random movement', () => {
@@ -136,7 +136,7 @@ test('Validate function walking to left get into random movement', () => {
 
     let player = new Player(1, 1, matrixEmpty, ' W ', false);
     player.changeDirection(false, 3, 0, 1);
-    expect(player.flag).toBe(true);
+    expect(player.flag).toBe(false);
 });
 
 test('Validate function walking to left get into random movement at the rigth end', () => {
