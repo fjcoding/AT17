@@ -34,7 +34,7 @@ export class Player {
     }
 
     changeDirection(flag, col, posInitial, RandomNumber) {
-        if (flag == true && this.y < col) {
+        if (flag == true && this.y < col - 1) {
             this.walkToRight();
             if (this.y == col) {
                 this.flag = false;
@@ -43,7 +43,7 @@ export class Player {
                     this.flag = false;
                 }
             }
-        } else if (flag == false && this.y > 0) {
+        } else if (flag == false && this.y > 1) {
             this.walkToLeft();
             if (this.y == posInitial) {
                 this.flag = true;
