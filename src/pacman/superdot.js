@@ -11,7 +11,7 @@ export class superDot {
     }
 
     getIconWithColor() {
-        return this.colorize(this.icon);
+        return this.colorize(this.icon, this.genRandom());
     }
 
     getPositionY() {
@@ -35,28 +35,30 @@ export class superDot {
         }
     }
 
-    colorize(output) {
-        this.color = Math.floor(Math.random() * 7);
+    genRandom() {
+        return Math.floor(Math.random() * 7);
+    }
 
-        if (this.color == 0) {
+    colorize(output, color) {
+        if (color == 0) {
             return ['\x1b[', 91, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 1) {
+        if (color == 1) {
             return ['\x1b[', 92, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 2) {
+        if (color == 2) {
             return ['\x1b[', 93, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 3) {
+        if (color == 3) {
             return ['\x1b[', 94, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 4) {
+        if (color == 4) {
             return ['\x1b[', 95, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 5) {
+        if (color == 5) {
             return ['\x1b[', 96, 'm', output, '\x1b[', 39, 'm'].join('');
         }
-        if (this.color == 6) {
+        if (color == 6) {
             return ['\x1b[', 97, 'm', output, '\x1b[', 39, 'm'].join('');
         }
     }
