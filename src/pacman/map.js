@@ -163,7 +163,13 @@ export class Map {
         this.inky.selectFreeDirection(this.map);
         this.clyde.selectFreeDirection(this.map);
     }
-
+    
+    ghostCheckLimitsMap(){
+        this.blinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.pinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.inky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.clyde.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+    }
 
 
 }
