@@ -27,4 +27,13 @@ export class Ghost extends Actor {
     getIconWithColor() {
         return '\x1b[97m' + this.icon + '\x1b[39m';
     }
+
+    printIcon(columns, rows, arrText) {
+        let res = arrText;
+        if (this.getPosX() == columns && this.getPosY() == rows) {
+            res = '';
+            res += ' ' + this.getIconWithColor() + ' ';
+        }
+        return res;
+    }
 }

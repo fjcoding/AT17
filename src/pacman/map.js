@@ -17,8 +17,11 @@ export class Map {
         this.map = map;
         this.rows = map.length;
         this.columns = map[0].length;
-        this.pacman = new Pacman(1, 29);
-        this.ghost = new Ghost(25, 2);
+        this.pacman = new Pacman(13, 17);
+        this.blinky = new Ghost(15, 12);
+        this.pinky = new Ghost(14, 11);
+        this.inky = new Ghost(13, 11);
+        this.clyde = new Ghost(12, 12);
         this.apple = new Apple(15, 29);
         this.superDot1 = new superDot(1, 26);
         this.superDot2 = new superDot(26, 26);
@@ -55,7 +58,7 @@ export class Map {
 
     redrawMap() {
         this.pacman.selectFreeDirection(this.map);
-        this.ghost.selectFreeDirection(this.map);
+        this.ghostSelectFreeDirection();
         this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
 
         if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
@@ -84,9 +87,10 @@ export class Map {
             //should return a flag to make gosth blue
         }
         this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
-        this.ghost.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
+        this.ghostCheckLimitsMap();
         this.pacman.move();
-        this.ghost.checkAttack(this.pacman);
+        this.ghostCheckAtack();
         if (this.pacman.getLife() < 0) {
             this.countGameOver += 1;
             clearInterval();
@@ -137,13 +141,40 @@ export class Map {
             res += ' ' + this.pacman.getIconWithColor() + ' ';
         } else {
             res = this.printBasicIcons(rows, columns, res);
-            if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
-                res = '';
-                res += ' ' + this.ghost.getIconWithColor() + ' ';
-            }
+            res = this.printGhostIcons(columns, rows, res);
             res = this.apple.setIcon(columns, rows, res);
             res = this.printSuperDots(columns, rows, res);
         }
         return res;
+    }
+
+    printGhostIcons(columns, rows, arrText) {
+        let res = arrText;
+        res = this.blinky.printIcon(columns, rows, res);
+        res = this.pinky.printIcon(columns, rows, res);
+        res = this.inky.printIcon(columns, rows, res);
+        res = this.clyde.printIcon(columns, rows, res);
+        return res;
+    }
+
+    ghostSelectFreeDirection() {
+        this.blinky.selectFreeDirection(this.map);
+        this.pinky.selectFreeDirection(this.map);
+        this.inky.selectFreeDirection(this.map);
+        this.clyde.selectFreeDirection(this.map);
+    }
+
+    ghostCheckLimitsMap() {
+        this.blinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.pinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.inky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.clyde.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+    }
+
+    ghostCheckAtack() {
+        this.blinky.checkAttack(this.pacman);
+        this.pinky.checkAttack(this.pacman);
+        this.inky.checkAttack(this.pacman);
+        this.clyde.checkAttack(this.pacman);
     }
 }
