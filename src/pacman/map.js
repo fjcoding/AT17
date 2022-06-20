@@ -42,29 +42,24 @@ export class Map {
         return this.map[i].length;
     }
 
-    printMap(positionXPacman, positionYPacman, positionXGhost, positionYGhost,) {
+    printMap(positionXPacman, positionYPacman, positionXGhost, positionYGhost) {
         let arrText = '';
         process.stdout.write(CLEAR);
-        for (let i = 0; i < this.rows; i++) {
-            for (let k = 0; k < this.columns; k++) {
+        for (let rows = 0; rows < this.rows; rows++) {
+            for (let columns = 0; columns < this.columns; columns++) {
                 if (positionYPacman == positionXGhost && positionXPacman == positionYGhost) {
                     arrText += ' ' + CRASH + ' ';
                 } else {
-                    if (positionYPacman == i && positionXPacman == k) {
-                        //arrText += GHOST + '  ';
+                    if (positionYPacman == rows && positionXPacman == columns) {
                         arrText += ' ' + this.pacman.getIconWithColor() + ' ';
                     } else {
-                        arrText = this.printBasicIcons(i,k,arrText);
-                        
-                        if (this.ghost.getPosX() == k && this.ghost.getPosY() == i) {
-                            
+                        arrText = this.printBasicIcons(rows,columns,arrText);
+                        if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
                             arrText = '';
                             arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
-
-                        arrText = this.apple.setIcon(k,i,arrText);
-                        arrText = this.printSuperDots(k,i,arrText);
-                       
+                        arrText = this.apple.setIcon(columns,rows,arrText);
+                        arrText = this.printSuperDots(columns,rows,arrText);
                     }
                 }
                 process.stdout.write(arrText);
