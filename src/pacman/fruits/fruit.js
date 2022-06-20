@@ -32,8 +32,8 @@ export class Fruit {
     setPosition(map) {
         let flag = true;
         while (flag) {
-            let posX = this.random();
-            let posY = this.random();
+            let posX = this.random(map);
+            let posY = this.random(map);
             if (map[posY][posX] == 1) {
                 this.positionX = posX;
                 this.positionY = posY;
@@ -42,9 +42,9 @@ export class Fruit {
         }
     }
 
-    random () {
-        let max = 28;
-        let min = 1;
+    random (map) {
+        let max = map.length - 1;
+        let min = 0;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 

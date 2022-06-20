@@ -23,7 +23,7 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(25, 2);
-        this.fruits = [new Apple(map),new Strawberry(map), new Cherry(map), new Orange(map)];
+        this.fruits = [new Apple(map), new Strawberry(map), new Cherry(map), new Orange(map)];
         this.superDot1 = new superDot(1, 26);
         this.superDot2 = new superDot(26, 26);
         this.superDot3 = new superDot(1, 8);
@@ -69,12 +69,12 @@ export class Map {
                             arrText = '';
                             arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
-                        for(let l=0; l<4; l++){
-                        if (this.fruits[l].getPositionY() == i && this.fruits[l].getPositionX() == k && this.fruits[l].getnotEaten() == true) {
-                            arrText = '';
-                            arrText += ' ' + this.fruits[l].getIcon();
+                        for (let l = 0; l < 4; l++) {
+                            if (this.fruits[l].getPositionY() == i && this.fruits[l].getPositionX() == k && this.fruits[l].getnotEaten() == true) {
+                                arrText = '';
+                                arrText += ' ' + this.fruits[l].getIcon();
+                            }
                         }
-                    }
                         if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
                             arrText = '';
                             arrText += ' ' + this.superDot1.getIconWithColor() + ' ';
@@ -120,12 +120,12 @@ export class Map {
         this.pacman.selectFreeDirection(this.map);
         this.ghost.selectFreeDirection(this.map);
         this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
-        for(let i=0; i<4; i++){
-        if (this.fruits[i].eaten(this.pacman.positionX, this.pacman.positionY) && this.fruits[i].getnotEaten()) {
-            this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
-            this.fruits[i].notEaten = false;
-            this.fruits[i].score += this.fruits[i].points;
-        }
+        for (let i = 0; i < 4; i++) {
+            if (this.fruits[i].eaten(this.pacman.positionX, this.pacman.positionY) && this.fruits[i].getnotEaten()) {
+                this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
+                this.fruits[i].notEaten = false;
+                this.fruits[i].score += this.fruits[i].points;
+            }
         }
         if (this.superDot1.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot1.getnotEaten()) {
             this.changeValue(this.superDot1.positionX, this.superDot1.positionY, 2);

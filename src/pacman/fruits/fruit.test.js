@@ -1,6 +1,6 @@
 import { Fruit } from './fruit.js';
 import { Apple } from './apple.js';
-import { Pacman } from '../pacman.js';
+/* import { Pacman } from '../pacman.js'; */
 let map =  [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
