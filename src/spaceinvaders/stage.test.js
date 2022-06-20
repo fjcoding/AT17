@@ -1,6 +1,6 @@
-import { Scenario } from './scenario.js';
+import { Stage } from './Stage.js';
 
-test('the function initialize the scenario and the content on center it will be the dimension in this case 2x2', () => {
+test('the function initialize the Stage and the content on center it will be the dimension in this case 2x2', () => {
     let characterTest = ' . ';
     let content = [];
     let contentExpect = [];
@@ -10,12 +10,12 @@ test('the function initialize the scenario and the content on center it will be 
             contentExpect[i][j] = characterTest;
         }
     }
-    let board = new Scenario(2, 2, content);
+    let board = new Stage(2, 2, content);
     board.initBoard(characterTest);
 
     expect(board.content).toEqual(contentExpect);
 });
-test('the function to comprobe the border of the scenario, in this case 2x2 dimension', () => {
+test('the function to comprobe the border of the Stage, in this case 2x2 dimension', () => {
     let content = [];
     let contentExpect = [
         [' ╚-', '---', '---', '-╝ '],
@@ -25,7 +25,7 @@ test('the function to comprobe the border of the scenario, in this case 2x2 dime
 
     ];
 
-    let board = new Scenario(2, 2, content);
+    let board = new Stage(2, 2, content);
     board.initBoard(' . ');
     board.putBorder();
 
@@ -42,7 +42,7 @@ test('the function to get only the board at the moment that the method getBoard 
 
     ];
 
-    let board = new Scenario(2, 2, content);
+    let board = new Stage(2, 2, content);
     board.initBoard(' . ');
 
     expect(board.getBoard()).toEqual(contentExpect);
@@ -52,7 +52,7 @@ test('the function that print the board when it is called, only return a large s
     let content = [];
     let resultExpect = ' .  .  . \n .  .  . \n .  .  . \n';
 
-    let board = new Scenario(1, 1, content);
+    let board = new Stage(1, 1, content);
     board.initBoard(' . ');
     expect(board.print()).toBe(resultExpect);
 });

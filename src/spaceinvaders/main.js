@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { Scenario } from './scenario.js';
+import { Stage } from './Stage.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
@@ -32,7 +32,7 @@ let element = ' $ ';
 let countForUpdateAlien = 0;
 let countForUpdateFrecuenceBullet = 0;
 
-let board = new Scenario(row, col);
+let board = new Stage(row, col);
 board.initBoard('   ');
 initAliens(board.content);
 let boardFill;

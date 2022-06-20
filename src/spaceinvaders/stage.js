@@ -1,6 +1,6 @@
 
 
-export class Scenario {
+export class Stage {
     constructor(row, col) {
         this.row = row + 2;
         this.col = col + 2;
