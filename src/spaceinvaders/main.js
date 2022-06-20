@@ -1,13 +1,14 @@
-import readline from 'readline';
+/*import readline from 'readline';
 import { Stage } from './stage.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';
 import { Boss } from './boss.js';
 import { Bullet } from './bullet.js';
-import { Score } from './score.js';
+*/
+import { Game } from './game.js';
 
-let row = 30;
+/*let row = 30;
 let col = 22;
 let posRowAliens = 1;
 let posXPlayer = 1;
@@ -22,7 +23,7 @@ let boss;
 let lastRightPosition = 2;
 let lastLeftPosition = col - 1;
 
-let scoreGame = new Score(col);
+
 let flag = true;
 let flagBoss = true;
 let flagAlien = true;
@@ -36,12 +37,15 @@ let board = new Stage(row, col);
 board.initBoard('   ');
 initAliens(board.content);
 let boardFill;
-let oldPoints;
+let oldPoints;*/
+let playerGame= new Game();
+playerGame.initgame();
 
 function run() {
+    playerGame.printGame();
+/*
     readline.cursorTo(process.stdout, 0, 0);
-    board.initBoard('   ');
-    board.putBorder();
+ 
     process.stdout.write(scoreGame.printScore());
     boardFill = board.getBoard();
     boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
@@ -68,6 +72,7 @@ function run() {
         process.stdout.write(gameOver());
         process.exit();
     }
+    */
 }
 console.clear();
 setInterval(run, 500);
