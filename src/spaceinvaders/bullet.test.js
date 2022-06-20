@@ -1,7 +1,7 @@
 import { Bullet } from './bullet.js';
-/*
-test('Probing if the bullet is setting up in the position (0,0)', () => {
-    let expected = [[' | ', 0],
+
+test('Probing if the bullet player is setting up in the position (0,0)', () => {
+    let expected = [[' ¡ ', 0],
         [0, 0],
         [0, 0],
         [0, 0],
@@ -12,13 +12,13 @@ test('Probing if the bullet is setting up in the position (0,0)', () => {
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(0, 0, matrixEmpty);
-    expect(bullet.setBullet(0, 0)).toStrictEqual(expected);
+    expect(bullet.setBulletPlayer(0, 0)).toStrictEqual(expected);
 });
 
 
-test('Probing if the bullet is setting up in the position (1,1)', () => {
+test('Probing if the bullet player is setting up in the position (1,1)', () => {
     let expected = [[0, 0],
-        [0, ' | '],
+        [0, ' ¡ '],
         [0, 0],
         [0, 0],
         [0, 0]];
@@ -28,11 +28,11 @@ test('Probing if the bullet is setting up in the position (1,1)', () => {
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(1, 1, matrixEmpty);
-    expect(bullet.setBullet(1, 1)).toStrictEqual(expected);
+    expect(bullet.setBulletPlayer(1, 1)).toStrictEqual(expected);
 });
 
 test('Probing if the bullet alien is setting up in the position (0,0)', () => {
-    let expected = [[' | ', 0],
+    let expected = [[' ! ', 0],
         [0, 0],
         [0, 0],
         [0, 0],
@@ -49,7 +49,7 @@ test('Probing if the bullet alien is setting up in the position (0,0)', () => {
 
 test('Probing if the bullet alien is setting up in the position (1,1)', () => {
     let expected = [[0, 0],
-        [0, ' | '],
+        [0, ' ! '],
         [0, 0],
         [0, 0],
         [0, 0]];
@@ -72,7 +72,7 @@ test('Probing if getPosx gets the position X+1 correctly', () => {
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosX()).toStrictEqual(2);
+    expect(bullet.getPosX()).toStrictEqual(1);
 });
 
 test('Probing if getPosx gets the position X+1 correctly', () => {
@@ -85,7 +85,7 @@ test('Probing if getPosx gets the position X+1 correctly', () => {
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosX()).toStrictEqual(3);
+    expect(bullet.getPosX()).toStrictEqual(2);
 });
 
 test('Probing if getPosx gets the position X+1 correctly', () => {
@@ -98,7 +98,7 @@ test('Probing if getPosx gets the position X+1 correctly', () => {
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosX()).toStrictEqual(1);
+    expect(bullet.getPosX()).toStrictEqual(0);
 });
 
 
@@ -112,7 +112,7 @@ test('Test1 getPosx Alien to verify if the getter gets the position X+1 correctl
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosXAlien()).toStrictEqual(2);
+    expect(bullet.getPosXAlien()).toStrictEqual(1);
 });
 
 test('Test2 getPosx to verify if the getter gets the position X+1 correctly', () => {
@@ -125,7 +125,7 @@ test('Test2 getPosx to verify if the getter gets the position X+1 correctly', ()
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosXAlien()).toStrictEqual(3);
+    expect(bullet.getPosXAlien()).toStrictEqual(2);
 });
 
 test('Test3 getPosx to verify if the getter gets the position X+1 correctly', () => {
@@ -138,9 +138,9 @@ test('Test3 getPosx to verify if the getter gets the position X+1 correctly', ()
         [0, 0],
         [0, 0]];
     let bullet = new Bullet(positionX, positionY, matrixEmpty);
-    expect(bullet.getPosXAlien()).toStrictEqual(1);
+    expect(bullet.getPosXAlien()).toStrictEqual(0);
 });
-*/
+
 
 test('Probing if getPosY gets the position Y correctly', () => {
     let positionX = 1;
