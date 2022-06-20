@@ -1,4 +1,4 @@
-import { Stage } from './Stage.js';
+import { Stage } from './stage.js';
 
 test('the function initialize the Stage and the content on center it will be the dimension in this case 2x2', () => {
     let characterTest = ' . ';

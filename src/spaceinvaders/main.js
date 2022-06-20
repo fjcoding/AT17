@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { Stage } from './Stage.js';
+import { Stage } from './stage.js';
 import { Player } from './player.js';
 import { Alien } from './enemy.js';
 import { Block } from './block.js';

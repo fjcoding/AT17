@@ -1,5 +1,5 @@
 import { Block } from './block.js';
-import { Stage} from './Stage.js';
+import { Stage} from './stage.js';
 
 test('SetBlock is the function that put a new block in board', () => {
     let content = [];
