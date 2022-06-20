@@ -1,5 +1,6 @@
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
+import { Fruit } from './fruit.js';
 import { Apple } from './apple.js';
 import { superDot } from './superdot.js';
 import { Screen } from './screen.js';
@@ -21,7 +22,7 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(25, 2);
-        this.apple = new Apple(15, 29);
+        this.apple = new Apple(map);
         this.superDot1 = new superDot(1, 26);
         this.superDot2 = new superDot(26, 26);
         this.superDot3 = new superDot(1, 8);
@@ -124,7 +125,7 @@ export class Map {
         if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
             this.changeValue(this.apple.positionX, this.apple.positionY, 2);
             this.apple.notEaten = false;
-            this.pacman.score += 700;
+            this.pacman.score += this.apple.points;
         }
         if (this.superDot1.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot1.getnotEaten()) {
             this.changeValue(this.superDot1.positionX, this.superDot1.positionY, 2);
