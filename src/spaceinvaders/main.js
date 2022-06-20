@@ -38,14 +38,14 @@ board.initBoard('   ');
 initAliens(board.content);
 let boardFill;
 let oldPoints;*/
-let playerGame= new Game();
+let playerGame = new Game();
 playerGame.initgame();
 
 function run() {
     playerGame.printGame();
 /*
     readline.cursorTo(process.stdout, 0, 0);
- 
+
     process.stdout.write(scoreGame.printScore());
     boardFill = board.getBoard();
     boss = new Boss(posXBoss, posYBoss,  boardFill, element, flagBoss);
@@ -77,7 +77,7 @@ function run() {
 console.clear();
 setInterval(run, 500);
 
-
+/*
 function initAliens(content) {
     for (let posX = content.length - 3; posX >= Math.floor(content.length * 0.8); posX--) {
         for (let posY = 4; posY < content[posX].length - 4; posY++) {
@@ -260,3 +260,4 @@ function gameOver() {
     return '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n'
     + '          ********** GAME OVER **************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n' + '          ****************  ****************\n\n';
 }
+*/
