@@ -165,8 +165,8 @@ export class Map {
         this.pacman.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.ghost.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
 
-        this.ghost2.checkLimitsMap(LIMIT_AXIS_X,LIMIT_AXIS_Y);
-        this.ghost3.checkLimitsMap(LIMIT_AXIS_X,LIMIT_AXIS_Y);
+        this.ghost2.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
+        this.ghost3.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
 
         this.pacman.move();
         this.ghost.checkAttack(this.pacman);
@@ -178,12 +178,11 @@ export class Map {
             this.countGameOver += 1;
             clearInterval();
             this.screen.printGameOver();
-            // process.stdout.write('•••••••••••••••••••••••••••••: ¡¡¡ GAME OVER !!! :••••••••••••••••••••••••••••••••••••\n\n');
             process.exit();
         } else {
             this.printMap(this.pacman.positionX, this.pacman.positionY, this.ghost.positionX, this.ghost.positionY);
             process.stdout.write('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-            process.stdout.write('   \x1b[91mLIFE: ' + HEARD +' '+ this.pacman.life+'\x1b[39m' + '\t\t\t\t\t\t\t\t' + '\x1b[97mSCORE: ' + this.pacman.score + '\x1b[39m\n');
+            process.stdout.write('   \x1b[91mLIFE: ' + HEARD + ' ' + this.pacman.life + '\x1b[39m' + '\t\t\t\t\t\t\t\t' + '\x1b[97mSCORE: ' + this.pacman.score + '\x1b[39m\n');
         }
         return this.map;
     }
