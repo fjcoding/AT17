@@ -116,18 +116,6 @@ test('Test getPosY returns the current value', () => {
 
     expect(player.getPosY()).toBe(1);
 });
-/*
-test('Validate function get into random movement', () => {
-    let matrixEmpty = [
-        [0, 0, 0],
-        [0, 0, 0],
-    ];
-
-    let player = new Player(1, 1, matrixEmpty, ' W ', true);
-    player.changeDirection(true, 3, 0);
-    expect(player.flag).toBe(false);
-});
-*/
 
 test('Validate function walk rigth get into random movement', () => {
     let matrixEmpty = [
