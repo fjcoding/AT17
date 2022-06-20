@@ -12,10 +12,12 @@ export class Actor {
         this.initialPositionY = posY;
         this.edible = true;
     }
-    getPosX(){
+
+    getPosX() {
         return this.positionX;
     }
-    getPosY(){
+
+    getPosY() {
         return this.positionY;
     }
 

@@ -30,12 +30,11 @@ test('The function eaten returns false if Pacman positionX and positionY is not 
 
 test('setIcon return the icon of the apple or space if the icon is eated', ()=>{
     let apple = new Apple (3, 10);
-    let actualValue = apple.setIcon(3,10,'');
+    let actualValue = apple.setIcon(3, 10, '');
     let expectedValue = ' ' + '\x1b[93m\uD83C\uDF4E\x1b[39m';
     expect(expectedValue).toBe(actualValue);
     apple.notEaten = Boolean(false);
-    actualValue = apple.setIcon(3,10,'');
+    actualValue = apple.setIcon(3, 10, '');
     expectedValue = '   ';
     expect(expectedValue).toBe(actualValue);
-
 });

@@ -37,13 +37,14 @@ export class Apple {
             return false;
         }
     }
-    setIcon(posX, posY,arrText){
+
+    setIcon(posX, posY, arrText) {
         let res = arrText;
         if (this.getPositionX() == posX && this.getPositionY() == posY  && this.getnotEaten() == true) {
             res = '';
             res += ' ' + this.icon;
         }
-        if(this.getPositionY() == posY && this.getPositionX() == posX && this.getnotEaten() == false){
+        if (this.getPositionY() == posY && this.getPositionX() == posX && this.getnotEaten() == false) {
             res = '';
             res += '   ';
         }

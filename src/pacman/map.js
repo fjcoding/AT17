@@ -7,8 +7,6 @@ const CLEAR = '\x1Bc';
 const BLOCK = '\x1b[44m\u2592\x1b[49m';
 const DOT = '\x1b[95m•\x1b[39m';
 const SPACE = ' ';
-const CRASH = '\u1F4A5';
-const APPLE = '\x1b[93m\uD83C\uDF4E\x1b[39m';
 const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
@@ -47,8 +45,7 @@ export class Map {
         process.stdout.write(CLEAR);
         for (let rows = 0; rows < this.rows; rows++) {
             for (let columns = 0; columns < this.columns; columns++) {
-                    arrText = this.printIcons(rows,columns,arrText);
-                
+                arrText = this.printIcons(rows, columns, arrText);
                 process.stdout.write(arrText);
                 arrText = '';
             }
@@ -111,16 +108,16 @@ export class Map {
         }
     }
 
-    printSuperDots(posX, posY, arrText){
+    printSuperDots(posX, posY, arrText) {
         let res = arrText;
-        res = this.superDot1.setIcon(posX,posY,res);
-        res = this.superDot2.setIcon(posX,posY,res);
-        res = this.superDot3.setIcon(posX,posY,res);
-        res = this.superDot4.setIcon(posX,posY,res);
+        res = this.superDot1.setIcon(posX, posY, res);
+        res = this.superDot2.setIcon(posX, posY, res);
+        res = this.superDot3.setIcon(posX, posY, res);
+        res = this.superDot4.setIcon(posX, posY, res);
         return res;
     }
 
-    printBasicIcons(posX, posY, arrText){
+    printBasicIcons(posX, posY, arrText) {
         let res = arrText;
         if (this.map[posX][posY] == 0) {
             res += BLOCK + BLOCK + BLOCK;
@@ -134,20 +131,19 @@ export class Map {
         return res;
     }
 
-    printIcons(rows,columns,arrText){
+    printIcons(rows, columns, arrText) {
         let res = arrText;
-            if (this.pacman.getPosY() == rows && this.pacman.getPosX() == columns) {
-                res += ' ' + this.pacman.getIconWithColor() + ' ';
-            } else {
-                res = this.printBasicIcons(rows,columns,res);
-                if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
-                    res = '';
-                    res += ' ' + this.ghost.getIconWithColor() + ' ';
-                }
-                res = this.apple.setIcon(columns,rows,res);
-                res = this.printSuperDots(columns,rows,res);
+        if (this.pacman.getPosY() == rows && this.pacman.getPosX() == columns) {
+            res += ' ' + this.pacman.getIconWithColor() + ' ';
+        } else {
+            res = this.printBasicIcons(rows, columns, res);
+            if (this.ghost.getPosX() == columns && this.ghost.getPosY() == rows) {
+                res = '';
+                res += ' ' + this.ghost.getIconWithColor() + ' ';
             }
+            res = this.apple.setIcon(columns, rows, res);
+            res = this.printSuperDots(columns, rows, res);
+        }
         return res;
     }
-
 }
