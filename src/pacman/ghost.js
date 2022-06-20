@@ -28,7 +28,7 @@ export class Ghost extends Actor {
         return '\x1b[97m' + this.icon + '\x1b[39m';
     }
 
-    printIcon(columns,rows,arrText){
+    printIcon(columns, rows, arrText) {
         let res = arrText;
         if (this.getPosX() == columns && this.getPosY() == rows) {
             res = '';

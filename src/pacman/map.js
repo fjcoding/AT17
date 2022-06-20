@@ -141,41 +141,40 @@ export class Map {
             res += ' ' + this.pacman.getIconWithColor() + ' ';
         } else {
             res = this.printBasicIcons(rows, columns, res);
-            res = this.printGhostIcons(columns,rows,res);
+            res = this.printGhostIcons(columns, rows, res);
             res = this.apple.setIcon(columns, rows, res);
             res = this.printSuperDots(columns, rows, res);
         }
         return res;
     }
 
-    printGhostIcons(columns,rows,arrText){
+    printGhostIcons(columns, rows, arrText) {
         let res = arrText;
-        res = this.blinky.printIcon(columns,rows,res);
-        res = this.pinky.printIcon(columns,rows,res);
-        res = this.inky.printIcon(columns,rows,res);
-        res = this.clyde.printIcon(columns,rows,res);
+        res = this.blinky.printIcon(columns, rows, res);
+        res = this.pinky.printIcon(columns, rows, res);
+        res = this.inky.printIcon(columns, rows, res);
+        res = this.clyde.printIcon(columns, rows, res);
         return res;
     }
 
-    ghostSelectFreeDirection(){
+    ghostSelectFreeDirection() {
         this.blinky.selectFreeDirection(this.map);
         this.pinky.selectFreeDirection(this.map);
         this.inky.selectFreeDirection(this.map);
         this.clyde.selectFreeDirection(this.map);
     }
-    
-    ghostCheckLimitsMap(){
+
+    ghostCheckLimitsMap() {
         this.blinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.pinky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.inky.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
         this.clyde.checkLimitsMap(LIMIT_AXIS_X, LIMIT_AXIS_Y);
     }
-    
-    ghostCheckAtack(){
+
+    ghostCheckAtack() {
         this.blinky.checkAttack(this.pacman);
         this.pinky.checkAttack(this.pacman);
         this.inky.checkAttack(this.pacman);
         this.clyde.checkAttack(this.pacman);
     }
-
 }
