@@ -125,7 +125,7 @@ test('Validate function walk rigth get into random movement', () => {
 
     let player = new Player(1, 2, matrixEmpty, ' W ', true);
     player.changeDirection(true, 3, 0, 1);
-    expect(player.flag).toBe(true);
+    expect(player.flag).toBe(false);
 });
 
 test('Validate function walking to left get into random movement', () => {
