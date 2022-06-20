@@ -11,7 +11,6 @@ export class Score {
 
 
     putSpaceScore(dimension) {
-        console.log(dimension - (this.arrayScore.length + this.arrayLives.length));
         for (let size = 0; size < (dimension) - (4 + 4); size++) {
             this.arraySpace.push('   ');
         }

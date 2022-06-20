@@ -116,18 +116,6 @@ test('Test getPosY returns the current value', () => {
 
     expect(player.getPosY()).toBe(1);
 });
-/*
-test('Validate function get into random movement', () => {
-    let matrixEmpty = [
-        [0, 0, 0],
-        [0, 0, 0],
-    ];
-
-    let player = new Player(1, 1, matrixEmpty, ' W ', true);
-    player.changeDirection(true, 3, 0);
-    expect(player.flag).toBe(false);
-});
-*/
 
 test('Validate function walk rigth get into random movement', () => {
     let matrixEmpty = [
@@ -136,7 +124,7 @@ test('Validate function walk rigth get into random movement', () => {
     ];
 
     let player = new Player(1, 2, matrixEmpty, ' W ', true);
-    player.changeDirection(true, 3, 0);
+    player.changeDirection(true, 3, 0, 1);
     expect(player.flag).toBe(false);
 });
 
@@ -147,7 +135,7 @@ test('Validate function walking to left get into random movement', () => {
     ];
 
     let player = new Player(1, 1, matrixEmpty, ' W ', false);
-    player.changeDirection(false, 3, 0);
+    player.changeDirection(false, 3, 0, 1);
     expect(player.flag).toBe(true);
 });
 
@@ -158,6 +146,16 @@ test('Validate function walking to left get into random movement at the rigth en
     ];
 
     let player = new Player(1, 2, matrixEmpty, ' W ', false);
-    player.changeDirection(false, 3, 0);
+    player.changeDirection(false, 3, 0, 1);
+    expect(player.flag).toBe(true);
+});
+test('Validate function walking to left get into random movement at the left end', () => {
+    let matrixEmpty = [
+        [0, 0, 0],
+        [0, 0, 0],
+    ];
+
+    let player = new Player(1, 0, matrixEmpty, ' W ', false);
+    player.changeDirection(false, 3, 0, 1);
     expect(player.flag).toBe(false);
 });

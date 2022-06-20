@@ -53,7 +53,7 @@ function run() {
     bulletInBoardPlayer(posXPlayer, posYPlayer,  boardFill);
     bulletInBoardAlien();
     process.stdout.write(board.print());
-    posYPlayer = player.changeDirection(flag, col, posInitial);
+    posYPlayer = player.changeDirection(flag, col, posInitial, Math.random());
     flag = player.changeFlag();
     posYBoss = boss.changeDirectionBoss(flagBoss, col, posInitial);
     element = boss.changeElement(flagBoss, col);

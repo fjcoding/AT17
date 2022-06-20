@@ -96,4 +96,49 @@ test('Probing if the alien is update to position add to y-1', () => {
     expect(alien.content).toStrictEqual(expected);
 });
 
+test('probing if the function return the position Y', () => {
+    let matrixEmpty = [
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(0, 1, matrixEmpty);
+    expect(alien.getPosY()).toBe(1);
+});
+test('probing if the function return the position X', () => {
+    let matrixEmpty = [
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(0, 1, matrixEmpty);
+    expect(alien.getPosX()).toBe(0);
+});
+
+test('probing if the function to restore location works with specific situation', () => {
+    let expected = [
+        [' A ', 0],
+        [0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0] ];
+    let matrixEmpty = [
+        [0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(0, 0, matrixEmpty);
+    alien.restoreLocation();
+    expect(alien.content).toStrictEqual(expected);
+});
+
+test('Testing que print function to display A for the Alien', () => {
+    let expected = [
+        [' A ', 0],
+        [0, 0]];
+    let matrixEmpty = [
+        [0, 0],
+        [0, 0]];
+    let alien = new Alien(0, 0, matrixEmpty);
+    alien.printAlien();
+    expect(alien.content).toStrictEqual(expected);
+});
+
 
