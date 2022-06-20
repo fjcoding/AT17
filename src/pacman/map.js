@@ -1,7 +1,9 @@
 import { Pacman } from './pacman.js';
 import { Ghost } from './ghost.js';
-import { Fruit } from './fruit.js';
-import { Apple } from './apple.js';
+import { Apple } from './fruits/apple.js';
+import { Orange } from './fruits/orange.js';
+import { Cherry } from './fruits/cherry.js';
+import { Strawberry } from './fruits/strawberry.js';
 import { superDot } from './superdot.js';
 import { Screen } from './screen.js';
 const CLEAR = '\x1Bc';
@@ -9,7 +11,6 @@ const BLOCK = '\x1b[44m\u2592\x1b[49m';
 const DOT = '\x1b[95m•\x1b[39m';
 const SPACE = ' ';
 const CRASH = '\u1F4A5';
-const APPLE = '\x1b[93m\uD83C\uDF4E\x1b[39m';
 const DOT_VALUE = 1;
 const VOID = 2;
 const LIMIT_AXIS_X = 27;
@@ -22,7 +23,7 @@ export class Map {
         this.columns = map[0].length;
         this.pacman = new Pacman(1, 29);
         this.ghost = new Ghost(25, 2);
-        this.apple = new Apple(map);
+        this.fruits = [new Apple(map),new Strawberry(map), new Cherry(map), new Orange(map)];
         this.superDot1 = new superDot(1, 26);
         this.superDot2 = new superDot(26, 26);
         this.superDot3 = new superDot(1, 8);
@@ -68,14 +69,12 @@ export class Map {
                             arrText = '';
                             arrText += ' ' + this.ghost.getIconWithColor() + ' ';
                         }
-                        if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == true) {
+                        for(let l=0; l<4; l++){
+                        if (this.fruits[l].getPositionY() == i && this.fruits[l].getPositionX() == k && this.fruits[l].getnotEaten() == true) {
                             arrText = '';
-                            arrText += ' ' + APPLE;
+                            arrText += ' ' + this.fruits[l].getIcon();
                         }
-                        if (this.apple.getPositionY() == i && this.apple.getPositionX() == k && this.apple.getnotEaten() == false) {
-                            arrText = '';
-                            arrText += SPACE + '  ';
-                        }
+                    }
                         if (this.superDot1.getPositionY() == i && this.superDot1.getPositionX() == k && this.superDot1.getnotEaten() == true) {
                             arrText = '';
                             arrText += ' ' + this.superDot1.getIconWithColor() + ' ';
@@ -121,11 +120,12 @@ export class Map {
         this.pacman.selectFreeDirection(this.map);
         this.ghost.selectFreeDirection(this.map);
         this.checkContentsCell(this.pacman.positionX, this.pacman.positionY);
-
-        if (this.apple.eaten(this.pacman.positionX, this.pacman.positionY) && this.apple.getnotEaten()) {
-            this.changeValue(this.apple.positionX, this.apple.positionY, 2);
-            this.apple.notEaten = false;
-            this.pacman.score += this.apple.points;
+        for(let i=0; i<4; i++){
+        if (this.fruits[i].eaten(this.pacman.positionX, this.pacman.positionY) && this.fruits[i].getnotEaten()) {
+            this.changeValue(this.pacman.positionX, this.pacman.positionY, 2);
+            this.fruits[i].notEaten = false;
+            this.fruits[i].score += this.fruits[i].points;
+        }
         }
         if (this.superDot1.eaten(this.pacman.positionX, this.pacman.positionY) && this.superDot1.getnotEaten()) {
             this.changeValue(this.superDot1.positionX, this.superDot1.positionY, 2);
