@@ -147,5 +147,5 @@ test('Validate function walking to left get into random movement at the rigth en
 
     let player = new Player(1, 2, matrixEmpty, ' W ', false);
     player.changeDirection(false, 3, 0);
-    expect(player.flag).toBe(false);
+    expect(player.flag).toStrictEqual(false);
 });
