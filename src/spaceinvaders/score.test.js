@@ -51,8 +51,8 @@ test('The function to obtain array of lives', () => {
 });
 
 test('The function to print all the chain for score', () => {
-    let chainTest = '  SCORE: 00000LIVES: X X' + '\n';
-    let dimensionTest = 8;
+    let chainTest = '  SCORE: 00000   LIVES: X X' + '\n';
+    let dimensionTest = 9;
     let scoreTest = new Score(dimensionTest);
 
     let result = scoreTest.printScore();
