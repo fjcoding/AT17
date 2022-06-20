@@ -37,6 +37,16 @@ test('CheckDimentionBoard check if the dimension of columns in board is enough t
     let result = block.CheckDimentionBoard(board.content);
     expect(result).toBe(true);
 });
+test('CheckDimentionBoard check if the dimension of columns in board is enough to put a block, in this case will return true', () => {
+    let content = [];
+
+    let board = new Scenario(4, 4, content);
+    board.initBoard(' . ');
+
+    let block = new Block(board.content);
+    let result = block.CheckDimentionBoard(board.content);
+    expect(result).toBe(false);
+});
 
 test('putDinamicBlocks put diferent number of block in case to have the dimension correct', () => {
     let content = [];
